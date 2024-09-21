@@ -14,22 +14,22 @@ https://tech-camp.in/expert
 
 # 目次
 
-- アプリ制作あたって
-- アプリの概要
-- 開発手法
-- 課題定義
-- 要件定義
-- 業務フロー
-- ユースケース図
-- 画面遷移図
-- プロトタイプ
-- ER 図
-- 選定技術
-- システム構成図
-- 追加実装予定
-- 修正点、修正必要箇所
-- 学んだこと
-- まとめ
+- [アプリ制作あたって](#アプリ作成にあたって)
+- [アプリの概要](#アプリの概要)
+- [開発手法](#開発手法)
+- [課題定義](#課題定義)
+- [要件定義](#要件定義)
+- [業務フロー](#業務フロー)
+- [ユースケース図](#ユースケース図)
+- [画面遷移図](#画面遷移図)
+- [プロトタイプ](#プロトタイプ)
+- [データベース設計](#ER図)
+- [選定技術](#選定技術)
+- [システム構成図](#システム構成図)
+- [追加実装予定](#追加実装予定)
+- [修正点、修正必要箇所](#修正点、修正必要箇所)
+- [学んだこと](#学んだこと)
+- [まとめ](#まとめ)
 
 # アプリ作成にあたって
 
@@ -62,15 +62,23 @@ https://tech-camp.in/expert
 
 - テスト駆動開発
 
-# 機能要件
+# 要件定義
 
-# 追加実装予定機能
+## 機能要件
+
+# ユースケース図
+
+[ユースケース図](https://drive.google.com/file/d/1I1TKp8_5-SLqdJcPrML9CRQnHw6wom84/view?usp=drive_link)
+
+https://drive.google.com/file/d/1I1TKp8_5-SLqdJcPrML9CRQnHw6wom84/view?usp=drive_link
 
 # モックアップ
 
 # データベース設計
 
-[text](https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive_link)
+[ＥＲ図](https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive_link)
+
+https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive_link
 
 ## users テーブル
 
@@ -121,7 +129,7 @@ https://tech-camp.in/expert
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
 | site_id | integer | null: false, foreign_key: true |
-| content | string  | null: false                    |
+| content | text    | null: false                    |
 
 ### Association
 
@@ -132,7 +140,7 @@ https://tech-camp.in/expert
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
 | site_id | integer | null: false, foreign_key: true |
-| content | string  | null: false                    |
+| content | text    | null: false                    |
 
 ### Association
 
@@ -175,18 +183,106 @@ https://tech-camp.in/expert
 - has_many :output_datum
   **ActiveHash**
   |:-|
-- has_many :output_datum
+- has_many :risk_levels
+- has_many :incidence_rates
+- has_many :construction_types
 
 ## locations テーブル
 
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| ky_sheet_id | integer | null: false, foreign_key: true |
+| content     | string  | null: false                    |
+
+### Association
+
+- belongs_to :ky_sheet
+
 ## actions テーブル
+
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| ky_sheet_id | integer | null: false, foreign_key: true |
+| content     | text    | null: false                    |
+
+### Association
+
+- belongs_to :ky_sheet
 
 ## safety_risk_predictions テーブル
 
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| ky_sheet_id | integer | null: false, foreign_key: true |
+| content     | text    | null: false                    |
+
+### Association
+
+- belongs_to :ky_sheet
+
 ## safety_risk_measures テーブル
+
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| ky_sheet_id | integer | null: false, foreign_key: true |
+| content     | text    | null: false                    |
+
+### Association
+
+- belongs_to :ky_sheet
 
 ## quality_risk_predictions テーブル
 
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| ky_sheet_id | integer | null: false, foreign_key: true |
+| content     | text    | null: false                    |
+
+### Association
+
+- belongs_to :ky_sheet
+
 ## quality_risk_measures テーブル
 
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| ky_sheet_id | integer | null: false, foreign_key: true |
+| content     | text    | null: false                    |
+
+### Association
+
+- belongs_to :ky_sheet
+
 ## output_datum テーブル
+
+| Column                             | Type    | Options                        |
+| ---------------------------------- | ------- | ------------------------------ |
+| ky_sheet_id                        | integer | null: false, foreign_key: true |
+| location_id                        | integer | null: false, foreign_key: true |
+| action_id                          | integer | null: false, foreign_key: true |
+| site_risk_prediction_id            | integer | null: false, foreign_key: true |
+| site_risk_measure_id               | integer | null: false, foreign_key: true |
+| site_risk_level_1_id               | integer | null: false                    |
+| site_risk_level_2_id               | integer | null: false                    |
+| site_incidence_rate_1_id           | integer | null: false                    |
+| site_incidence_rate_2_id           | integer | null: false                    |
+| safety_risk_prediction_id          | integer | null: false, foreign_key: true |
+| safety_risk_measure_id             | integer | null: false, foreign_key: true |
+| safety_risk_level_id               | integer | null: false                    |
+| safety_incidence_rate_id           | integer | null: false                    |
+| quality_risk_prediction_id         | integer | null: false, foreign_key: true |
+| quality_risk_measure_id            | integer | null: false, foreign_key: true |
+| quality_risk_level_id              | integer | null: false                    |
+| quality_incidence_rate_id          | integer | null: false                    |
+| construction_type_id               | integer | null: false                    |
+| priority_measure_content           | text    | null: false                    |
+| priority_measure_risk              | text    | null: false                    |
+| priority_measure                   | text    | null: false                    |
+| priority_measure_risk_level_id     | integer | null: false                    |
+| priority_measure_incidence_rate_id | integer | null: false                    |
+
+### Association
+
+- belongs_to :ky_sheet
+
+# 追加実装予定機能
