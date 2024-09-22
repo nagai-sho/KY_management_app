@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+
+<div class="main">
+  <h3>（現場名）　工事一覧</h3>
+  <div class="site_menu">
+    <input></input>
+    <div class="site_search">
+      <input type="submit", value="検索する"></input>
+    </div>
+    <div class="site_create">
+      <%= link_to '新規作成', new_site_project_path %>
+    </div>
+  </div>
+  <div class="site_index">
+    <div class="title">工事名：〇〇改装工事</div>
+    <div class="projects">
+      <a href="#">KYシート一覧</a>
+    </div>
+  </div>
+  <div class="site_index">
+    <div class="title">工事名：〇〇漏水修理</div>
+    <div class="projects">
+      <a href="#">KYシート一覧</a>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

@@ -1,0 +1,21 @@
+* {
+  font-family: YuGothic;
+}
+header {
+  display: flex;
+  color: blue;
+  .logo {
+    font-family: '美し行書', cursive;
+    font-size: 30px;
+  }
+  .list {
+    display: flex;
+    li {
+      list-style-type: none;
+      margin: 10px;
+      padding: 5px;
+      border: 1px solid;
+      border-radius: 5px;
+    }
+  }
+}
