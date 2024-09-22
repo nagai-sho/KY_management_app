@@ -1,0 +1,20 @@
+<%= render "shared/header" %>
+
+<div class="main">
+  <h3>現場作成ページ</h3>
+  <div class="site_new">
+    <id="name">
+    <input id="name", placeholder="現場名　※必須※"></input>
+    <id="postal_code">
+    <input id="postal_code", placeholder="郵便番号"></input>
+    <id="address">
+    <input id="address", placeholder="住所"></input>
+  </div>
+
+  <div class="button">
+    <input id="", type="submit", value="作成"></input>
+    <div><%= link_to '戻る', root_path, class: 'return' %></div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>
