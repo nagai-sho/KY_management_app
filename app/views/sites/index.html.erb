@@ -11,24 +11,15 @@
       <%= link_to '新規作成', new_site_path %>
     </div>
   </div>
+  
   <div class="site_index">
+    <% @sites.each do |site| %>
     <div class="title">現場名：〇〇百貨店</div>
-    <div class="projects">
-      <%= link_to '工事一覧', site_projects_path(@site) %>
-    </div>
+    <div class="projects"><%= link_to '工事一覧', site_projects_path(site) %></div>
+    <% end %>
   </div>
-  <div class="site_index">
-    <div class="title">現場名：〇〇工場</div>
-    <div class="projects">
-      <a href="#">工事一覧</a>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">現場名：〇〇ビル増築計画</div>
-    <div class="projects">
-      <a href="#">工事一覧</a>
-    </div>
-  </div>
+
+  
 </div>
 
 <%= render "shared/footer" %>

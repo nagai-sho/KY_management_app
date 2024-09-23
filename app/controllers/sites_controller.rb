@@ -1,8 +1,11 @@
 class SitesController < ApplicationController
   def index
-    @site = Site.all
+    @sites = Site.all
   end
   def new
-    
+    @site = Site.new
+  end
+  def create
+    @site = Site.create(params[:id])
   end
 end
