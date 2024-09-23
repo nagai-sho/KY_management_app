@@ -1,3 +1,25 @@
 <%= render "shared/header" %>
-<div class="site_index">現場一覧</div>
+
+<div class="main">
+  <h3>現場一覧</h3>
+  <div class="site_menu">
+    <input></input>
+    <div class="site_search">
+      <input type="submit", value="検索する"></input>
+    </div>
+    <div class="site_create">
+      <%= link_to '新規作成', new_site_path %>
+    </div>
+  </div>
+  
+  <div class="site_index">
+    <% @sites.each do |site| %>
+    <div class="title">現場名：〇〇百貨店</div>
+    <div class="projects"><%= link_to '工事一覧', site_projects_path(site) %></div>
+    <% end %>
+  </div>
+
+  
+</div>
+
 <%= render "shared/footer" %>

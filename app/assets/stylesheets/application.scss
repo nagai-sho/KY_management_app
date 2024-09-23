@@ -13,5 +13,9 @@
  */
 
 @import 'bootstrap';
+@import 'normalize';
+@import 'shared/header';
+@import 'shared/footer';
 @import 'sites/index';
-@import 'bootstrap';
+@import 'sites/new';
+@import 'projects/index';

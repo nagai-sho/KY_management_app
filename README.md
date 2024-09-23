@@ -145,7 +145,7 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 - has_many :users, through :users_sites
 - has_many :site_risk_predictions
 - has_many :site_risk_measures
-- has_many :construction_projects
+- has_many :projects
 
 ## site_risk_predictions テーブル
 
@@ -169,7 +169,7 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 - belongs_to :site
 
-## construction_projects テーブル
+## projects テーブル
 
 | Column                  | Type    | Options                        |
 | ----------------------- | ------- | ------------------------------ |
@@ -195,7 +195,7 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 ### Association
 
-- belongs_to :construction_project
+- belongs_to :projects
 - belongs_to :user
 - has_many :locations
 - has_many :actions
