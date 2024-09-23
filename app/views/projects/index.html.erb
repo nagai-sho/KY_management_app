@@ -11,18 +11,21 @@
       <%= link_to '新規作成', new_site_project_path %>
     </div>
   </div>
-  <div class="site_index">
-    <div class="title">工事名：〇〇改装工事</div>
-    <div class="projects">
-      <a href="#">KYシート一覧</a>
-    </div>
+
+  <div class="format">
+    <%= link_to 'フォーマットを作成する（できないかも）又は、KYシート一覧？', new_site_project_path %>
   </div>
-  <div class="site_index">
-    <div class="title">工事名：〇〇漏水修理</div>
-    <div class="projects">
-      <a href="#">KYシート一覧</a>
+  
+  <% @projects.each do |project| %>
+    <div class="site_index">
+      <div class="title">工事名：〇〇改装工事</div>
+      <div class="projects">
+        <%= link_to 'フォーマットを作成する', new_site_project_ky_sheet_path(@site.id, project.id) %>
+        <a href="#">KYシート作成</a>
+        <a href="#">KYシート一覧</a>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>
