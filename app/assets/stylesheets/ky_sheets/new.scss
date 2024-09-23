@@ -1,0 +1,155 @@
+// .default_format {
+//   align-items: center;
+// }
+
+.ky {
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  .ky_header {
+    display: flex;
+    justify-content: space-around;
+    .header_left {
+      .header_name {
+        display: flex;
+      }
+    }
+    .header_center {
+      .header_name {
+        display: flex;
+      }
+    }
+    .header_right {
+      display: flex;
+      .header_name {
+        display: flex;
+      }
+    }
+  }
+
+  .column {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid;
+    .risk_evaluation {
+      display: flex;
+      flex-direction: column;
+      .risk_degree {
+        display: flex;
+        .rate {
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+
+  .input_area {
+    // border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .risk_content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      border: 2px solid;
+      width: calc(100vw - 20px);
+      height: 50px;
+      margin-bottom: 2px;
+      .location {
+        padding: 0 10px;
+      }
+      .action_content {
+        padding: 0 10px;
+      }
+      .risk_prediction {
+        padding: 0 10px;
+      }
+      .risk_measure {
+        padding: 0 10px;
+      }
+      .risk_rate {
+        padding: 0 10px;
+      }
+    }
+  }
+
+  .check_area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .check_content_all {
+      display: flex;
+      justify-content: space-between;
+      .check_content_reft {
+        padding: 0 10px;
+        display: inline-block;
+        .check_content {
+          display: flex;
+          justify-content: space-between;
+          form {
+            padding-left: 50px;
+          }
+        }
+      }
+      .check_content_right {
+        padding: 0 10px;
+        display: inline-block;
+        .check_content {
+          display: flex;
+          justify-content: space-between;
+          form {
+            padding-left: 50px;
+          }
+        }
+      }
+    }
+  }
+
+  .ky_footer {
+    text-align: center;
+    display: flex;
+    border: 2px solid;
+    .sign_area {
+      width: calc(100vw - 20px - 500px);
+      display: flex;
+      flex-direction: column;
+      border: 2px solid;
+      .footer_title {
+        border: 2px solid;
+      }
+    }
+    .personnel_area {
+      text-align: center;
+      border: 2px solid;
+      width: calc(100vw - 20px - 800px);
+      .personnel {
+        height: 105px;
+        border: 2px solid;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    .manager_sign_area {
+      text-align: center;
+      border: 2px solid;
+      width: calc(100vw - 20px - 800px);
+      .confirmed_area {
+        display: flex;
+        border: 2px solid;
+        .confirmed {
+          height: 100px;
+          border: 2px solid;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
