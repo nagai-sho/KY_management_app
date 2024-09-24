@@ -1,6 +1,15 @@
 // .default_format {
 //   align-items: center;
 // }
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  .return {
+    font-size: 20px;
+  }
+}
 
 .ky {
   border: 1px solid;

@@ -3,3 +3,23 @@
   padding: 10px;
   margin: 10px;
 }
+
+// .project_index {
+//   height: 50px;
+//   width: calc(100vw - 100px);
+//   display: flex;
+//   justify-content: space-between;
+//   border: 1px solid;
+//   border-radius: 5px;
+//   padding: 10px;
+//   margin-bottom: 20px;
+// }
+
+.title {
+  display: flex;
+  flex-direction: column;
+  // align-items: unset;
+  .project_detail {
+    // text-align: left;
+  }
+}
