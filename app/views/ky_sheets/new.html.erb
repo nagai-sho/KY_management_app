@@ -38,17 +38,19 @@
     </div>
 
     <div class="column">
-      <div class="">主な作業場所</div>
-      <div class="">作業内容</div>
-      <div class="">作業に伴うリスク / 危険Point</div>
-      <div class="">リスク評価</div>
-      <div class="">
-        <div class="">危険度</div>
-        <div class="">発生率</div>
+      <div class="column_list">主な作業場所</div>
+      <div class="column_list">作業内容</div>
+      <div class="column_list">作業に伴うリスク / 危険Point</div>
+      <div class="risk_evaluation">
+        <div class="">リスク評価</div>
+        <div class="risk_degree">
+          <div class="rate">危険度</div>
+          <div class="rate">発生率</div>
+        </div>
       </div>
-      <div id="", class="">リスクレベル</div>
-      <div class="">リスク低減対策</div>
-      <div class="">管理者確認サイン</div>
+      <div id="", class="column_list">リスクレベル</div>
+      <div class="column_list">リスク低減対策</div>
+      <div class="column_list">管理者確認サイン</div>
     </div>
     <div class="input_area">
       <div class="safety_measure">
@@ -111,13 +113,113 @@
     </div>
 
     <div class="check_area">
-
+      <div class="sub_title">作業前チェック項目</div>
+      <div class="check_content_all">
+        <div class="check_content_reft">
+          <div class="check_content">
+            <div>本日の安全通路及び立ち入り禁止区域について理解している</div>
+            <form action="/submit-form" method="post" >
+              <input type="checkbox" id="yes_option" name="option" value="yes">
+              <label for="yes_option">はい</label>
+              <input type="checkbox" id="no_option" name="option" value="no">
+              <label for="no_option">該当なし</label>
+            </form>
+          </div>
+          <div class="check_content">
+            <div>作業に必要な資格証、工具の許可証を携帯及び表示している</div>
+            <form action="/submit-form" method="post" >
+              <input type="checkbox" id="yes_option" name="option" value="yes">
+              <label for="yes_option">はい</label>
+              <input type="checkbox" id="no_option" name="option" value="no">
+              <label for="no_option">該当なし</label>
+            </form>
+          </div>
+          <div class="check_content">
+            <div>使用する電動工具、仮設材及び作業足場の点検をしている</div>
+            <form action="/submit-form" method="post" >
+              <input type="checkbox" id="yes_option" name="option" value="yes">
+              <label for="yes_option">はい</label>
+              <input type="checkbox" id="no_option" name="option" value="no">
+              <label for="no_option">該当なし</label>
+            </form>
+          </div>
+        </div>
+        <div class="check_content_right">
+          <div class="check_content">
+            <div>本日の作業に危険作業に該当するものがあるか把握している</div>
+            <form action="/submit-form" method="post" >
+              <input type="checkbox" id="yes_option" name="option" value="yes">
+              <label for="yes_option">はい</label>
+              <input type="checkbox" id="no_option" name="option" value="no">
+              <label for="no_option">該当なし</label>
+            </form>
+          </div>
+          <div class="check_content">
+            <div>本日の作業計画及び内容を把握している</div>
+            <form action="/submit-form" method="post" >
+              <input type="checkbox" id="yes_option" name="option" value="yes">
+              <label for="yes_option">はい</label>
+              <input type="checkbox" id="no_option" name="option" value="no">
+              <label for="no_option">該当なし</label>
+            </form>
+          </div>
+          <div class="check_content">
+            <div>体調が平常時と異なる作業員がいないか確認している</div>
+            <form action="/submit-form" method="post" >
+              <input type="checkbox" id="yes_option" name="option" value="yes">
+              <label for="yes_option">はい</label>
+              <input type="checkbox" id="no_option" name="option" value="no">
+              <label for="no_option">該当なし</label>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="sign_area">
-
+    
+    <div class="ky_footer">
+      <div class="sign_area">
+        <div class="footer_title">参加者サイン</div>
+        <div class="sign_box">サイン機能</div>
+      </div>
+      <div class="personnel_area">
+        <div class="footer_title">本日の人員</div>
+        <div class="personnel">
+          <div class="division">
+            <div class="footer_title">作業員</div>
+            <div class="parson_count">10 + </div>
+          </div>
+          <div class="division">
+            <div class="footer_title">現場管理</div>
+            <div class="parson_count">2 人</div>
+          </div>
+        </div>
+      </div>
+      <div class="manager_sign_area">
+        <div class="footer_title">管理者サイン</div>
+        <div class="confirmed_area">
+          <div class="confirmed">
+            <div class="footer_title">元請</div>
+            <div class="sign">サイン機能</div>
+          </div>
+          <div class="confirmed">
+            <div class="footer_title">元請</div>
+            <div class="sign">サイン機能</div>
+          </div>
+          <div class="confirmed">
+            <div class="footer_title">上長</div>
+            <div class="sign">サイン機能</div>
+          </div>
+          <div class="confirmed">
+            <div class="footer_title">現場責任者</div>
+            <div class="sign">サイン機能</div>
+          </div>
+          <div class="confirmed">
+            <div class="footer_title">現場担当</div>
+            <div class="sign">サイン機能</div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>
 
