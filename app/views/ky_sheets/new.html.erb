@@ -1,28 +1,31 @@
 <%= render "shared/header" %>
 
 <div class="default_format">
-  <div class="title"><h3>KY活動チェックシート</h3></div>
+  <div class="title">
+    <h3>KY活動チェックシート</h3>
+    <div class="return"><%= link_to '戻る', site_projects_path(@site) %></div>
+  </div>
   <div class="ky">
     <div class="top_content">
       <div class="ky_header">
         <div class="header_left">
           <div class="header_name">
             <div class="site_name">現場名　</div>
-            <%= '〇〇〇〇' %>
+            <%= '〇〇アソシエーションで入る〇〇' %>
           </div>
           <div class="header_name">
             <div class="construction_name">工事件名　</div>
-            <%= '〇〇〇〇' %>
+            <%= '〇〇アソシエーションで入る〇〇' %>
           </div>
         </div>
         <div class="header_center">
           <div class="header_name">
             <div class="company_name">会社名　</div>
-            <%= '〇〇〇〇' %>
+            <%= '〇〇アソシエーションで入る〇〇' %>
           </div>
           <div class="header_name">
             <div class="construction_type">工事種別　</div>
-            <%= '〇〇〇〇' %>
+            <%= '〇〇ActiveHash〇〇' %>
           </div>
         </div>
         <div class="header_right">
@@ -53,13 +56,13 @@
       <div class="safety_measure">
         <div class="sub_title">安全へのKY活動</div>
         <div class="risk_content">
-          <div class="location"><%= '〇〇〇〇' %></div>
-          <div class="action_content"><%= '〇〇〇〇' %></div>
-          <div class="risk_prediction"><%= '〇〇〇〇' %></div>
-          <div class="risk_measure"><%= '〇〇〇〇' %></div>
-          <div class="risk_rate"><%= '〇〇〇〇' %></div>
-          <div class="risk_rate"><%= '〇〇〇〇' %></div>
-          <div class="risk_rate"><%= '〇〇〇〇' %></div>
+          <div class="location"><%= link_to '〇登録する！', site_locations_path(@site) %></div>
+          <div class="action_content"><%= '〇登録する！' %></div>
+          <div class="risk_prediction"><%= '〇登録する！' %></div>
+          <div class="risk_measure"><%= '〇登録する！' %></div>
+          <div class="risk_rate"><%= '〇登録する！' %></div>
+          <div class="risk_rate"><%= '〇登録する！' %></div>
+          <div class="risk_rate"><%= '〇登録する！' %></div>
         </div>
         <div class="risk_content">
           <div class="location"><%= '〇〇〇〇' %></div>

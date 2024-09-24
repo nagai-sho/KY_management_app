@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :projects do
       resources :ky_sheets
     end
+    resources :locations
   end
 end

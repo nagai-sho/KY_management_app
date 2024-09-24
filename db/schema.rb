@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_23_055716) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_24_104935) do
+  create_table "ky_sheets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "construction_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_ky_sheets_on_project_id"
+  end
+
+  create_table "locations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "content", null: false
+    t.bigint "ky_sheet_id"
+    t.index ["ky_sheet_id"], name: "index_locations_on_ky_sheet_id"
+  end
+
   create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -22,4 +38,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_23_055716) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ky_sheets", "projects"
 end

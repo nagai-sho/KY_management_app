@@ -187,15 +187,15 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 ## ky_sheets テーブル
 
-| Column                  | Type    | Options                        |
-| ----------------------- | ------- | ------------------------------ |
-| construction_project_id | integer | null: false, foreign_key: true |
-| user_id                 | integer | null: false, foreign_key: true |
-| construction_date       | string  | null: false                    |
+| Column            | Type    | Options                        |
+| ----------------- | ------- | ------------------------------ |
+| project_id        | integer | null: false, foreign_key: true |
+| user_id           | integer | null: false, foreign_key: true |
+| construction_date | string  | null: false                    |
 
 ### Association
 
-- belongs_to :projects
+- belongs_to :project
 - belongs_to :user
 - has_many :locations
 - has_many :actions
@@ -203,7 +203,7 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 - has_many :safety_risk_measures
 - has_many :quality_risk_predictions
 - has_many :quality_risk_measures
-- has_many :output_datum
+- has_many :outputs
   **ActiveHash**
   |:-|
 - has_many :risk_levels
@@ -276,7 +276,7 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 - belongs_to :ky_sheet
 
-## output_datum テーブル
+## outputs テーブル
 
 | Column                             | Type    | Options                        |
 | ---------------------------------- | ------- | ------------------------------ |

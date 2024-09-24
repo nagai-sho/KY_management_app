@@ -1,0 +1,15 @@
+.change {
+  display: flex;
+  align-items: center;
+  .edit {
+    // border: 1px solid;
+    // border-radius: 5px;
+    padding: 0 5px;
+  }
+  .delete {
+    // border: 1px solid;
+    // border-radius: 5px;
+    padding: 0 5px;
+    margin-left: 10px;
+  }
+}
