@@ -6,4 +6,10 @@ class KySheetsController < ApplicationController
     @site = Site.find(params[:site_id])
     @projects = @site.projects
   end
+  
+  def edit
+    @site = Site.find(params[:site_id])
+    @projects = @site.projects
+  end
+
 end
