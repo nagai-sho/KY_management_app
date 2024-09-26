@@ -74,7 +74,6 @@ https://tech-camp.in/expert
 
 # 開発手法
 
-- テスト駆動開発（簡易）
 - issue 駆動開発（簡易）
 
 ### 環境構築
