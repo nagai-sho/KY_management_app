@@ -74,17 +74,17 @@ https://tech-camp.in/expert
 
 # 開発手法
 
-- テスト駆動開発（簡易）
 - issue 駆動開発（簡易）
 
 ### 環境構築
 
 - デプロイ → AWS
 
-### ブランチ構成
+### ブランチ構成、運用
 
-- main
-- develop
+- main（マージのみ）
+- develop（README.md はここで編集）
+- 作業ブランチ（都度消去する）
 
 # 要件定義
 
@@ -106,15 +106,15 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 ## users テーブル
 
-| Column       | Type   | Options                   |
-| ------------ | ------ | ------------------------- |
-| company      | string | null: false               |
-| name         | string | null: false               |
-| name_kana    | string | null: false               |
-| password     | string | null: false               |
-| mail         | string | null: false, unique: true |
-| phone_number | string | null: false, unique: true |
-| position     | string |                           |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| company            | string | null: false               |
+| name               | string | null: false               |
+| name_kana          | string | null: false               |
+| encrypted_password | string | null: false               |
+| mail               | string | null: false, unique: true |
+| phone_number       | string | null: false, unique: true |
+| position           | string |                           |
 
 ### Association
 
