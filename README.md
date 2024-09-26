@@ -81,10 +81,11 @@ https://tech-camp.in/expert
 
 - デプロイ → AWS
 
-### ブランチ構成
+### ブランチ構成、運用
 
-- main
-- develop
+- main（マージのみ）
+- develop（README.md はここで編集）
+- 作業ブランチ（都度消去する）
 
 # 要件定義
 
