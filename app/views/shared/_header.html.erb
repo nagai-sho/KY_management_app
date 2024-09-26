@@ -2,9 +2,8 @@
   <div class="logo">KYシート作成アプリ</div>
   <ul class="list">
     <li><%= link_to '現場一覧', root_path %></li>
-    <li>ログアウト</li>
-    <li>ログイン</li>
-    <li>新規登録</li>
-    <li>フォーマット作成</li>
+    <li><%= link_to '新規登録', new_user_registration_path %></li>
+    <li><%= link_to 'ログイン', new_user_session_path %></li>
+    <li><%= link_to 'ログアウト', root_path %></li>
   </ul>
 </header>
