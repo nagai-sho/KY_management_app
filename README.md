@@ -22,7 +22,7 @@ https://tech-camp.in/expert
 - [課題定義](#課題定義)
 - [要件定義](#要件定義)
 - [業務フロー](#業務フロー)
-- [ユースケース図](#ユースケース図)
+- [ユースケース図・画面構成図](#ユースケース図・画面構成図)
 - [画面遷移図](#画面遷移図)
 - [プロトタイプ](#プロトタイプ)
 - [データベース設計](#ER図)
@@ -75,6 +75,7 @@ https://tech-camp.in/expert
 # 開発手法
 
 - テスト駆動開発（簡易）
+- issue 駆動開発（簡易）
 
 ### 環境構築
 
@@ -89,11 +90,11 @@ https://tech-camp.in/expert
 
 ## 機能要件
 
-# ユースケース図
+# ユースケース図・画面構成図
 
-[ユースケース図](https://drive.google.com/file/d/1I1TKp8_5-SLqdJcPrML9CRQnHw6wom84/view?usp=drive_link)
+[ユースケース図・画面構成図](https://drive.google.com/file/d/1gXxjhloT-bVJQe_Lw8iVeRG4TcQCrLTT/view?usp=drive_link)
 
-https://drive.google.com/file/d/1I1TKp8_5-SLqdJcPrML9CRQnHw6wom84/view?usp=drive_link
+https://drive.google.com/file/d/1gXxjhloT-bVJQe_Lw8iVeRG4TcQCrLTT/view?usp=drive_link
 
 # モックアップ
 
@@ -308,4 +309,15 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 - belongs_to :ky_sheet
 
-# 追加実装予定機能
+# 追加実装予定機能（優先順位順）
+
+- HTTPS 化
+- CI/CD の導入
+- Docker の導入
+- 承認ワークフロー通知機能
+- 設定時間通知機能
+- 工事ごとの実施済み KY シート一括ダウンロード機能
+- サブスクライブ課金機能
+- ワンクリック捺印機能
+- 最も最近使用した KY シートの表示機能
+- フォーマット作成機能
