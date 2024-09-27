@@ -134,11 +134,11 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 ## sites テーブル
 
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| name        | string | null: false |
-| postal_code | string |             |
-| address     | string |             |
+| Column      | Type   | Options                   |
+| ----------- | ------ | ------------------------- |
+| name        | string | null: false, unique: true |
+| postal_code | string |                           |
+| address     | string |                           |
 
 ### Association
 
