@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_27_021307) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_27_085527) do
   create_table "ky_sheets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.string "construction_date", null: false
@@ -30,7 +30,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_27_021307) do
   create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "site_id"
+    t.string "name", null: false
+    t.string "client"
+    t.date "construction_start"
+    t.date "construction_completion"
+    t.text "construction_content"
+    t.bigint "site_id", null: false
+    t.index ["site_id"], name: "index_projects_on_site_id"
   end
 
   create_table "sites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -1,17 +1,16 @@
 class ProjectsController < ApplicationController
+  before_action :set_site, only: [:index, :new, :create]
   def index
-    @site = Site.find(params[:site_id])
     @projects = @site.projects
   end
   def new
-    @site = Site.find(params[:site_id])
     @project = @site.projects.new
   end
   
   def create
-    @project = Project.new(project_params)
+    @project = @site.projects.new(project_params)
     if @project.save
-      redirect_to site_projects_path notice: '工事件名が正常に作成されました。'
+      redirect_to site_projects_path(@site), notice: '工事件名が正常に作成されました。'
     else
       flash.now[:alert] = '工事件名の作成に失敗しました。'
       render :new, status: :unprocessable_entity
@@ -27,5 +26,9 @@ class ProjectsController < ApplicationController
       :construction_completion,
       :construction_content,
       )
+  end
+
+  def set_site
+    @site = Site.find(params[:site_id])
   end
 end
