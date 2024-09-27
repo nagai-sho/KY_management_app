@@ -6,11 +6,17 @@ class SitesController < ApplicationController
     @site = Site.new
   end
   def create
-    @site = Site.create(params[:id])
+    @site = Site.new(site_params)
     if @site.save
-      redirect_to root_path
+      redirect_to root_path, notice: '現場名が正常に作成されました。'
     else
-      render new_site_path
+      flash.now[:alert] = '現場名の作成に失敗しました。'
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  private
+  def site_params
+    params.require(:site).permit(:name, :postal_code, :address)
   end
 end
