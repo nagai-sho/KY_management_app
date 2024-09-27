@@ -13,12 +13,11 @@ class User < ApplicationRecord
     validates :name
     validates :name_kana
     validates :phone_number
-    validates :position
   end
 
   validates :phone_number, uniqueness: true,
             format: { with: /\A\d{2,4}[-]\d{3,4}[-]\d{4}\z/,
             message: 'は10桁または11桁の数字で, - を用いて入力してください' }
-  validates :name_kana, format: { with: /\A[ァ-ヶー\s]+\z/, message: 'はカタカナで入力してください' }
+  validates :name_kana, format: { with: /\A[ァ-ヶー　\s]+\z/, message: 'はカタカナで入力してください' }
 
 end
