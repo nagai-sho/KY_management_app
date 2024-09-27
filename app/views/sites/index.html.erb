@@ -14,19 +14,7 @@
   
   <% @sites.each do |site| %>
     <div class="site_index">
-      <div class="title">現場名：〇〇百貨店　改修工事</div>
-      <div class="projects"><%= link_to '工事一覧', site_projects_path(site) %></div>
-    </div>
-    <div class="site_index">
-      <div class="title">現場名：〇〇工場　大規模修繕工事</div>
-      <div class="projects"><%= link_to '工事一覧', site_projects_path(site) %></div>
-    </div>
-    <div class="site_index">
-      <div class="title">現場名：〇〇学校跡地　〇〇ホテル新築工事</div>
-      <div class="projects"><%= link_to '工事一覧', site_projects_path(site) %></div>
-    </div>
-    <div class="site_index">
-      <div class="title">現場名：〇〇事務所　BCP対応案件</div>
+      <div class="title">現場名：<%= site.name %></div>
       <div class="projects"><%= link_to '工事一覧', site_projects_path(site) %></div>
     </div>
   <% end %>
