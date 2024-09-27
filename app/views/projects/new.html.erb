@@ -9,10 +9,10 @@
     <%= f.text_field :name, autofocus: true, placeholder: '※必須' %>
     <%= f.label :client, '受注先' %>
     <%= f.text_field :client, placeholder: '' %>
-    <%= f.label :construction_start, '工期（着工）' %> <%# カレンダー機能を足す %>
-    <%= f.text_field :construction_start, placeholder: '' %>
-    <%= f.label :construction_completion, '工期（竣工）' %> <%# カレンダー機能を足す %>
-    <%= f.text_field :construction_completion, placeholder: '' %>
+    <%= f.label :construction_start, '工期（着工）' %>
+    <%= f.text_field :construction_start, placeholder: '', class: 'datepicker' %>
+    <%= f.label :construction_completion, '工期（竣工）' %>
+    <%= f.text_field :construction_completion, placeholder: '', class: 'datepicker' %>
     <%= f.label :construction_content, '工事内容' %>
     <%= f.text_field :construction_content, placeholder: '' %>
   </div>

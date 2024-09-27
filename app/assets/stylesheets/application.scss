@@ -12,8 +12,10 @@
  *
  */
 
+@import 'flatpickr/dist/flatpickr.css';
 @import 'bootstrap';
 @import 'normalize';
+@import 'devise';
 @import 'shared/header';
 @import 'shared/footer';
 @import 'sites/index';
@@ -21,4 +23,3 @@
 @import 'projects/index';
 @import 'ky_sheets/new';
 @import 'locations/index';
-@import 'devise';
