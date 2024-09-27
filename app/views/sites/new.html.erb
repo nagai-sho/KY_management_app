@@ -2,19 +2,22 @@
 
 <div class="main">
   <h3>現場作成ページ</h3>
+  <%= form_with model: @site, local: true do |f| %>
+    <%= render 'shared/error_messages', model: @site %>
   <div class="site_new">
-    <id="name">
-    <input id="name", placeholder="現場名　※必須※"></input>
-    <id="postal_code">
-    <input id="postal_code", placeholder="郵便番号"></input>
-    <id="address">
-    <input id="address", placeholder="住所"></input>
+    <%= f.label :name, '現場名' %><br>
+    <%= f.text_field :name, autofocus: true, placeholder: '※必須' %>
+    <%= f.label :postal_code, '郵便番号' %><br>
+    <%= f.text_field :postal_code, placeholder: '' %>
+    <%= f.label :address, '住所' %><br>
+    <%= f.text_field :address, placeholder: '' %>
   </div>
-
   <div class="button">
-    <input id="", type="submit", value="作成"></input>
-    <div><%= link_to '戻る', root_path, class: 'return' %></div>
+    <%= f.submit '作成する' %>
   </div>
+  <% end %>
+  <div><%= link_to '戻る', root_path, class: 'return' %></div>
+
 </div>
 
 <%= render "shared/footer" %>
