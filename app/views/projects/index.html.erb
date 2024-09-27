@@ -11,16 +11,16 @@
       <%= link_to '新規作成', new_site_project_path %>
     </div>
     <div class="site_create">
-      <%= link_to '実施済みKYシート一覧', site_project_ky_sheets_path(@site.id, @project.id, @ky_sheet.id) %>
+      <%= link_to '実施済みKYシート一覧', site_projects_path(@site.id) %>
     </div>
   </div>
 
 <div class="format">
   <% if @ky_sheet %>
-    <%#= link_to '項目を作成する', edit_site_project_ky_sheet_path(@site.id, @project.id, @ky_sheet.id) %>
-    <%= link_to '項目を作成する', site_project_ky_sheet_path(@site.id, @project.id, @ky_sheet.id) %>
+    <%#= link_to '項目を作成する', site_project_ky_sheet_path(@site.id) %>
+    <%= link_to '項目を作成する' %>
   <% else %>
-    <%= link_to '項目を作成する', new_site_project_ky_sheet_path(@site.id, @project.id) %>
+    <%= link_to '項目を作成する' %>
   <% end %>
 </div>
   
@@ -33,7 +33,8 @@
         <div class="project_detail"><%= 'SP工事、ダクト工事' %></div>
       </div>
       <div class="projects">
-        <%= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id, project.id) %>
+        <%#= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id) %>
+        <%= link_to 'KYシート作成' %>
         <a href="#">編集</a>
         <a href="#">削除</a>
       </div>
@@ -48,7 +49,8 @@
         <div class="project_detail"><%= '衛生配管工事、雑工事' %></div>
       </div>
       <div class="projects">
-        <%= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id, project.id) %>
+        <%#= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id) %>
+        <%= link_to 'KYシート作成' %>
         <a href="#">編集</a>
         <a href="#">削除</a>
       </div>
