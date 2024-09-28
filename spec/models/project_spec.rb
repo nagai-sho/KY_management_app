@@ -7,10 +7,9 @@ RSpec.describe Project, type: :model do
   end
 
   describe '工事件名の作成' do
-    
     context '工事件名が作成できる' do
-      it '' do
-        
+      it '全ての項目が入力されていれば作成できる' do
+        expect(@project).to be_valid
       end
     end
 
