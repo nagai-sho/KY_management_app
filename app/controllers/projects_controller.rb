@@ -1,16 +1,34 @@
 class ProjectsController < ApplicationController
+  before_action :set_site, only: [:index, :new, :create]
   def index
-    @site = Site.includes(:projects).find(params[:site_id])
     @projects = @site.projects
-    @project = @projects.first
-    @ky_sheet = @project.ky_sheets.first if @project.present?
-    # Rails.logger.debug "@site: #{@site.inspect}"
-    # Rails.logger.debug "@projects: #{@projects.inspect}"
-    # Rails.logger.debug "@project: #{@project.inspect}"
-    # Rails.logger.debug "@ky_sheet: #{@ky_sheet.inspect}"
   end
   def new
-    @site = Site.find(params[:site_id])
     @project = @site.projects.new
+  end
+  
+  def create
+    @project = @site.projects.new(project_params)
+    if @project.save
+      redirect_to site_projects_path(@site), notice: '工事件名が正常に作成されました。'
+    else
+      flash.now[:alert] = '工事件名の作成に失敗しました。'
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+  def project_params
+    params.require(:project).permit(
+      :name,
+      :client,
+      :construction_start,
+      :construction_completion,
+      :construction_content,
+      )
+  end
+
+  def set_site
+    @site = Site.find(params[:site_id])
   end
 end

@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <div class="main">
-  <h3>（現場名）　工事一覧</h3>
+  <h3><%= @site.name %>　工事一覧</h3>
   <div class="site_menu">
     <input></input>
     <div class="site_search">
@@ -11,44 +11,32 @@
       <%= link_to '新規作成', new_site_project_path %>
     </div>
     <div class="site_create">
-      <%= link_to '実施済みKYシート一覧', site_project_ky_sheets_path(@site.id, @project.id, @ky_sheet.id) %>
+      <%= link_to '実施済みKYシート一覧', site_projects_path(@site.id) %>
     </div>
   </div>
 
 <div class="format">
   <% if @ky_sheet %>
-    <%#= link_to '項目を作成する', edit_site_project_ky_sheet_path(@site.id, @project.id, @ky_sheet.id) %>
-    <%= link_to '項目を作成する', site_project_ky_sheet_path(@site.id, @project.id, @ky_sheet.id) %>
+    <%#= link_to '項目を作成する', site_project_ky_sheet_path(@site.id) %>
+    <%= link_to '項目を作成する' %>
   <% else %>
-    <%= link_to '項目を作成する', new_site_project_ky_sheet_path(@site.id, @project.id) %>
+    <%= link_to '項目を作成する' %>
   <% end %>
 </div>
   
   <% @projects.each do |project| %>
     <div class="site_index">
       <div class="title">
-        <div class="project_name">工事名：〇〇改装工事</div>
-        <div class="project_detail"><%= '受注先' %></div>
-        <div class="project_detail"><%= '○○/○○/○○ 〜 ○○/○○/○○' %></div>
-        <div class="project_detail"><%= 'SP工事、ダクト工事' %></div>
+        <div class="project_name">工事名：<%= project.name %></div>
+        <div class="project_detail"><%= project.client %></div>
+        <div class="project_detail">
+          <%= "#{project.construction_start} 〜 #{project.construction_completion}" %>
+        </div>
+        <div class="project_detail"><%= project.construction_content %></div>
       </div>
       <div class="projects">
-        <%= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id, project.id) %>
-        <a href="#">編集</a>
-        <a href="#">削除</a>
-      </div>
-      <div class="form">
-      </div>
-    </div>
-    <div class="site_index">
-      <div class="title">
-        <div class="project_name">工事名：〇〇配管漏水修繕</div>
-        <div class="project_detail"><%= '受注先' %></div>
-        <div class="project_detail"><%= '○○/○○/○○ 〜 ○○/○○/○○' %></div>
-        <div class="project_detail"><%= '衛生配管工事、雑工事' %></div>
-      </div>
-      <div class="projects">
-        <%= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id, project.id) %>
+        <%#= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id) %>
+        <%= link_to 'KYシート作成' %>
         <a href="#">編集</a>
         <a href="#">削除</a>
       </div>
