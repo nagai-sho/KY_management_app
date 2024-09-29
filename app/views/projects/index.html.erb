@@ -16,12 +16,8 @@
   </div>
 
 <div class="format">
-  <% if @ky_sheet %>
-    <%#= link_to '項目を作成する', site_project_ky_sheet_path(@site.id) %>
-    <%= link_to '項目を作成する' %>
-  <% else %>
-    <%= link_to '項目を作成する' %>
-  <% end %>
+  <%#= link_to '項目を作成する', ky_sheet_path(@project) %>
+  <%= link_to '項目を作成する' %>
 </div>
   
   <% @projects.each do |project| %>
@@ -35,10 +31,12 @@
         <div class="project_detail"><%= project.construction_content %></div>
       </div>
       <div class="projects">
-        <%#= link_to 'KYシート作成', new_site_project_ky_sheet_path(@site.id) %>
-        <%= link_to 'KYシート作成' %>
+        <%= link_to 'KYシート作成', new_project_ky_sheet_path(project) %>
         <a href="#">編集</a>
-        <a href="#">削除</a>
+        <%= link_to '削除', project_path(project),
+          data: { turbo_method: :delete }
+        %>
+        <%# <a href="#">削除</a> %>
       </div>
       <div class="form">
       </div>

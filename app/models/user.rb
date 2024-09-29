@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :sites, through: :users_sites
-  has_many :users_sites
+  has_many :sites, through: :user_sites
+  has_many :user_sites
   has_many :ky_sheets
 
   with_options presence: true do
