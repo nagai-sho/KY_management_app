@@ -2,23 +2,25 @@
 
 <div class="main">
   <h3>工事作成ページ</h3>
+  <%= form_with model: [@site, @project], local: true, data: { controller: "flatpickr"} do |f| %>
+  <%= render 'shared/error_messages', model: @project %>
   <div class="site_new">
-    <id="name">
-    <input id="name", placeholder="工事名　※必須※"></input>
-    <id="client">
-    <input id="client", placeholder="受注先"></input>
-    <id="construction_start">
-    <input id="construction_start", placeholder="工期（着工）"></input>
-    <id="construction_completion">
-    <input id="construction_completion", placeholder="工期（竣工）"></input>
-    <id="construction_content">
-    <input id="construction_content", placeholder="工事内容"></input>
+    <%= f.label :name, '工事件名' %>
+    <%= f.text_field :name, autofocus: true, placeholder: '※必須' %>
+    <%= f.label :client, '受注先' %>
+    <%= f.text_field :client, placeholder: '' %>
+    <%= f.label :construction_start, '工期（着工）' %>
+    <%= f.text_field :construction_start, placeholder: '', class: 'datepicker' %>
+    <%= f.label :construction_completion, '工期（竣工）' %>
+    <%= f.text_field :construction_completion, placeholder: '', class: 'datepicker' %>
+    <%= f.label :construction_content, '工事内容' %>
+    <%= f.text_field :construction_content, placeholder: '' %>
   </div>
-
-    <div class="button">
-      <input id="", type="submit", value="作成"></input>
-      <div><%= link_to '戻る', site_projects_path(@site), class: 'return' %></div>
-    </div>
+  <div class="button">
+    <%= f.submit '作成する' %>
+  </div>
+  <% end %>
+  <div><%= link_to '戻る', site_projects_path(@site), class: 'return' %></div>
 </div>
 
 <%= render "shared/footer" %>

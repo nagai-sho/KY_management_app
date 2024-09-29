@@ -1,5 +1,13 @@
 # README
 
+# ポートフォリオ
+
+サービスへのリンク、画像
+
+### サービス名
+
+サービスの内容紹介
+
 # はじめに
 
 2024/ 8/ 5 TECH CAMP 短期集中カリキュラムに参加（179 期）
@@ -177,9 +185,9 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 | site_id                 | integer | null: false, foreign_key: true |
 | name                    | string  | null: false                    |
 | client                  | string  |                                |
-| construction_start      | string  |                                |
-| construction_completion | string  |                                |
-| construction_content    | string  |                                |
+| construction_start      | date    |                                |
+| construction_completion | date    |                                |
+| construction_content    | text    |                                |
 
 ### Association
 
