@@ -2,7 +2,7 @@
 
 <div class="main">
   <h3>工事作成ページ</h3>
-  <%= form_with model: [@site, @project], local: true do |f| %>
+  <%= form_with model: [@site, @project], local: true, data: { controller: "flatpickr"} do |f| %>
   <%= render 'shared/error_messages', model: @project %>
   <div class="site_new">
     <%= f.label :name, '工事件名' %>
