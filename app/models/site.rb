@@ -1,9 +1,9 @@
 class Site < ApplicationRecord
-  has_many :users, through: :users_sites
-  has_many :users_sites, dependent: :destroy
+  has_many :users, through: :user_sites
+  has_many :user_sites
   has_many :site_risk_predictions
   has_many :site_risk_measures
-  has_many :projects
+  has_many :projects, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :postal_code, format: {
