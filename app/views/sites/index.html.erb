@@ -15,7 +15,18 @@
   <% @sites.each do |site| %>
     <div class="site_index">
       <div class="title">現場名：<%= site.name %></div>
-      <div class="projects"><%= link_to '工事一覧', site_projects_path(site) %></div>
+      <div class="projects">
+        <%= link_to '工事一覧', site_projects_path(site) %>
+        <%= link_to '削除する', site_path(site),
+          data: { turbo_method: :delete,
+            turbo_confirm: '
+            現場内の全ての工事データ,
+            作成した全てのKYシートのデータも削除されます。
+
+            本当に削除しますか？'
+          }
+        %>
+      </div>
     </div>
   <% end %>
 
