@@ -1,18 +1,16 @@
 class KySheetsController < ApplicationController
-  before_action :set_project
+  before_action :set_project, only: [:index, :new]
   def index
-    
+    @ky_sheets = @project.ky_sheets
   end
   def new
     @ky_sheet = @project.ky_sheets.new
   end
   
   def show
-    @ky_sheet = @project.ky_sheets
   end
   
   def edit
-    @projects = @site.projects
   end
 
   private
