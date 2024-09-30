@@ -4,9 +4,13 @@
 
 サービスへのリンク、画像
 
+http://52.197.7.233/
+
 ### サービス名
 
 サービスの内容紹介
+
+https://drive.google.com/file/d/1pGLJuOG060WsZI7NIPzQtleECEqa-6Wp/view?usp=drive_link
 
 # はじめに
 
@@ -22,7 +26,7 @@ https://tech-camp.in/expert
 
 # 目次
 
-- [アプリ制作あたって](#アプリ作成にあたって)
+- [アプリ制作にあたって](#アプリ制作にあたって)
 - [アプリの概要](#アプリの概要)
 - [環境](#環境)
 - [技術選定](#技術選定)
@@ -30,22 +34,25 @@ https://tech-camp.in/expert
 - [課題定義](#課題定義)
 - [要件定義](#要件定義)
 - [業務フロー](#業務フロー)
-- [ユースケース図・画面構成図](#ユースケース図・画面構成図)
+- [ユースケース図](#ユースケース図)
 - [画面遷移図](#画面遷移図)
 - [プロトタイプ](#プロトタイプ)
-- [データベース設計](#ER図)
-- [選定技術](#選定技術)
-- [システム構成図](#システム構成図)
+- [データベース設計](#データベース設計)
+<!-- - [システム構成図](#システム構成図) -->
 - [追加実装予定](#追加実装予定)
 - [修正点、修正必要箇所](#修正点、修正必要箇所)
 - [学んだこと](#学んだこと)
 - [まとめ](#まとめ)
 
-# アプリ作成にあたって
+# アプリ制作にあたって
+
+- [目次](#目次)
 
 卒業課題として、オリジナルアプリを制作
 
 ## 制作理由
+
+- [目次](#目次)
 
 - 実際、現場ではまだまだ紙ベースで運用されている
 - その理由は何か
@@ -68,19 +75,32 @@ https://tech-camp.in/expert
   → 全て自身で作成する必要がある
   → 最低限の関数などの知識がないと紙に手書きでの作成と遜色がなくなってしまう
 
+# アプリの概要
+
+- [目次](#目次)
+
+- 工事現場における KY シート（危険予知対策指示書）の簡易な作成、出力
+
 # 環境
+
+- [目次](#目次)
 
 - Mac
 
 # 技術選定
+
+- [目次](#目次)
 
 - Ruby on Rails
   - Ruby
   - HTML
   - scss
   - javascript
+  -
 
 # 開発手法
+
+- [目次](#目次)
 
 - issue 駆動開発（簡易）
 
@@ -94,23 +114,46 @@ https://tech-camp.in/expert
 - develop（README.md はここで編集）
 - 作業ブランチ（都度消去する）
 
+# 課題定義
+
 # 要件定義
 
 ## 機能要件
 
-# ユースケース図・画面構成図
+- 現場一覧表示機能
+- 工事一覧表示機能
 
-[ユースケース図・画面構成図](https://drive.google.com/file/d/1gXxjhloT-bVJQe_Lw8iVeRG4TcQCrLTT/view?usp=drive_link)
+# 業務フロー
 
-https://drive.google.com/file/d/1gXxjhloT-bVJQe_Lw8iVeRG4TcQCrLTT/view?usp=drive_link
+- [目次](#目次)
+
+# ユースケース図
+
+- [目次](#目次)
+
+# 画面遷移図
+
+- [目次](#目次)
+
+[ユースケース図](https://drive.google.com/file/d/1Qs6gcXOs-DwiklWu42T9T1Luf_Wod-4-/view?usp=drive_link)
+
+https://drive.google.com/file/d/1Qs6gcXOs-DwiklWu42T9T1Luf_Wod-4-/view?usp=drive_link
+
+# プロトタイプ
+
+- [目次](#目次)
 
 # モックアップ
 
+- [目次](#目次)
+
 # データベース設計
 
-[ＥＲ図](https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive_link)
+- [目次](#目次)
 
-https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive_link
+[ＥＲ図](https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive_link)
+
+https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive_link
 
 ## users テーブル
 
@@ -317,7 +360,11 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 
 - belongs_to :ky_sheet
 
-# 追加実装予定機能（優先順位順）
+# 追加実装予定
+
+（優先順位順）
+
+- [目次](#目次)
 
 - HTTPS 化
 - CI/CD の導入
@@ -329,3 +376,15 @@ https://drive.google.com/file/d/18R9irW3OTEnGK___6-1126s_cm36ltzt/view?usp=drive
 - ワンクリック捺印機能
 - 最も最近使用した KY シートの表示機能
 - フォーマット作成機能
+
+# 修正点、修正必要箇所
+
+- [目次](#目次)
+
+# 学んだこと
+
+- [目次](#目次)
+
+# まとめ
+
+- [目次](#目次)
