@@ -14,14 +14,14 @@ https://drive.google.com/file/d/1pGLJuOG060WsZI7NIPzQtleECEqa-6Wp/view?usp=drive
 
 # はじめに
 
-2024/ 8/ 5 TECH CAMP 短期集中カリキュラムに参加（179 期）
+2024/ 8/ 5 TECH CAMP 短期集中カリキュラムに参加（179 期）  
 2024/10/11 TECH CAMP 短期集中カリキュラム終了予定
 
 https://tech-camp.in/expert
 
 ## APP の作成動機
 
-前職で働いていた際に、煩雑な事務処理がまだまだ紙ベースで行われていたので、
+前職で働いていた際に、煩雑な事務処理がまだまだ紙ベースで行われていたので、  
 今も前職で働くお世話になった方々が少しでも楽になれば良いなと思い、作成しました。
 
 # 目次
@@ -151,9 +151,9 @@ https://drive.google.com/file/d/1Qs6gcXOs-DwiklWu42T9T1Luf_Wod-4-/view?usp=drive
 
 - [目次](#目次)
 
-[ＥＲ図](https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive_link)
+[ＥＲ図](https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive_link)
 
-https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive_link
+https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive_link
 
 ## users テーブル
 
@@ -169,9 +169,11 @@ https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive
 
 ### Association
 
-- has_many :sites, through :users_sites
+- has_many :sites, through :user_sites
+- has_many :user_sites
+- has_many :ky_sheets
 
-## users_sites テーブル
+## user_sites テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
@@ -193,10 +195,16 @@ https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive
 
 ### Association
 
-- has_many :users_sites
-- has_many :users, through :users_sites
+- has_many :users, through :user_sites
+- has_many :user_sites
 - has_many :site_risk_predictions
 - has_many :site_risk_measures
+- has_many :safety_risk_predictions
+- has_many :safety_risk_measures
+- has_many :quality_risk_predictions
+- has_many :quality_risk_measures
+- has_many :actions
+- has_many :locations
 - has_many :projects
 
 ## site_risk_predictions テーブル
@@ -211,6 +219,72 @@ https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive
 - belongs_to :site
 
 ## site_risk_measures テーブル
+
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| site_id | integer | null: false, foreign_key: true |
+| content | text    | null: false                    |
+
+### Association
+
+- belongs_to :site
+
+## safety_risk_predictions テーブル
+
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| site_id | integer | null: false, foreign_key: true |
+| content | text    | null: false                    |
+
+### Association
+
+- belongs_to :site
+
+## safety_risk_measures テーブル
+
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| site_id | integer | null: false, foreign_key: true |
+| content | text    | null: false                    |
+
+### Association
+
+- belongs_to :site
+
+## quality_risk_predictions テーブル
+
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| site_id | integer | null: false, foreign_key: true |
+| content | text    | null: false                    |
+
+### Association
+
+- belongs_to :site
+
+## quality_risk_measures テーブル
+
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| site_id | integer | null: false, foreign_key: true |
+| content | text    | null: false                    |
+
+### Association
+
+- belongs_to :site
+
+## locations テーブル
+
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| site_id | integer | null: false, foreign_key: true |
+| content | string  | null: false                    |
+
+### Association
+
+- belongs_to :site
+
+## actions テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
@@ -249,84 +323,12 @@ https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive
 
 - belongs_to :project
 - belongs_to :user
-- has_many :locations
-- has_many :actions
-- has_many :safety_risk_predictions
-- has_many :safety_risk_measures
-- has_many :quality_risk_predictions
-- has_many :quality_risk_measures
 - has_many :outputs
   **ActiveHash**
   |:-|
 - has_many :risk_levels
 - has_many :incidence_rates
 - has_many :construction_types
-
-## locations テーブル
-
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| ky_sheet_id | integer | null: false, foreign_key: true |
-| content     | string  | null: false                    |
-
-### Association
-
-- belongs_to :ky_sheet
-
-## actions テーブル
-
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| ky_sheet_id | integer | null: false, foreign_key: true |
-| content     | text    | null: false                    |
-
-### Association
-
-- belongs_to :ky_sheet
-
-## safety_risk_predictions テーブル
-
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| ky_sheet_id | integer | null: false, foreign_key: true |
-| content     | text    | null: false                    |
-
-### Association
-
-- belongs_to :ky_sheet
-
-## safety_risk_measures テーブル
-
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| ky_sheet_id | integer | null: false, foreign_key: true |
-| content     | text    | null: false                    |
-
-### Association
-
-- belongs_to :ky_sheet
-
-## quality_risk_predictions テーブル
-
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| ky_sheet_id | integer | null: false, foreign_key: true |
-| content     | text    | null: false                    |
-
-### Association
-
-- belongs_to :ky_sheet
-
-## quality_risk_measures テーブル
-
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| ky_sheet_id | integer | null: false, foreign_key: true |
-| content     | text    | null: false                    |
-
-### Association
-
-- belongs_to :ky_sheet
 
 ## outputs テーブル
 
@@ -367,15 +369,23 @@ https://drive.google.com/file/d/1DauCNCIQORZFRDAW6pgJ_R18Br682iL1/view?usp=drive
 - [目次](#目次)
 
 - HTTPS 化
-- CI/CD の導入
+- 独自ドメインの取得
+- ユーザー登録時の Email アドレス確認メール送信機能
+- ユーザーへのエラーを日本語表示に変換
+- CI/CD の導入（IaC の実装）
+- AWS 無料枠のデータベース用サーバ立上げ、切離し
 - Docker の導入
-- 承認ワークフロー通知機能
-- 設定時間通知機能
-- 工事ごとの実施済み KY シート一括ダウンロード機能
+- 運用（エラー）監視機能の実装
+- 現場削除用の管理者権限の実装
+- テスト自動化（IaC の追加実装）
 - サブスクライブ課金機能
-- ワンクリック捺印機能
-- 最も最近使用した KY シートの表示機能
+- 工事ごとの実施済み KY シート一括ダウンロード機能
 - フォーマット作成機能
+- 設定時間通知機能（バッチ処理？）
+- ワンクリック捺印機能
+- 承認ワークフロー通知機能
+- 最も最近使用した KY シートの表示機能
+- Polymorphic 関連付けの導入によるテーブル数の削減（運用後のアクセス状況観察にて判断）
 
 # 修正点、修正必要箇所
 
