@@ -1,14 +1,27 @@
 class LocationsController < ApplicationController
-  before_action :set_ky_sheet, only: :index
+  before_action :set_site, only: [:index, :create]
   def index
-    @locations = @ky_sheet.locations
+    @locations = @site.locations
   end
-  def new
+  def create
+    @location = Location.new(location_params)
+    if @location.save
+      
+    end
+    
+  end
+  
+  def update
     
   end
 
   private
-  def set_ky_sheet
-    @ky_sheet = KySheet.find(params[:ky_sheet_id])
+
+  def location_params
+    params.require(:location).permit(:content)
+  end
+
+  def set_site
+    @site = Site.find(params[:site_id])
   end
 end

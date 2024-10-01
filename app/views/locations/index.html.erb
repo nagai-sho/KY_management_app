@@ -3,60 +3,28 @@
 <div class="main">
   <h3>作業場所一覧</h3>
   <div class="site_menu">
-    <input></input>
-    <div class="site_search">
-      <input type="submit", value="作成する"></input>
-    </div>
+    <%#= form_with model: @location, local: true do |f| %>
+      <%#= render'shared/error_messages', model: @location %>
+      <%#= f.label :content, '' %><br>
+      <%#= f.text_field :content, autofocus: true %>
+      <div class="site_search">
+        <%#= f.submit '作成する' %>
+      </div>
+    <%# end %>
     <div class="site_create">
-      <%= link_to '戻る' %>
-    </div>
-
-  </div>
-  
-  <div class="site_index">
-    <div class="title">PS</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-      <div class="delete"><%= link_to '削除' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">DS</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-      <div class="delete"><%= link_to '削除' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">EPS</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-      <div class="delete"><%= link_to '削除' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">エレベータシャフト</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-      <div class="delete"><%= link_to '削除' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">機械室</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-      <div class="delete"><%= link_to '削除' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">屋上塔屋内　市水高架水槽置き場</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-      <div class="delete"><%= link_to '削除' %></div>
+      <%= link_to '戻る', item_list_site_path(@site) %>
     </div>
   </div>
 
-  
+  <% @locations.each do |location| %>
+  <div class="site_index">
+    <div class="title"><% location.content %></div>
+    <div class="change">
+      <div class="edit"><%= link_to '編集する' %></div>
+      <div class="delete"><%= link_to '削除' %></div>
+    </div>
+  </div>
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>

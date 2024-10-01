@@ -1,3 +1,3 @@
 class Location < ApplicationRecord
-  belongs_to :ky_sheet
+  belongs_to :site
 end

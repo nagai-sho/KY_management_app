@@ -14,6 +14,10 @@
       <%= link_to '実施済みKYシート一覧', site_projects_path(@site.id) %>
     </div>
   </div>
+
+  <div class="format">
+    <%= link_to '項目を作成する', item_list_site_path(@site) %>
+  </div>
   
   <% @projects.each do |project| %>
     <div class="site_index">
@@ -26,7 +30,6 @@
         <div class="project_detail"><%= project.construction_content %></div>
       </div>
       <div class="projects">
-        <%= link_to '項目を作成する', project_ky_sheets_path(project) %>
         <%= link_to 'KYシート作成', new_project_ky_sheet_path(project) %>
         <a href="#">編集</a>
         <%= link_to '削除', project_path(project),
