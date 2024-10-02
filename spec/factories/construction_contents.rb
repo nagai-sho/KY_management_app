@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :action do
+  factory :construction_content do
     
   end
 end
