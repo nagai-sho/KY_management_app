@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :quality_risk_predictions, shallow: true
     resources :quality_risk_measures,    shallow: true
     resources :locations,                shallow: true
-    resources :actions,                  shallow: true
+    resources :construction_contents,    shallow: true
   end
 
   resources :ky_sheets, only: [] do

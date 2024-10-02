@@ -203,7 +203,7 @@ https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive
 - has_many :safety_risk_measures
 - has_many :quality_risk_predictions
 - has_many :quality_risk_measures
-- has_many :actions
+- has_many :construction_contents
 - has_many :locations
 - has_many :projects
 
@@ -284,7 +284,7 @@ https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive
 
 - belongs_to :site
 
-## actions テーブル
+## construction_contents テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
@@ -336,7 +336,7 @@ https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive
 | ---------------------------------- | ------- | ------------------------------ |
 | ky_sheet_id                        | integer | null: false, foreign_key: true |
 | location_id                        | integer | null: false, foreign_key: true |
-| action_id                          | integer | null: false, foreign_key: true |
+| construction_content_id            | integer | null: false, foreign_key: true |
 | site_risk_prediction_id            | integer | null: false, foreign_key: true |
 | site_risk_measure_id               | integer | null: false, foreign_key: true |
 | site_risk_level_1_id               | integer | null: false                    |
