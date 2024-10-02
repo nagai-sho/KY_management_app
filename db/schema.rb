@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_02_083446) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_02_092456) do
   create_table "construction_contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -45,6 +45,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_02_083446) do
     t.text "construction_content"
     t.bigint "site_id", null: false
     t.index ["site_id"], name: "index_projects_on_site_id"
+  end
+
+  create_table "site_risk_predictions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "site_id", null: false
+    t.index ["site_id"], name: "index_site_risk_predictions_on_site_id"
   end
 
   create_table "sites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -86,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_02_083446) do
   add_foreign_key "construction_contents", "sites"
   add_foreign_key "ky_sheets", "projects"
   add_foreign_key "locations", "sites"
+  add_foreign_key "site_risk_predictions", "sites"
   add_foreign_key "user_sites", "sites"
   add_foreign_key "user_sites", "users"
 end
