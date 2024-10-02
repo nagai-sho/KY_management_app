@@ -7,7 +7,7 @@ class Site < ApplicationRecord
   has_many :safety_risk_measures, dependent: :destroy
   has_many :quality_risk_predictions, dependent: :destroy
   has_many :quality_risk_measures, dependent: :destroy
-  has_many :actions, dependent: :destroy
+  has_many :construction_contents, dependent: :destroy
   has_many :locations, dependent: :destroy
   has_many :projects, dependent: :destroy
 
