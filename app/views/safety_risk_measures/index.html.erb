@@ -1,11 +1,11 @@
 <div class="main">
-  <h3>作業内容一覧</h3>
+  <h3>安全面へのリスク低減対策</h3>
   <div class="site_menu">
-    <%= form_with model: [@site, @construction_content], local: false do |f| %>
+    <%= form_with model: [@site, @safety_risk_measure], local: false do |f| %>
       <div id="error_messages">
-        <%= render'shared/error_messages', model: @construction_content %>
+        <%= render'shared/error_messages', model: @safety_risk_measure %>
       </div>
-      <%= f.label :content, '作業内容を入力する' %><br>
+      <%= f.label :content, 'リスク低減対策を入力する' %><br>
       <%= f.text_area :content, autofocus: true %>
       <div class="site_search">
         <%= f.submit '作成する' %>
@@ -16,11 +16,11 @@
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
 
-  <% @construction_contents.each do |construction_content| %>
+  <% @safety_risk_measures.each do |safety_risk_measure| %>
   <div class="site_index">
-    <div class="title"><%= construction_content.content %></div>
+    <div class="title"><%= safety_risk_measure.content %></div>
     <div class="change">
-      <%= link_to '削除', construction_content_path(construction_content),
+      <%= link_to '削除', safety_risk_measure_path(safety_risk_measure),
         data: { turbo_method: :delete }
       %>
     </div>
