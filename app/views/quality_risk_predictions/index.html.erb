@@ -1,0 +1,29 @@
+<div class="main">
+  <h3>品質面への作業に伴うリスク / 危険Point</h3>
+  <div class="site_menu">
+    <%= form_with model: [@site, @quality_risk_prediction], local: false do |f| %>
+      <div id="error_messages">
+        <%= render'shared/error_messages', model: @quality_risk_prediction %>
+      </div>
+      <%= f.label :content, 'リスク項目を入力する' %><br>
+      <%= f.text_area :content, autofocus: true %>
+      <div class="site_search">
+        <%= f.submit '作成する' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="site_create">
+    <%= link_to '戻る', item_list_site_path(@site) %>
+  </div>
+
+  <% @quality_risk_predictions.each do |quality_risk_prediction| %>
+  <div class="site_index">
+    <div class="title"><%= quality_risk_prediction.content %></div>
+    <div class="change">
+      <%= link_to '削除', quality_risk_prediction_path(quality_risk_prediction),
+        data: { turbo_method: :delete }
+      %>
+    </div>
+  </div>
+  <% end %>
+</div>
