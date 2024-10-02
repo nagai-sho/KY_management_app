@@ -1,34 +1,26 @@
 class LocationsController < ApplicationController
   before_action :set_site, only: [:index, :create]
-  before_action :set_location, only: [:destroy]
   def index
     @locations = @site.locations
-    @location = @site.locations.new
+    @location = Location.new
   end
   
   def create
     @location = @site.locations.build(location_params)
     if @location.save
-      respond_to do |format|
-        format.html {redirect_to @location, notice: '作業場所の作成に成功しました！'}
-        format.js
-      end
+      redirect_to site_locations_path(@site), notice: '作業場所の作成に成功しました！'
     else
-      @locations = @site.locations
-      respond_to do |format|
-        format.html { render :index }
-        format.js
-      end
+      @locations = @site.locations.reject { |location| location.new_record? }
+      flash.now[:alert] = '作業場所の作成に失敗しました。'
+      render :index, status: :unprocessable_entity
     end
   end
   
   def destroy
-    @site = @location.site
-    @location.destroy
-    respond_to do |format|
-      format.html { redirect_to location_path(@site), notice: '作業場所を削除しました'}
-      format.js
-    end
+    location = Location.find(params[:id])
+    site = location.site
+    location.destroy
+    redirect_to site_locations_path(site)
   end
   
   private
@@ -39,10 +31,6 @@ class LocationsController < ApplicationController
   
   def set_site
     @site = Site.find(params[:site_id])
-  end
-  
-  def set_location
-    @location = Location.find(params[:id])
   end
 
 end

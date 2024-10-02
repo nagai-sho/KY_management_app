@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_01_020730) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_02_070033) do
+  create_table "actions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "site_id", null: false
+    t.index ["site_id"], name: "index_actions_on_site_id"
+  end
+
   create_table "ky_sheets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.string "construction_date", null: false
@@ -75,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_01_020730) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actions", "sites"
   add_foreign_key "ky_sheets", "projects"
   add_foreign_key "locations", "sites"
   add_foreign_key "user_sites", "sites"

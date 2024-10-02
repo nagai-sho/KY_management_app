@@ -1,6 +1,0 @@
-<% if @location.persisted? %>
-  $('#locations').append('<%= j render @location %>');
-  $('#new_location')[0].reset();
-<% else %>
-  alert('Error: <%= j @location.errors.full_messages.join(", ") %>');
-<% end %>

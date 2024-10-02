@@ -1,5 +1,3 @@
-<%= render "shared/header" %>
-
 <div class="main">
   <h3>作業場所一覧</h3>
   <div class="site_menu">
@@ -18,10 +16,14 @@
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
 
-  <div id="locations">
-    <%= render @locations %>
+  <% @locations.each do |location| %>
+  <div class="site_index">
+    <div class="title"><%= location.content %></div>
+    <div class="change">
+      <%= link_to '削除', location_path(location),
+        data: { turbo_method: :delete }
+      %>
+    </div>
   </div>
-
+  <% end %>
 </div>
-
-<%= render "shared/footer" %>

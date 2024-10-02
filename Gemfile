@@ -88,4 +88,3 @@ end
 
 gem 'devise'
 
-gem 'jquery-rails'
