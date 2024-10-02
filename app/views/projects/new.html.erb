@@ -1,5 +1,3 @@
-<%= render "shared/header" %>
-
 <div class="main">
   <h3>工事作成ページ</h3>
   <%= form_with model: [@site, @project], local: true, data: { controller: "flatpickr"} do |f| %>
@@ -22,5 +20,3 @@
   <% end %>
   <div><%= link_to '戻る', site_projects_path(@site), class: 'return' %></div>
 </div>
-
-<%= render "shared/footer" %>

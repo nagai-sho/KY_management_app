@@ -20,6 +20,10 @@ class SitesController < ApplicationController
     site.destroy
     redirect_to root_path
   end
+  
+  def item_list
+    @site = Site.find(params[:id])
+  end
 
   private
   def site_params
