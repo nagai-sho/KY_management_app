@@ -4,11 +4,11 @@ class ProjectsController < ApplicationController
     @projects = @site.projects
   end
   def new
-    @project = @site.projects.new
+    @project = Project.new
   end
   
   def create
-    @project = @site.projects.new(project_params)
+    @project = @site.projects.build(project_params)
     if @project.save
       redirect_to site_projects_path(@site), notice: '工事件名が正常に作成されました。'
     else

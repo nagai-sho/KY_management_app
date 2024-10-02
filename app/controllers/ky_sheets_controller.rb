@@ -4,7 +4,8 @@ class KySheetsController < ApplicationController
     @ky_sheets = @project.ky_sheets
   end
   def new
-    @ky_sheet = @project.ky_sheets.new
+    @ky_sheets = @project.ky_sheets
+    @ky_sheet = Ky_sheets.new
   end
   
   def show

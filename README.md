@@ -379,6 +379,7 @@ https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive
 - 現場削除用の管理者権限の実装
 - テスト自動化（IaC の追加実装）
 - サブスクライブ課金機能
+- 消去したファイルの一時保存・復元機能
 - 工事ごとの実施済み KY シート一括ダウンロード機能
 - フォーマット作成機能
 - 設定時間通知機能（バッチ処理？）
