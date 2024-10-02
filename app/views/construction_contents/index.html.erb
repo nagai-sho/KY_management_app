@@ -6,7 +6,7 @@
         <%= render'shared/error_messages', model: @construction_content %>
       </div>
       <%= f.label :content, '作業内容を入力する' %><br>
-      <%= f.text_field :content, autofocus: true %>
+      <%= f.text_area :content, autofocus: true %>
       <div class="site_search">
         <%= f.submit '作成する' %>
       </div>
