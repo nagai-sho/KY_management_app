@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :sites, shallow: true do
     resources :projects, shallow: true do
-      resources :ky_sheets, shallow: true
+      resources :ky_sheets
     end
     member do
       get 'item_list'

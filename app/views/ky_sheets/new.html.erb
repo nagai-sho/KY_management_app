@@ -23,7 +23,7 @@
           </div>
           <div class="header_name">
             <div class="construction_type">工事種別　</div>
-            <%= '〇〇ActiveHash〇〇' %>
+            <%= @ky_sheet.construction_type.name %>
           </div>
         </div>
         <div class="header_right">
@@ -50,6 +50,7 @@
       <div class="column_list">リスク低減対策</div>
       <div class="column_list">管理者確認サイン</div>
     </div>
+
     <div class="input_area">
       <div class="safety_measure">
         <div class="sub_title">安全へのKY活動</div>
@@ -58,8 +59,8 @@
           <div class="action_content"><%= '〇登録する！' %></div>
           <div class="risk_prediction"><%= '〇登録する！' %></div>
           <div class="risk_measure"><%= '〇登録する！' %></div>
-          <div class="risk_rate"><%= '〇登録する！' %></div>
-          <div class="risk_rate"><%= '〇登録する！' %></div>
+          <div class="risk_rate"><%= @ky_sheet.risk_level.name %></div>
+          <div class="risk_rate"><%= @ky_sheet.incidence_rate.name %></div>
           <div class="risk_rate"><%= '〇登録する！' %></div>
         </div>
         <div class="risk_content">
