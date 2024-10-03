@@ -1,7 +1,7 @@
 class KySheetsController < ApplicationController
   def new
-    # @site = Site.find(params[:site_id])
     @project = Project.find(params[:project_id])
+    @site = @project.site
     @ky_sheet = @project.ky_sheets.build
     # @ky_sheet = Ky_sheet.new
   end
