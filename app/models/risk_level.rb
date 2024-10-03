@@ -1,4 +1,4 @@
-class ConstructionType < ActiveHash::Base
+class RiskLevel < ActiveHash::Base
   self.data = [
     {id: 0, name: '---' },
     {id: 1, name: '1. 軽度' },

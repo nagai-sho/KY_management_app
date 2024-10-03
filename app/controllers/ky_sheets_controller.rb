@@ -1,14 +1,9 @@
 class KySheetsController < ApplicationController
-  before_action :set_project, only: [:new]
   def new
+    # @site = Site.find(params[:site_id])
+    @project = Project.find(params[:project_id])
     @ky_sheet = @project.ky_sheets.build
     # @ky_sheet = Ky_sheet.new
-  end
-  
-  def show
-  end
-  
-  def edit
   end
 
   private
@@ -21,8 +16,5 @@ class KySheetsController < ApplicationController
     )
   end
 
-  def set_project
-    @project = Project.find(params[:project_id])
-  end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_03_045941) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_03_074713) do
   create_table "construction_contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -25,6 +25,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_03_045941) do
     t.string "construction_date", null: false
     t.bigint "project_id"
     t.bigint "user_id"
+    t.integer "risk_level_id", default: 0, null: false
+    t.integer "incidence_rate_id", default: 0, null: false
+    t.integer "construction_type_id", default: 0, null: false
     t.index ["project_id"], name: "index_ky_sheets_on_project_id"
     t.index ["user_id"], name: "index_ky_sheets_on_user_id"
   end

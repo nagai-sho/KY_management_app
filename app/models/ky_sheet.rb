@@ -2,10 +2,10 @@ class KySheet < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :project
-  has_many :risk_levels
-  has_many :indidence_rates
-  has_many :construction_types
+  belongs_to :risk_level
+  belongs_to :incidence_rate
+  belongs_to :construction_type
 
-  validates :risk_levels, :indidence_rates, :construction_types,
+  validates :risk_level_id, :incidence_rate_id, :construction_type_id,
             numericality: { other_than: 0, message: "未選択項目を選択してください" }
 end
