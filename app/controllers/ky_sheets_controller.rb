@@ -15,6 +15,14 @@ class KySheetsController < ApplicationController
   end
 
   private
+  def ky_sheet_params
+    params.require(:ky_sheet).permit(
+      
+      :risk_level_id,
+      :incidence_rate_id,
+      :construction_type_id,
+    )
+  end
 
   def set_project
     @project = Project.find(params[:project_id])
