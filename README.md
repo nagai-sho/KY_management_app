@@ -151,9 +151,9 @@ https://drive.google.com/file/d/1Qs6gcXOs-DwiklWu42T9T1Luf_Wod-4-/view?usp=drive
 
 - [目次](#目次)
 
-[ＥＲ図](https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive_link)
+[ＥＲ図](https://drive.google.com/file/d/1j2Bng_aPMu31Afp3_ogDurU6pZRSrTXw/view?usp=drive_link)
 
-https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive_link
+https://drive.google.com/file/d/1j2Bng_aPMu31Afp3_ogDurU6pZRSrTXw/view?usp=drive_link
 
 ## users テーブル
 
