@@ -323,7 +323,7 @@ https://drive.google.com/file/d/1ENAX_recIvTs6xc_o-SXwN5XWuUPog8r/view?usp=drive
 
 - belongs_to :project
 - belongs_to :user
-- has_many :outputs
+- has_one :outputs
   **ActiveHash**
   |:-|
 - has_many :risk_levels
