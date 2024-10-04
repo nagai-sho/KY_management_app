@@ -5,6 +5,7 @@
   </div>
 
   <%= form_with model: [@project, @ky_sheet], local: true do |f| %>
+  <%#= form_with (model: [@project, @ky_sheet], data: {controller: 'signature_pad', action: 'submit->signature_pad#save'}) do |f| %>
   <div class="ky">
     <div class="top_content">
       <div class="ky_header">
@@ -25,7 +26,9 @@
           </div>
           <div class="header_name">
             <div class="construction_type">工事種別　</div>
-            <%= f.collection_select(:construction_type_id, ConstructionType.all, :id, :name, {}, {class:"construction_type-select"}) %>
+            <%= f.collection_select(:construction_type_id, ConstructionType.all, :id, :name, {}, 
+              {class:"construction_type-select"})
+            %>
           </div>
         </div>
         <div class="header_right">
@@ -65,7 +68,7 @@
             %>
           </div>
           <div class="action_content">
-            <%= f.collection_select :construction_content_id,@construction_contents, :id, :content,
+            <%= f.collection_select :construction_content_id, @construction_contents, :id, :content,
               { prompt: "選択してください" }, {class: "form-control" }
             %>
           </div>
@@ -88,7 +91,10 @@
               { prompt: "選択してください" }, {class: "form-control" }
             %>
           </div>
-          <div class="director_sign"><%= '〇サイン' %></div>
+          <div class="director_sign">
+            <canvas id="signature_pad" width="150" height="100"></canvas>
+            <%= f.hidden_field :signature %>
+          </div>
         </div>
         <div class="risk_content">
           <div class="location">
@@ -120,7 +126,10 @@
               { prompt: "選択してください" }, {class: "form-control" }
             %>
           </div>
-          <div class="director_sign"><%= '〇サイン' %></div>
+          <div class="director_sign">
+            <canvas id="signature_pad" width="150" height="100"></canvas>
+            <%= f.hidden_field :signature %>
+          </div>
         </div>
       </div>
 
@@ -156,7 +165,10 @@
               { prompt: "選択してください" }, {class: "form-control" }
             %>
           </div>
-          <div class="director_sign"><%= '〇サイン' %></div>
+          <div class="director_sign">
+            <canvas id="signature_pad" width="150" height="100"></canvas>
+            <%= f.hidden_field :signature %>
+          </div>
         </div>
       </div>
 
@@ -192,7 +204,10 @@
               { prompt: "選択してください" }, {class: "form-control" }
             %>
           </div>
-          <div class="director_sign"><%= '〇サイン' %></div>
+          <div class="director_sign">
+            <canvas id="signature_pad" width="150" height="100"></canvas>
+            <%= f.hidden_field :signature %>
+          </div>
         </div>
       </div>
       <div class="priority_measure">
@@ -215,7 +230,10 @@
           </div>
           <div class="risk_rate"><%= '〇Ajax' %></div>
           <textarea class="risk_measure"></textarea>
-          <div class="director_sign"><%= '〇サイン' %></div>
+          <div class="director_sign">
+            <canvas id="signature_pad" width="150" height="100"></canvas>
+            <%= f.hidden_field :signature %>
+          </div>
         </div>
       </div>
     </div>
@@ -286,8 +304,15 @@
     
     <div class="ky_footer">
       <div class="sign_area">
-        <div class="footer_title">参加者サイン</div>
-        <div class="sign_box">サイン機能</div>
+        <div class="footer_title">参加者サイン　
+          <button id="clear">Clear</button>
+          <button id="save">Save</button>
+          <%# <button type="button" data-action="click->signature-pad#clear">クリア</button> %>
+        </div>
+        <div class="sign_box">
+          <canvas id="signature_pad" width="400" height="100"></canvas>
+          <%#= f.hidden_field :signature %>
+        </div>
       </div>
       <div class="personnel_area">
         <div class="footer_title">本日の人員</div>
@@ -308,23 +333,38 @@
         <div class="confirmed_area">
           <div class="confirmed">
             <div class="footer_title">元請</div>
-            <div class="sign">サイン機能</div>
+            <div class="sign">
+              <canvas id="signature_pad" width="80" height="100"></canvas>
+              <%= f.hidden_field :signature %>
+            </div>
           </div>
           <div class="confirmed">
             <div class="footer_title">元請</div>
-            <div class="sign">サイン機能</div>
+            <div class="sign">
+              <canvas id="signature_pad" width="80" height="100"></canvas>
+              <%= f.hidden_field :signature %>
+            </div>
           </div>
           <div class="confirmed">
             <div class="footer_title">上長</div>
-            <div class="sign">サイン機能</div>
+            <div class="sign">
+              <canvas id="signature_pad" width="80" height="100"></canvas>
+              <%= f.hidden_field :signature %>
+            </div>
           </div>
           <div class="confirmed">
             <div class="footer_title">現場責任者</div>
-            <div class="sign">サイン機能</div>
+            <div class="sign">
+              <canvas id="signature_pad" width="80" height="100"></canvas>
+              <%= f.hidden_field :signature %>
+            </div>
           </div>
           <div class="confirmed">
             <div class="footer_title">現場担当</div>
-            <div class="sign">サイン機能</div>
+            <div class="sign">
+              <canvas id="signature_pad" width="80" height="100"></canvas>
+              <%= f.hidden_field :signature %>
+            </div>
           </div>
         </div>
       </div>
