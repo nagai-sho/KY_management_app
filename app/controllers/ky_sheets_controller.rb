@@ -1,23 +1,35 @@
 class KySheetsController < ApplicationController
-  before_action :set_project, only: [:index, :new]
-  def index
-    @ky_sheets = @project.ky_sheets
-  end
   def new
-    @ky_sheets = @project.ky_sheets
-    @ky_sheet = Ky_sheets.new
-  end
-  
-  def show
-  end
-  
-  def edit
+    @project = Project.find(params[:project_id])
+    @site = @project.site
+    @ky_sheet = @project.ky_sheets.build
+
+    @site_risk_predictions = @site.site_risk_predictions
+    @site_risk_measures = @site.site_risk_measures
+    @safety_risk_predictions = @site.safety_risk_predictions
+    @safety_risk_measures = @site.safety_risk_measures
+    @quality_risk_predictions = @site.quality_risk_predictions
+    @quality_risk_measures = @site.quality_risk_measures
+    @locations = @site.locations
+    @construction_contents = @site.construction_contents
   end
 
   private
-
-  def set_project
-    @project = Project.find(params[:project_id])
+  def ky_sheet_params
+    params.require(:ky_sheet).permit(
+      :site_risk_prediction_id,
+      :site_risk_measure_id,
+      :safety_risk_prediction_id,
+      :safety_risk_measure_id,
+      :quality_risk_prediction_id,
+      :quality_risk_measure_id,
+      :location_id,
+      :construction_content_id,
+      :risk_level_id,
+      :incidence_rate_id,
+      :construction_type_id,
+    )
   end
+
 
 end
