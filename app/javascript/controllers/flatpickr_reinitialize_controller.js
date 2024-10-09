@@ -1,6 +1,4 @@
 import { Controller } from '@hotwired/stimulus';
-
-// Connects to data-controller="flatpickr-reinitialize"
 export default class extends Controller {
   connect() {
     document.addEventListener('turbo:render', this.reinitializeFlatpickr);
