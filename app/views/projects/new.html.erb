@@ -1,6 +1,6 @@
 <div class="main">
   <h3>工事作成ページ</h3>
-  <%= form_with model: [@site, @project], local: true, data: { controller: "flatpickr"} do |f| %>
+  <%= form_with model: [@site, @project], local: true do |f| %>
   <%= render 'shared/error_messages', model: @project %>
   <div class="site_new">
     <%= f.label :name, '工事件名' %>
@@ -8,9 +8,9 @@
     <%= f.label :client, '受注先' %>
     <%= f.text_field :client, placeholder: '' %>
     <%= f.label :construction_start, '工期（着工）' %>
-    <%= f.text_field :construction_start, placeholder: '', class: 'datepicker' %>
+    <%= f.text_field :construction_start, placeholder: '' %>
     <%= f.label :construction_completion, '工期（竣工）' %>
-    <%= f.text_field :construction_completion, placeholder: '', class: 'datepicker' %>
+    <%= f.text_field :construction_completion, placeholder: '' %>
     <%= f.label :construction_content, '工事内容' %>
     <%= f.text_field :construction_content, placeholder: '' %>
   </div>
