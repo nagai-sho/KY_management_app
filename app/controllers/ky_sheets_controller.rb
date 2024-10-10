@@ -34,6 +34,17 @@ class KySheetsController < ApplicationController
       :answer_4,
       :answer_5,
       :answer_6,
+      :sig1,
+      :sig2,
+      :sig3,
+      :sig4,
+      :sig5,
+      :sig6,
+      :sig7,
+      :sig8,
+      :sig9,
+      :sig10,
+      :sig11,
     )
   end
 
