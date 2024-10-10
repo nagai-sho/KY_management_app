@@ -1,4 +1,4 @@
-console.log('Hello! javascript.');
+console.log('Hello! signature.');
 
 document.querySelectorAll('.signature-pad').forEach((canvas) => {
   const signaturePad = new SignaturePad(canvas, {
