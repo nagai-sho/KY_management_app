@@ -28,6 +28,12 @@ class KySheetsController < ApplicationController
       :risk_level_id,
       :incidence_rate_id,
       :construction_type_id,
+      :answer_1,
+      :answer_2,
+      :answer_3,
+      :answer_4,
+      :answer_5,
+      :answer_6,
     )
   end
 

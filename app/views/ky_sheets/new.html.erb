@@ -245,59 +245,59 @@
           <div class="check_content_reft">
             <div class="check_content">
               <div>本日の安全通路及び立ち入り禁止区域について理解している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_1, 'yes', require: true %>
+                <%= f.label :answer_1_yes, 'はい' %>
+                <%= f.radio_button :answer_1, 'no', require: true %>
+                <%= f.label :answer_1_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>作業に必要な資格証、工具の許可証を携帯及び表示している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_2, 'yes', require: true %>
+                <%= f.label :answer_2_yes, 'はい' %>
+                <%= f.radio_button :answer_2, 'no', require: true %>
+                <%= f.label :answer_2_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>使用する電動工具、仮設材及び作業足場の点検をしている</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_3, 'yes', require: true %>
+                <%= f.label :answer_3_yes, 'はい' %>
+                <%= f.radio_button :answer_3, 'no', require: true %>
+                <%= f.label :answer_3_no, '該当なし' %>
+              </div>
             </div>
           </div>
           <div class="check_content_right">
             <div class="check_content">
               <div>本日の作業に危険作業に該当するものがあるか把握している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_4, 'yes', require: true %>
+                <%= f.label :answer_4_yes, 'はい' %>
+                <%= f.radio_button :answer_4, 'no', require: true %>
+                <%= f.label :answer_4_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>本日の作業計画及び内容を把握している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_5, 'yes', require: true %>
+                <%= f.label :answer_5_yes, 'はい' %>
+                <%= f.radio_button :answer_5, 'no', require: true %>
+                <%= f.label :answer_5_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>体調が平常時と異なる作業員がいないか確認している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_6, 'yes', require: true %>
+                <%= f.label :answer_6_yes, 'はい' %>
+                <%= f.radio_button :answer_6, 'no', require: true %>
+                <%= f.label :answer_6_no, '該当なし' %>
+              </div>
             </div>
           </div>
         </div>
