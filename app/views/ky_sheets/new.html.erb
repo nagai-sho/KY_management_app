@@ -93,7 +93,7 @@
               %>
             </div>
             <div class="director_sign">
-              <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
+              <canvas class="signature-pad" id="sig1" width="100" height="45"></canvas>
               <%= f.hidden_field :signature %>
             </div>
           </div>
@@ -128,7 +128,7 @@
               %>
             </div>
             <div class="director_sign">
-              <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas>
+              <canvas class="signature-pad" id="sig2" width="100" height="45"></canvas>
               <%= f.hidden_field :signature %>
             </div>
           </div>
@@ -167,7 +167,7 @@
               %>
             </div>
             <div class="director_sign">
-              <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
+              <canvas class="signature-pad" id="sig3" width="100" height="45"></canvas>
               <%= f.hidden_field :signature %>
             </div>
           </div>
@@ -206,6 +206,7 @@
               %>
             </div>
             <div class="director_sign">
+              <canvas class="signature-pad" id="sig4" width="100" height="45"></canvas>
               <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
               <%= f.hidden_field :signature %>
             </div>
@@ -232,6 +233,7 @@
             <div class="risk_rate"><%= '〇Ajax' %></div>
             <textarea class="risk_measure"></textarea>
             <div class="director_sign">
+              <canvas class="signature-pad" id="sig5" width="100" height="45"></canvas>
               <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
               <%= f.hidden_field :signature %>
             </div>
@@ -309,6 +311,7 @@
             <%# <button type="button" data-action="click->signature-pad#clear">クリア</button> %>
           </div>
           <div class="sign_box">
+            <canvas class="signature-pad" id="sig6" width="400" height="100"></canvas>
             <%# <div data-controlldata-signature-pad-target="canvas"> %>
               <%# <canvas data-signature-pad-target="canvas" width="400" height="100"></canvas> %>
               <%# <button id="save">Save</button>
@@ -337,13 +340,14 @@
             <div class="confirmed">
               <div class="footer_title">元請</div>
               <div class="sign">
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
+                <canvas class="signature-pad" id="sig7" width="80" height="85"></canvas>
                 <%= f.hidden_field :signature %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">元請</div>
               <div class="sign">
+                <canvas class="signature-pad" id="sig8" width="80" height="85"></canvas>
                 <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
                 <%= f.hidden_field :signature %>
               </div>
@@ -351,6 +355,7 @@
             <div class="confirmed">
               <div class="footer_title">上長</div>
               <div class="sign">
+                <canvas class="signature-pad" id="sig9" width="80" height="85"></canvas>
                 <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
                 <%= f.hidden_field :signature %>
               </div>
@@ -358,6 +363,7 @@
             <div class="confirmed">
               <div class="footer_title">現場責任者</div>
               <div class="sign">
+                <canvas class="signature-pad" id="sig10" width="80" height="85"></canvas>
                 <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
                 <%= f.hidden_field :signature %>
               </div>
@@ -365,6 +371,7 @@
             <div class="confirmed">
               <div class="footer_title">現場担当</div>
               <div class="sign">
+                <canvas class="signature-pad" id="sig11" width="80" height="85"></canvas>
                 <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
                 <%= f.hidden_field :signature %>
               </div>
