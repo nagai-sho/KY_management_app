@@ -14,6 +14,18 @@ class KySheetsController < ApplicationController
     @construction_contents = @site.construction_contents
   end
 
+  def preview_pdf
+    @project = Project.find(params[:project_id])
+    @site = @project.site
+    @ky_sheet = @project.ky_sheets.build(ky_sheet_params)
+
+    if @ky_sheet.valid?
+      gemerate_pdf_and_send(@ky_sheet)
+    else
+      render :new
+    end
+  end
+
   private
   def ky_sheet_params
     params.require(:ky_sheet).permit(
@@ -48,5 +60,22 @@ class KySheetsController < ApplicationController
     )
   end
 
+  def gemerate_pdf_and_send(ky_sheet)
+    @ky_sheet = ky_sheet
+
+    respond_to do |format|
+      format.html do
+        html_content = render_to_string(template: 'ky_sheets/show', layout: false)
+        html_path = Rails.root.join('tmp', 'new_ky_sheet.html')
+        File.write(html_path, html_content)
+
+        pdf_service = PdfGeneratorService.new(html_path.to_s, Rails.root.join('tmp', 'new_ky_sheet.pdf').to_s)
+        pdf_service.generate_pdf
+
+        send_file Rails.root.join('tmp', 'new_ky_sheet.pdf'), type: 'application/pdf', disposition: 'inline'
+      end
+      format.turbo_stream { redirect_to root_path }
+    end
+  end
 
 end
