@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module KYManagementApp
   class Application < Rails::Application
+    config.autoload_paths += %W(#{config.root}/app/services)
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
