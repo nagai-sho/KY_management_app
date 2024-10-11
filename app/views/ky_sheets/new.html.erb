@@ -4,8 +4,11 @@
     <div class="return"><%= link_to '戻る', site_projects_path(@site) %></div>
   </div>
 
-  <%= form_with model: [@project, @ky_sheet], local: true do |f| %>
-  <%#= form_with (model: [@project, @ky_sheet], data: {controller: 'signature_pad', action: 'submit->signature_pad#save'}) do |f| %>
+  <%= form_with model: [@project, @ky_sheet], url: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), method: :post, local: true, data: { turbo: false } do |f| %>
+  <%= render 'shared/error_messages', model: @ky_sheet %>
+  <div class="title">
+    <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), target: '_blank' %>
+  </div>
   <div data-controller="signature-pad">
     <div class="ky">
       <div class="top_content">
@@ -96,7 +99,7 @@
             </div>
             <div class="director_sign">
               <canvas class="signature-pad" id="sig1" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature %>
+              <%= f.hidden_field :signature_sig1, id: 'signature_sig1' %>
             </div>
           </div>
           
@@ -134,7 +137,7 @@
             </div>
             <div class="director_sign">
               <canvas class="signature-pad" id="sig2" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature %>
+              <%= f.hidden_field :signature_sig2, id: 'signature_sig2' %>
             </div>
           </div>
         </div>
@@ -175,7 +178,7 @@
             </div>
             <div class="director_sign">
               <canvas class="signature-pad" id="sig3" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature %>
+              <%= f.hidden_field :signature_sig3, id: 'signature_sig3' %>
             </div>
           </div>
         </div>
@@ -216,7 +219,7 @@
             </div>
             <div class="director_sign">
               <canvas class="signature-pad" id="sig4" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature %>
+              <%= f.hidden_field :signature_sig4, id: 'signature_sig4' %>
             </div>
           </div>
         </div>
@@ -245,7 +248,7 @@
             <textarea class="risk_measure"></textarea>
             <div class="director_sign">
               <canvas class="signature-pad" id="sig5" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature %>
+              <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>
             </div>
           </div>
         </div>
@@ -318,16 +321,10 @@
       <div class="ky_footer">
         <div class="sign_area">
           <div class="footer_title">参加者サイン　
-            <%# <button type="button" data-action="click->signature-pad#clear">クリア</button> %>
           </div>
           <div class="sign_box">
             <canvas class="signature-pad" id="sig6" width="400" height="100"></canvas>
-            <%# <div data-controlldata-signature-pad-target="canvas"> %>
-              <%# <canvas data-signature-pad-target="canvas" width="400" height="100"></canvas> %>
-              <%# <button id="save">Save</button>
-              <button id="clear">Clear</button> %>
-              <%#= f.hidden_field :signature %>
-            <%# </div> %>
+            <%= f.hidden_field :signature_sig6, id: 'signature_sig6' %>
           </div>
         </div>
         <div class="personnel_area">
@@ -351,39 +348,35 @@
               <div class="footer_title">元請</div>
               <div class="sign">
                 <canvas class="signature-pad" id="sig7" width="80" height="85"></canvas>
-                <%= f.hidden_field :signature %>
+                <%= f.hidden_field :signature_sig7, id: 'signature_sig7' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">元請</div>
               <div class="sign">
                 <canvas class="signature-pad" id="sig8" width="80" height="85"></canvas>
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <%= f.hidden_field :signature_sig8, id: 'signature_sig8' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">上長</div>
               <div class="sign">
                 <canvas class="signature-pad" id="sig9" width="80" height="85"></canvas>
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <%= f.hidden_field :signature_sig9, id: 'signature_sig9' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">現場責任者</div>
               <div class="sign">
                 <canvas class="signature-pad" id="sig10" width="80" height="85"></canvas>
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <%= f.hidden_field :signature_sig10, id: 'signature_sig10' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">現場担当</div>
               <div class="sign">
                 <canvas class="signature-pad" id="sig11" width="80" height="85"></canvas>
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <%= f.hidden_field :signature_si11, id: 'signature_sig11' %>
               </div>
             </div>
           </div>
