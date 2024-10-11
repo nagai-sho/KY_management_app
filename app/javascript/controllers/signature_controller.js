@@ -7,24 +7,33 @@ export default class extends Controller {
 
   connect() {
     console.log('Hello! signature.');
-    const signaturePads = {};
+    this.signaturePads = {};
 
+    this.initializeSignaturePads();
+  }
+
+  initializeSignaturePads() {
     document.querySelectorAll('.signature-pad').forEach((canvas) => {
       const signaturePad = new SignaturePad(canvas, {
         backgroundColor: 'rgb(255, 255, 255)',
         penColor: 'rgb(0, 0, 0)',
       });
 
-      // signaturePads[canvas.id] = signaturePad;
+      this.signaturePads[canvas.id] = signaturePad;
 
-      // const form = canvas.closest('form');
+      const form = canvas.closest('form');
+      const signatureDataInput = form.querySelector(
+        `#${canvas.id.replace('signature-pad', 'signature_sig')}`
+      );
 
-      // const signatureDataInput = form.querySelector(
-      //   `#${canvas.id.replace('signature-pad', 'signature_sig')}`
-      // );
+      this.addFormSubmitListener(form, signatureDataInput, signaturePad);
+    });
+  }
 
-      // const dataURL = signaturePad.toDataURL();
-      // signatureDataInput.value = dataURL;
+  addFormSubmitListener(form, signatureDataInput, signaturePad) {
+    form.addEventListener('submit', (e) => {
+      const dataURL = signaturePad.toDataURL();
+      signatureDataInput.value = dataURL;
     });
   }
 }
