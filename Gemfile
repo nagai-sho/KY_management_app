@@ -89,3 +89,5 @@ end
 gem 'devise'
 
 gem 'active_hash'
+
+gem 'ferrum'
