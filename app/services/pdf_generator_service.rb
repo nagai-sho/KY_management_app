@@ -7,7 +7,7 @@ class PdfGeneratorService
 
   def generate_pdf
     browser = Ferrum::Browser.new
-    browser.goto("file//#{@template_path}")
+    browser.goto("file://#{@template_path}")
     browser.pdf(
       path: @output_path,
       format: :A4,

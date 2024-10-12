@@ -9,7 +9,7 @@
   <div class="title">
     <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), target: '_blank' %>
   </div>
-  <div data-controller="signature-pad">
+  <div data-controller="signature">
     <div class="ky">
       <div class="top_content">
         <div class="ky_header">
@@ -376,7 +376,7 @@
               <div class="footer_title">現場担当</div>
               <div class="sign">
                 <canvas class="signature-pad" id="sig11" width="80" height="85"></canvas>
-                <%= f.hidden_field :signature_si11, id: 'signature_sig11' %>
+                <%= f.hidden_field :signature_sigg11, id: 'signature_sig11' %>
               </div>
             </div>
           </div>
