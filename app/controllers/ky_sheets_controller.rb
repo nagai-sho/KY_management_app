@@ -81,7 +81,9 @@ class KySheetsController < ApplicationController
         html_path = Rails.root.join('tmp', 'new_ky_sheet.html')
         File.write(html_path, html_content)
         
-        pdf_service = PdfGeneratorService.new(html_path.to_s, Rails.root.join('tmp', 'new_ky_sheet.pdf').to_s)
+        pdf_service = PdfGeneratorService.new(
+          html_path.to_s, Rails.root.join('tmp', 'new_ky_sheet.pdf').to_s
+        )
         pdf_service.generate_pdf
         
         send_file Rails.root.join('tmp', 'new_ky_sheet.pdf'), type: 'application/pdf', disposition: 'inline'
