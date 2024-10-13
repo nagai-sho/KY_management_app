@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :sites, shallow: true do
     resources :projects, shallow: true do
       resources :ky_sheets, shallow: true
+      post 'ky_sheets/preview_pdf', to: 'ky_sheets#preview_pdf'
     end
     member do
       get 'item_list'

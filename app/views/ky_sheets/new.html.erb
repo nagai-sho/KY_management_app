@@ -4,9 +4,12 @@
     <div class="return"><%= link_to '戻る', site_projects_path(@site) %></div>
   </div>
 
-  <%= form_with model: [@project, @ky_sheet], local: true do |f| %>
-  <%#= form_with (model: [@project, @ky_sheet], data: {controller: 'signature_pad', action: 'submit->signature_pad#save'}) do |f| %>
-  <div data-controller="signature-pad">
+  <%= form_with model: [@project, @ky_sheet], url: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), method: :post, local: true, data: { turbo: false } do |f| %>
+  <%= render 'shared/error_messages', model: @ky_sheet %>
+  <div class="title">
+    <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), target: '_blank' %>
+  </div>
+  <div data-controller="signature">
     <div class="ky">
       <div class="top_content">
         <div class="ky_header">
@@ -86,17 +89,20 @@
                 :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
             </div>
-            <div class="risk_rate"><%= '〇Ajax' %></div>
+            <div class="risk_rate">
+              <span class="assessment" id="risk1">---<span>
+            </div>
             <div class="risk_measure">
               <%= f.collection_select :safety_risk_measure_id, @safety_risk_measures, :id, :content,
                 { prompt: "選択してください" }, {class: "form-control" }
               %>
             </div>
             <div class="director_sign">
-              <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
-              <%= f.hidden_field :signature %>
+              <canvas class="signature-pad" id="sig1" width="100" height="45"></canvas>
+              <%= f.hidden_field :signature_sig1, id: 'signature_sig1' %>
             </div>
           </div>
+          
           <div class="risk_content">
             <div class="location">
               <%= f.collection_select :location_id, @locations, :id, :content,
@@ -121,15 +127,17 @@
                 :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
             </div>
-            <div class="risk_rate"><%= '〇Ajax' %></div>
+            <div class="risk_rate">
+              <span class="assessment" id="risk2">---<span>
+            </div>
             <div class="risk_measure">
               <%= f.collection_select :safety_risk_measure_id, @safety_risk_measures, :id, :content,
                 { prompt: "選択してください" }, {class: "form-control" }
               %>
             </div>
             <div class="director_sign">
-              <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas>
-              <%= f.hidden_field :signature %>
+              <canvas class="signature-pad" id="sig2" width="100" height="45"></canvas>
+              <%= f.hidden_field :signature_sig2, id: 'signature_sig2' %>
             </div>
           </div>
         </div>
@@ -138,10 +146,10 @@
           <div class="sub_title">品質へのKY活動</div>
           <div class="risk_content">
             <div class="location">
-            </div>
               <%= f.collection_select :location_id, @locations, :id, :content,
               { prompt: "選択してください" }, {class: "form-control" }
               %>
+            </div>
             <div class="action_content">
               <%= f.collection_select :construction_content_id, @construction_contents, :id, :content,
                 { prompt: "選択してください" }, {class: "form-control" }
@@ -160,15 +168,17 @@
                 :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
             </div>
-            <div class="risk_rate"><%= '〇Ajax' %></div>
+            <div class="risk_rate">
+              <span class="assessment" id="risk3">---<span>
+            </div>
             <div class="risk_measure">
               <%= f.collection_select :quality_risk_measure_id, @quality_risk_measures, :id, :content,
                 { prompt: "選択してください" }, {class: "form-control" }
               %>
             </div>
             <div class="director_sign">
-              <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
-              <%= f.hidden_field :signature %>
+              <canvas class="signature-pad" id="sig3" width="100" height="45"></canvas>
+              <%= f.hidden_field :signature_sig3, id: 'signature_sig3' %>
             </div>
           </div>
         </div>
@@ -199,18 +209,21 @@
                 :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
             </div>
-            <div class="risk_rate"><%= '〇Ajax' %></div>
+            <div class="risk_rate">
+              <span class="assessment" id="risk4">---<span>
+            </div>
             <div class="risk_measure">
               <%= f.collection_select :site_risk_measure_id, @site_risk_measures, :id, :content,
                 { prompt: "選択してください" }, {class: "form-control" }
               %>
             </div>
             <div class="director_sign">
-              <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
-              <%= f.hidden_field :signature %>
+              <canvas class="signature-pad" id="sig4" width="100" height="45"></canvas>
+              <%= f.hidden_field :signature_sig4, id: 'signature_sig4' %>
             </div>
           </div>
         </div>
+
         <div class="priority_measure">
           <div class="sub_title">本日のKY重点対策目標</div>
           <div class="risk_content">
@@ -229,11 +242,13 @@
                 :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
             </div>
-            <div class="risk_rate"><%= '〇Ajax' %></div>
+            <div class="risk_rate">
+              <span class="assessment" id="risk5">---<span>
+            </div>
             <textarea class="risk_measure"></textarea>
             <div class="director_sign">
-              <%# <canvas data-signature-pad-target="canvas" width="150" height="100"></canvas> %>
-              <%= f.hidden_field :signature %>
+              <canvas class="signature-pad" id="sig5" width="100" height="45"></canvas>
+              <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>
             </div>
           </div>
         </div>
@@ -245,59 +260,59 @@
           <div class="check_content_reft">
             <div class="check_content">
               <div>本日の安全通路及び立ち入り禁止区域について理解している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_1, 'yes', require: true %>
+                <%= f.label :answer_1_yes, 'はい' %>
+                <%= f.radio_button :answer_1, 'no', require: true %>
+                <%= f.label :answer_1_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>作業に必要な資格証、工具の許可証を携帯及び表示している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_2, 'yes', require: true %>
+                <%= f.label :answer_2_yes, 'はい' %>
+                <%= f.radio_button :answer_2, 'no', require: true %>
+                <%= f.label :answer_2_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>使用する電動工具、仮設材及び作業足場の点検をしている</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_3, 'yes', require: true %>
+                <%= f.label :answer_3_yes, 'はい' %>
+                <%= f.radio_button :answer_3, 'no', require: true %>
+                <%= f.label :answer_3_no, '該当なし' %>
+              </div>
             </div>
           </div>
           <div class="check_content_right">
             <div class="check_content">
               <div>本日の作業に危険作業に該当するものがあるか把握している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_4, 'yes', require: true %>
+                <%= f.label :answer_4_yes, 'はい' %>
+                <%= f.radio_button :answer_4, 'no', require: true %>
+                <%= f.label :answer_4_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>本日の作業計画及び内容を把握している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_5, 'yes', require: true %>
+                <%= f.label :answer_5_yes, 'はい' %>
+                <%= f.radio_button :answer_5, 'no', require: true %>
+                <%= f.label :answer_5_no, '該当なし' %>
+              </div>
             </div>
             <div class="check_content">
               <div>体調が平常時と異なる作業員がいないか確認している</div>
-              <form action="/submit-form" method="post" >
-                <input type="checkbox" id="yes_option" name="option" value="yes">
-                <label for="yes_option">はい</label>
-                <input type="checkbox" id="no_option" name="option" value="no">
-                <label for="no_option">該当なし</label>
-              </form>
+              <div>
+                <%= f.radio_button :answer_6, 'yes', require: true %>
+                <%= f.label :answer_6_yes, 'はい' %>
+                <%= f.radio_button :answer_6, 'no', require: true %>
+                <%= f.label :answer_6_no, '該当なし' %>
+              </div>
             </div>
           </div>
         </div>
@@ -306,15 +321,10 @@
       <div class="ky_footer">
         <div class="sign_area">
           <div class="footer_title">参加者サイン　
-            <%# <button type="button" data-action="click->signature-pad#clear">クリア</button> %>
           </div>
           <div class="sign_box">
-            <%# <div data-controlldata-signature-pad-target="canvas"> %>
-              <%# <canvas data-signature-pad-target="canvas" width="400" height="100"></canvas> %>
-              <%# <button id="save">Save</button>
-              <button id="clear">Clear</button> %>
-              <%#= f.hidden_field :signature %>
-            <%# </div> %>
+            <canvas class="signature-pad" id="sig6" width="400" height="100"></canvas>
+            <%= f.hidden_field :signature_sig6, id: 'signature_sig6' %>
           </div>
         </div>
         <div class="personnel_area">
@@ -337,36 +347,36 @@
             <div class="confirmed">
               <div class="footer_title">元請</div>
               <div class="sign">
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <canvas class="signature-pad" id="sig7" width="80" height="85"></canvas>
+                <%= f.hidden_field :signature_sig7, id: 'signature_sig7' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">元請</div>
               <div class="sign">
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <canvas class="signature-pad" id="sig8" width="80" height="85"></canvas>
+                <%= f.hidden_field :signature_sig8, id: 'signature_sig8' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">上長</div>
               <div class="sign">
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <canvas class="signature-pad" id="sig9" width="80" height="85"></canvas>
+                <%= f.hidden_field :signature_sig9, id: 'signature_sig9' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">現場責任者</div>
               <div class="sign">
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <canvas class="signature-pad" id="sig10" width="80" height="85"></canvas>
+                <%= f.hidden_field :signature_sig10, id: 'signature_sig10' %>
               </div>
             </div>
             <div class="confirmed">
               <div class="footer_title">現場担当</div>
               <div class="sign">
-                <%# <canvas data-signature-pad-target="canvas" width="80" height="100"></canvas> %>
-                <%= f.hidden_field :signature %>
+                <canvas class="signature-pad" id="sig11" width="80" height="85"></canvas>
+                <%= f.hidden_field :signature_sig11, id: 'signature_sig11' %>
               </div>
             </div>
           </div>
