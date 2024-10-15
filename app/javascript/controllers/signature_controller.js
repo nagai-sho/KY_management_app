@@ -33,7 +33,8 @@ export default class extends Controller {
   addFormSubmitListener(form, signatureDataInput, signaturePad) {
     form.addEventListener('submit', (e) => {
       const dataURL = signaturePad.toDataURL();
-      signatureDataInput.value = dataURL;
+      const base64data = dataURL.split(',')[1];
+      signatureDataInput.value = base64data;
     });
   }
 }

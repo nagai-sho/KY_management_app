@@ -113,8 +113,7 @@
                 <%= @safety_risk_measure_2.content %>
               </div>
               <div class="director_sign">
-                <canvas class="signature-pad" id="sig2" width="100" height="45"></canvas>
-                <%= f.hidden_field :signature_sig2, id: 'signature_sig2' %>
+                <img src="<%= @ky_sheet.signature_sig2 %>" width="100" height="45">
               </div>
             </div>
           </div>
@@ -142,8 +141,7 @@
                 <%= @quality_risk_measure.content %>
               </div>
               <div class="director_sign">
-                <canvas class="signature-pad" id="sig3" width="100" height="45"></canvas>
-                <%= f.hidden_field :signature_sig3, id: 'signature_sig3' %>
+                <img src="<%= @ky_sheet.signature_sig3 %>" width="100" height="45">
               </div>
             </div>
           </div>
@@ -171,8 +169,7 @@
                 <%= @site_risk_measure.content %>
               </div>
               <div class="director_sign">
-                <canvas class="signature-pad" id="sig4" width="100" height="45"></canvas>
-                <%= f.hidden_field :signature_sig4, id: 'signature_sig4' %>
+                <img src="<%= @ky_sheet.signature_sig4 %>" width="100" height="45">
               </div>
             </div>
           </div>
@@ -194,8 +191,7 @@
               </div>
               <%= @ky_sheet.priority_measure %>
               <div class="director_sign">
-                <canvas class="signature-pad" id="sig5" width="100" height="45"></canvas>
-                <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>
+                <img src="<%= @ky_sheet.signature_sig5 %>" width="100" height="45">
               </div>
             </div>
           </div>
@@ -270,8 +266,7 @@
             <div class="footer_title">参加者サイン　
             </div>
             <div class="sign_box">
-              <canvas class="signature-pad" id="sig6" width="400" height="100"></canvas>
-              <%= f.hidden_field :signature_sig6, id: 'signature_sig6' %>
+              <img src="<%= @ky_sheet.signature_sig6 %>" width="400" height="100">
             </div>
           </div>
           <div class="personnel_area">
@@ -294,36 +289,31 @@
               <div class="confirmed">
                 <div class="footer_title">元請</div>
                 <div class="sign">
-                  <canvas class="signature-pad" id="sig7" width="80" height="85"></canvas>
-                  <%= f.hidden_field :signature_sig7, id: 'signature_sig7' %>
+                  <img src="<%= @ky_sheet.signature_sig7 %>" width="80" height="85">
                 </div>
               </div>
               <div class="confirmed">
                 <div class="footer_title">元請</div>
                 <div class="sign">
-                  <canvas class="signature-pad" id="sig8" width="80" height="85"></canvas>
-                  <%= f.hidden_field :signature_sig8, id: 'signature_sig8' %>
+                  <img src="<%= @ky_sheet.signature_sig8 %>" width="80" height="85">
                 </div>
               </div>
               <div class="confirmed">
                 <div class="footer_title">上長</div>
                 <div class="sign">
-                  <canvas class="signature-pad" id="sig9" width="80" height="85"></canvas>
-                  <%= f.hidden_field :signature_sig9, id: 'signature_sig9' %>
+                  <img src="<%= @ky_sheet.signature_sig9 %>" width="80" height="85">
                 </div>
               </div>
               <div class="confirmed">
                 <div class="footer_title">現場責任者</div>
                 <div class="sign">
-                  <canvas class="signature-pad" id="sig10" width="80" height="85"></canvas>
-                  <%= f.hidden_field :signature_sig10, id: 'signature_sig10' %>
+                  <img src="<%= @ky_sheet.signature_sig10 %>" width="80" height="85">
                 </div>
               </div>
               <div class="confirmed">
                 <div class="footer_title">現場担当</div>
                 <div class="sign">
-                  <canvas class="signature-pad" id="sig11" width="80" height="85"></canvas>
-                  <%= f.hidden_field :signature_sig11, id: 'signature_sig11' %>
+                  <img src="<%= @ky_sheet.signature_sig11 %>" width="80" height="85">
                 </div>
               </div>
             </div>
