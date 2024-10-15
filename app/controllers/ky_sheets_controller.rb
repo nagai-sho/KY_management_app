@@ -46,6 +46,11 @@ class KySheetsController < ApplicationController
     @quality_risk_measure = QualityRiskMeasure.find(@ky_sheet.quality_risk_measure_id)
     @site_risk_prediction = SiteRiskPrediction.find(@ky_sheet.site_risk_prediction_id)
     @site_risk_measure = SiteRiskMeasure.find(@ky_sheet.site_risk_measure_id)
+    @risk_level_1 = RiskLevel.find(@ky_sheet.risk_level_id_1)
+    @risk_level_2 = RiskLevel.find(@ky_sheet.risk_level_id_2)
+    @risk_level_3 = RiskLevel.find(@ky_sheet.risk_level_id_3)
+    @risk_level_4 = RiskLevel.find(@ky_sheet.risk_level_id_4)
+    @risk_level_5 = RiskLevel.find(@ky_sheet.risk_level_id_5)
     
     if @ky_sheet.valid?
       gemerate_pdf_and_send(@ky_sheet)

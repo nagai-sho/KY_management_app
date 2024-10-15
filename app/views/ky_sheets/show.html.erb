@@ -78,9 +78,7 @@
                 <%= @safety_risk_prediction_1.content %>
               </div>
               <div class="risk_rate">
-                <%= f.collection_select(
-                  :risk_level_id, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-                %>
+                <%= @risk_level_1.name %>
                 <%= f.collection_select(
                   :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
                 %>
@@ -107,9 +105,7 @@
                 <%= @safety_risk_prediction_2.content %>
               </div>
               <div class="risk_rate">
-                <%= f.collection_select(
-                  :risk_level_id, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-                %>
+                <%= @risk_level_2.name %>
                 <%= f.collection_select(
                   :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
                 %>
@@ -140,9 +136,7 @@
                 <%= @quality_risk_prediction.content %>
               </div>
               <div class="risk_rate">
-                <%= f.collection_select(
-                  :risk_level_id, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-                %>
+                <%= @risk_level_3.name %>
                 <%= f.collection_select(
                   :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
                 %>
@@ -173,9 +167,7 @@
                 <%= @site_risk_prediction.content %>
               </div>
               <div class="risk_rate">
-                <%= f.collection_select(
-                  :risk_level_id, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-                %>
+                <%= @risk_level_4.name %>
                 <%= f.collection_select(
                   :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
                 %>
@@ -202,6 +194,7 @@
               <%= @ky_sheet.priority_content %>
               <%= @ky_sheet.priority_measure_risk %>
               <div class="risk_rate">
+                <%= @risk_level_5.name %>
                 <%= f.collection_select(
                   :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
                 %>

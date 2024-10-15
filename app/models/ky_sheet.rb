@@ -5,7 +5,7 @@ class KySheet < ApplicationRecord
 
   belongs_to :risk_level,              optional: true
   belongs_to :incidence_rate,          optional: true
-  belongs_to :construction_type,       optional: true
+  belongs_to :construction_type,       optional: true 
   
   belongs_to :site_risk_prediction,    optional: true
   belongs_to :site_risk_measure,       optional: true
