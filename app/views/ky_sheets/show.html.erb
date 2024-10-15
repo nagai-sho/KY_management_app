@@ -9,11 +9,10 @@
   <div class="default_format">
     <div class="title">
       <h3>KY活動チェックシート</h3>
-      <div class="return"><%= link_to '戻る', site_projects_path(@site) %></div>
+      <div class="return"><%= link_to '戻る', new_project_ky_sheet_path(@project) %></div>
     </div>
 
     <%= form_with model: [@project, @ky_sheet], url: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), method: :post, local: true, data: { turbo: false } do |f| %>
-    <%= render 'shared/error_messages', model: @ky_sheet %>
     <div class="title">
       <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), target: '_blank' %>
     </div>
@@ -38,16 +37,14 @@
               </div>
               <div class="header_name">
                 <div class="construction_type">工事種別　</div>
-                <%= f.collection_select(:construction_type_id, ConstructionType.all, :id, :name, {}, 
-                  {class:"construction_type-select"})
-                %>
+                <%= @ky_sheet.construction_type.name %>
               </div>
             </div>
             <div class="header_right">
               <div class="header_name">
                 <div class="work_day">作業日</div>
                 <div class="calendar">
-                  <%= f.text_field :construction_completion, placeholder: '' %>
+                  <%= @ky_sheet.construction_completion %>
                 </div>
               </div>
             </div>
@@ -75,12 +72,12 @@
             <div class="sub_title">安全へのKY活動</div>
             <div class="risk_content">
               <div class="location">
-                <%= f.collection_select :location_id, @locations, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%#= @locations.find { |l| l.id == @ky_sheet.location_id }&.content %>
+                <%= @ky_sheet.location_id_1 %>
               </div>
               <div class="action_content">
-                <%= f.collection_select :construction_content_id, @construction_contents, :id, :content,
+                <%#= @construction_contents.find { |cc| cc.id == @ky_sheet.construction_content_id }&.content %>
+                <%= f.collection_select :construction_content_id,@construction_contents, :id, :content,
                   { prompt: "選択してください" }, {class: "form-control" }
                 %>
               </div>
@@ -106,8 +103,7 @@
                 %>
               </div>
               <div class="director_sign">
-                <canvas class="signature-pad" id="sig1" width="100" height="45"></canvas>
-                <%= f.hidden_field :signature_sig1, id: 'signature_sig1' %>
+                <img src="<%= @ky_sheet.signature_sig1 %>" width="100" height="45">
               </div>
             </div>
             
@@ -205,7 +201,8 @@
                 %>
               </div>
               <div class="risk_prediction">
-                <%= f.collection_select :site_risk_prediction_id, @site_risk_predictions, :id, :content,
+                <%= @ky_sheet.site_risk_prediction %>
+                <%#= f.collection_select :site_risk_prediction_id, @site_risk_predictions, :id, :content,
                   { prompt: "選択してください" }, {class: "form-control" }
                 %>
               </div>
