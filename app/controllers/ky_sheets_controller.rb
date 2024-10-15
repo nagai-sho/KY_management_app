@@ -51,6 +51,11 @@ class KySheetsController < ApplicationController
     @risk_level_3 = RiskLevel.find(@ky_sheet.risk_level_id_3)
     @risk_level_4 = RiskLevel.find(@ky_sheet.risk_level_id_4)
     @risk_level_5 = RiskLevel.find(@ky_sheet.risk_level_id_5)
+    @incidence_rate_1 = IncidenceRate.find(@ky_sheet.incidence_rate_id_1)
+    @incidence_rate_2 = IncidenceRate.find(@ky_sheet.incidence_rate_id_2)
+    @incidence_rate_3 = IncidenceRate.find(@ky_sheet.incidence_rate_id_3)
+    @incidence_rate_4 = IncidenceRate.find(@ky_sheet.incidence_rate_id_4)
+    @incidence_rate_5 = IncidenceRate.find(@ky_sheet.incidence_rate_id_5)
     
     if @ky_sheet.valid?
       gemerate_pdf_and_send(@ky_sheet)

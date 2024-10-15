@@ -79,9 +79,7 @@
               </div>
               <div class="risk_rate">
                 <%= @risk_level_1.name %>
-                <%= f.collection_select(
-                  :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-                %>
+                <%= @incidence_rate_1.name %>
               </div>
               <div class="risk_rate">
                 <span class="assessment" id="risk1">---<span>
@@ -106,9 +104,7 @@
               </div>
               <div class="risk_rate">
                 <%= @risk_level_2.name %>
-                <%= f.collection_select(
-                  :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-                %>
+                <%= @incidence_rate_2.name %>
               </div>
               <div class="risk_rate">
                 <span class="assessment" id="risk2">---<span>
@@ -137,9 +133,7 @@
               </div>
               <div class="risk_rate">
                 <%= @risk_level_3.name %>
-                <%= f.collection_select(
-                  :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-                %>
+                <%= @incidence_rate_3.name %>
               </div>
               <div class="risk_rate">
                 <span class="assessment" id="risk3">---<span>
@@ -168,9 +162,7 @@
               </div>
               <div class="risk_rate">
                 <%= @risk_level_4.name %>
-                <%= f.collection_select(
-                  :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-                %>
+                <%= @incidence_rate_4.name %>
               </div>
               <div class="risk_rate">
                 <span class="assessment" id="risk4">---<span>
@@ -195,9 +187,7 @@
               <%= @ky_sheet.priority_measure_risk %>
               <div class="risk_rate">
                 <%= @risk_level_5.name %>
-                <%= f.collection_select(
-                  :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-                %>
+                <%= @incidence_rate_5.name %>
               </div>
               <div class="risk_rate">
                 <span class="assessment" id="risk5">---<span>
