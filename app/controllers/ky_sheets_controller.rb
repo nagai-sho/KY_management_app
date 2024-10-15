@@ -29,6 +29,24 @@ class KySheetsController < ApplicationController
     @locations = @site.locations
     @construction_contents = @site.construction_contents
 
+    @location_1 = Location.find(@ky_sheet.location_id_1)
+    @location_2 = Location.find(@ky_sheet.location_id_2)
+    @location_3 = Location.find(@ky_sheet.location_id_3)
+    @location_4 = Location.find(@ky_sheet.location_id_4)
+    @location_5 = Location.find(@ky_sheet.location_id_5)
+    @construction_content_1 = ConstructionContent.find(@ky_sheet.construction_content_id_1)
+    @construction_content_2 = ConstructionContent.find(@ky_sheet.construction_content_id_2)
+    @construction_content_3 = ConstructionContent.find(@ky_sheet.construction_content_id_3)
+    @construction_content_4 = ConstructionContent.find(@ky_sheet.construction_content_id_4)
+    @safety_risk_prediction_1 = SafetyRiskPrediction.find(@ky_sheet.safety_risk_prediction_id_1)
+    @safety_risk_prediction_2 = SafetyRiskPrediction.find(@ky_sheet.safety_risk_prediction_id_2)
+    @safety_risk_measure_1 = SafetyRiskMeasure.find(@ky_sheet.safety_risk_measure_id_1)
+    @safety_risk_measure_2 = SafetyRiskMeasure.find(@ky_sheet.safety_risk_measure_id_2)
+    @quality_risk_prediction = QualityRiskPrediction.find(@ky_sheet.quality_risk_prediction_id)
+    @quality_risk_measure = QualityRiskMeasure.find(@ky_sheet.quality_risk_measure_id)
+    @site_risk_prediction = SiteRiskPrediction.find(@ky_sheet.site_risk_prediction_id)
+    @site_risk_measure = SiteRiskMeasure.find(@ky_sheet.site_risk_measure_id)
+    
     if @ky_sheet.valid?
       gemerate_pdf_and_send(@ky_sheet)
     else

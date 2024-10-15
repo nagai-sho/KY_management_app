@@ -13,9 +13,6 @@
     </div>
 
     <%= form_with model: [@project, @ky_sheet], url: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), method: :post, local: true, data: { turbo: false } do |f| %>
-    <div class="title">
-      <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), target: '_blank' %>
-    </div>
     <div data-controller="signature">
       <div class="ky">
         <div class="top_content">
@@ -72,19 +69,13 @@
             <div class="sub_title">安全へのKY活動</div>
             <div class="risk_content">
               <div class="location">
-                <%#= @locations.find { |l| l.id == @ky_sheet.location_id }&.content %>
-                <%= @ky_sheet.location_id_1 %>
+                <%= @location_1.content %>
               </div>
               <div class="action_content">
-                <%#= @construction_contents.find { |cc| cc.id == @ky_sheet.construction_content_id }&.content %>
-                <%= f.collection_select :construction_content_id,@construction_contents, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @construction_content_1.content %>
               </div>
               <div class="risk_prediction">
-                <%= f.collection_select :safety_risk_prediction_id, @safety_risk_predictions, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @safety_risk_prediction_1.content %>
               </div>
               <div class="risk_rate">
                 <%= f.collection_select(
@@ -98,9 +89,7 @@
                 <span class="assessment" id="risk1">---<span>
               </div>
               <div class="risk_measure">
-                <%= f.collection_select :safety_risk_measure_id, @safety_risk_measures, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @safety_risk_measure_1.content %>
               </div>
               <div class="director_sign">
                 <img src="<%= @ky_sheet.signature_sig1 %>" width="100" height="45">
@@ -109,19 +98,13 @@
             
             <div class="risk_content">
               <div class="location">
-                <%= f.collection_select :location_id, @locations, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @location_2.content %>
               </div>
               <div class="action_content">
-                <%= f.collection_select :construction_content_id,@construction_contents, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @construction_content_2.content %>
               </div>
               <div class="risk_prediction">
-                <%= f.collection_select :safety_risk_prediction_id, @safety_risk_predictions, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @safety_risk_prediction_2.content %>
               </div>
               <div class="risk_rate">
                 <%= f.collection_select(
@@ -135,9 +118,7 @@
                 <span class="assessment" id="risk2">---<span>
               </div>
               <div class="risk_measure">
-                <%= f.collection_select :safety_risk_measure_id, @safety_risk_measures, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @safety_risk_measure_2.content %>
               </div>
               <div class="director_sign">
                 <canvas class="signature-pad" id="sig2" width="100" height="45"></canvas>
@@ -150,19 +131,13 @@
             <div class="sub_title">品質へのKY活動</div>
             <div class="risk_content">
               <div class="location">
-                <%= f.collection_select :location_id, @locations, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @location_3.content %>
               </div>
               <div class="action_content">
-                <%= f.collection_select :construction_content_id, @construction_contents, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @construction_content_3.content %>
               </div>
               <div class="risk_prediction">
-                <%= f.collection_select :quality_risk_prediction_id, @quality_risk_predictions, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @quality_risk_prediction.content %>
               </div>
               <div class="risk_rate">
                 <%= f.collection_select(
@@ -176,9 +151,7 @@
                 <span class="assessment" id="risk3">---<span>
               </div>
               <div class="risk_measure">
-                <%= f.collection_select :quality_risk_measure_id, @quality_risk_measures, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @quality_risk_measure.content %>
               </div>
               <div class="director_sign">
                 <canvas class="signature-pad" id="sig3" width="100" height="45"></canvas>
@@ -191,20 +164,13 @@
             <div class="sub_title">当該現場で特筆すべきKY活動</div>
             <div class="risk_content">
               <div class="location">
-                <%= f.collection_select :location_id, @locations, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @location_4.content %>
               </div>
               <div class="action_content">
-                <%= f.collection_select :construction_content_id, @construction_contents, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @construction_content_4.content %>
               </div>
               <div class="risk_prediction">
-                <%= @ky_sheet.site_risk_prediction %>
-                <%#= f.collection_select :site_risk_prediction_id, @site_risk_predictions, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @site_risk_prediction.content %>
               </div>
               <div class="risk_rate">
                 <%= f.collection_select(
@@ -218,9 +184,7 @@
                 <span class="assessment" id="risk4">---<span>
               </div>
               <div class="risk_measure">
-                <%= f.collection_select :site_risk_measure_id, @site_risk_measures, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @site_risk_measure.content %>
               </div>
               <div class="director_sign">
                 <canvas class="signature-pad" id="sig4" width="100" height="45"></canvas>
@@ -233,16 +197,11 @@
             <div class="sub_title">本日のKY重点対策目標</div>
             <div class="risk_content">
               <div class="location">
-                <%= f.collection_select :location_id, @locations, :id, :content,
-                  { prompt: "選択してください" }, {class: "form-control" }
-                %>
+                <%= @location_5.content %>
               </div>
-              <textarea class="action_content"></textarea>
-              <textarea class="risk_prediction"></textarea>
+              <%= @ky_sheet.priority_content %>
+              <%= @ky_sheet.priority_measure_risk %>
               <div class="risk_rate">
-                <%= f.collection_select(
-                  :risk_level_id, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-                %>
                 <%= f.collection_select(
                   :incidence_rate_id, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
                 %>
@@ -250,7 +209,7 @@
               <div class="risk_rate">
                 <span class="assessment" id="risk5">---<span>
               </div>
-              <textarea class="risk_measure"></textarea>
+              <%= @ky_sheet.priority_measure %>
               <div class="director_sign">
                 <canvas class="signature-pad" id="sig5" width="100" height="45"></canvas>
                 <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>

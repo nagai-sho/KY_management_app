@@ -17,6 +17,9 @@ class KySheet < ApplicationRecord
   belongs_to :construction_content,    optional: true
 
 
+  with_options presence: true do
+
+  end
   # validates :risk_level_id, :incidence_rate_id, :construction_type_id,
   #           numericality: { other_than: 0, message: "未選択項目を選択してください" }
 
