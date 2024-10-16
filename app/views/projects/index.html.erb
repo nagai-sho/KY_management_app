@@ -8,9 +8,6 @@
     <div class="site_create">
       <%= link_to '新規作成', new_site_project_path %>
     </div>
-    <div class="site_create">
-      <%= link_to '実施済みKYシート一覧', site_projects_path(@site.id) %>
-    </div>
   </div>
 
   <div class="format">
@@ -28,11 +25,12 @@
         <div class="project_detail"><%= project.construction_content %></div>
       </div>
       <div class="projects">
-        <%= link_to 'KYシート作成', new_project_ky_sheet_path(project) %>
         <a href="#">編集</a>
         <%= link_to '削除', project_path(project),
           data: { turbo_method: :delete }
         %>
+        <%= link_to 'KYシート作成', new_project_ky_sheet_path(project) %>
+        <%= link_to '実施済みKYシート一覧', project_ky_sheets_path(project) %>
       </div>
       <div class="form">
       </div>

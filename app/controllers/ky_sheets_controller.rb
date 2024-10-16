@@ -1,4 +1,10 @@
 class KySheetsController < ApplicationController
+
+  def index
+    @project = Project.find(params[:project_id])
+    @site = @project.site
+    @ky_sheets = @project.ky_sheets
+  end
   def new
     @project = Project.find(params[:project_id])
     @site = @project.site
