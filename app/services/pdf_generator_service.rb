@@ -9,7 +9,7 @@ class PdfGeneratorService
     browser = Ferrum::Browser.new
     browser.goto("file://#{@template_path}")
     browser.add_style_tag(
-      content: File.read("#{Rails.root}/app/assets/stylesheets/ky_sheets/new.scss")
+      content: File.read("#{Rails.root}/app/assets/stylesheets/ky_sheets/show.scss")
     )
     browser.pdf(
       path: @output_path,
