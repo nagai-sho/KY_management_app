@@ -142,4 +142,8 @@ class KySheetsController < ApplicationController
     end
   end
 
+  def pdf_params
+    params.require(:ky_sheet).permit(:pdf).merge(user_id: current_user.id)
+  end
+
 end
