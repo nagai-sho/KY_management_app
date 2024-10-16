@@ -8,7 +8,6 @@ export default class extends Controller {
   connect() {
     console.log('Hello! signature.');
     this.signaturePads = {};
-
     this.initializeSignaturePads();
   }
 
@@ -18,22 +17,21 @@ export default class extends Controller {
         backgroundColor: 'rgb(255, 255, 255)',
         penColor: 'rgb(0, 0, 0)',
       });
-
       this.signaturePads[canvas.id] = signaturePad;
-
-      const form = canvas.closest('form');
-      const signatureDataInput = form.querySelector(
-        `#${canvas.id.replace('signature-pad', 'signature_sig')}`
-      );
-
-      this.addFormSubmitListener(form, signatureDataInput, signaturePad);
+      this.setupFormSubmitListener(canvas, signaturePad);
     });
   }
 
-  addFormSubmitListener(form, signatureDataInput, signaturePad) {
+  setupFormSubmitListener(canvas, signaturePad) {
+    const form = canvas.closest('form');
     form.addEventListener('submit', (e) => {
+      e.preventDefault();
       const dataURL = signaturePad.toDataURL();
+      const signatureDataInput = document.getElementById(
+        `signature_${canvas.id}`
+      );
       signatureDataInput.value = dataURL;
+      form.submit();
     });
   }
 }
