@@ -15,7 +15,6 @@ class KySheetsController < ApplicationController
   end
   
   def preview_pdf
-    binding.pry
     @project = Project.find(params[:project_id])
     @site = @project.site
     @ky_sheet = @project.ky_sheets.build(ky_sheet_params)
