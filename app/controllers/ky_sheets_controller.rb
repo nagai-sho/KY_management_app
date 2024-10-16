@@ -64,7 +64,7 @@ class KySheetsController < ApplicationController
     @incidence_rate_5 = IncidenceRate.find(@ky_sheet.incidence_rate_id_5)
     
     if @ky_sheet.valid?
-      gemerate_pdf_and_send(@ky_sheet)
+      generate_pdf_and_send(@ky_sheet)
     else
       render :new
     end
@@ -128,7 +128,7 @@ class KySheetsController < ApplicationController
     )
   end
     
-  def gemerate_pdf_and_send(ky_sheet)
+  def generate_pdf_and_send(ky_sheet)
     @ky_sheet = ky_sheet
       
     respond_to do |format|
