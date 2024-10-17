@@ -4,10 +4,15 @@
     <div class="return"><%= link_to '戻る', site_projects_path(@site) %></div>
   </div>
 
-  <%= form_with model: [@project, @ky_sheet], url: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), method: :post, local: true, data: { turbo: false } do |f| %>
+  <%= form_with model: [@project, @ky_sheet],
+                url: project_ky_sheets_preview_pdf_path(@project, @ky_sheet),
+                method: :post,
+                local: true,
+                data: { turbo: false },
+                html: { id: 'form' } do |f| %>
   <%= render 'shared/error_messages', model: @ky_sheet %>
   <div class="title">
-    <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet) %>
+    <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), target: '_blank' %>
     <%#= f.submit "Save PDF", save_pdf_project_ky_sheets_path(filename: File.basename(@pdf_path.to_s)), method: :post, class: "save_pdf_button" %>
   </div>
   <div data-controller="signature">
