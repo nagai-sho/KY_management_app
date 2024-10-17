@@ -8,9 +8,6 @@ Rails.application.routes.draw do
         member do
           get 'view_pdf'
         end
-        collection do
-          post 'save_pdf'
-        end
       end
       post 'ky_sheets/preview_pdf', to: 'ky_sheets#preview_pdf'
     end

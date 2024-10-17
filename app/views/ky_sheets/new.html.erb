@@ -12,8 +12,8 @@
                 html: { id: 'form' } do |f| %>
   <%= render 'shared/error_messages', model: @ky_sheet %>
   <div class="title">
-    <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), target: '_blank' %>
-    <%#= f.submit "Save PDF", save_pdf_project_ky_sheets_path(filename: File.basename(@pdf_path.to_s)), method: :post, class: "save_pdf_button" %>
+    <%= f.submit 'Preview PDF', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet) %>
+    <%#= f.submit "Save PDF", project_ky_sheets_path(filename: File.basename(@pdf_path.to_s)), method: :post, class: "save_pdf_button" %>
   </div>
   <div data-controller="signature">
     <div class="ky">
@@ -45,7 +45,7 @@
             <div class="header_name">
               <div class="work_day">作業日</div>
               <div class="calendar">
-                <%= f.text_field :construction_completion, placeholder: '' %>
+                <%= f.text_field :construction_completion, placeholder: '今日（作業日）の日付' %>
               </div>
             </div>
           </div>

@@ -70,7 +70,7 @@ class KySheetsController < ApplicationController
     end
   end
 
-  def save_pdf
+  def create
     @project = Project.find(params[:project_id])
     @ky_sheet = @project.ky_sheets.build(pdf_params)
     @ky_sheet.user = current_user

@@ -25,9 +25,7 @@ export default class extends Controller {
     const form = document.getElementById('form');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      canvases.forEach((canvas) => {
-        this.insertHiddenValue(canvas);
-      });
+      canvases.forEach((canvas) => this.insertHiddenValue(canvas));
       this.submit(form);
     });
   }
@@ -47,13 +45,6 @@ export default class extends Controller {
   }
 }
 
-// form.target = '_blank';　で別タブが開く
-// form.submit();　formを送信する
-
-// 複数箇所にあるsignature-padのうち、一個目のcanvasだけ送信される
-// form.target = '_blank';　のタイミングが問題？
-// form.submit();　で繰り返し送信する意味は？
-
 // canvasに記入
 // submitが押される
 // イベント発火
@@ -61,3 +52,6 @@ export default class extends Controller {
 // const dataURL = signaturePad.toDataURL(); 文字列（URL）の生成、Base64エンコード処理
 // const signatureDataInput = document.getElementById(`signature_${canvas.id}`); hidden要素に格納
 // signatureDataInput.value = dataURL; input要素（今回はhidden要素）のvalue属性にdataURLを追加
+
+// form.target = '_blank'; で別タブが開く
+// form.submit(); formを送信する
