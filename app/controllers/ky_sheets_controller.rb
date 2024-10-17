@@ -70,11 +70,20 @@ class KySheetsController < ApplicationController
     end
   end
 
-  def download
-    @ky_sheet = KySheet.find(params[:id])
-    @project = @ky_sheet.project
-    @site = @project.site
+  def save_pdf
+    # # PDFをActiveAtorageに添付（保存）する処理
+    # @ky_sheet.pdf_file.attach(
+    #   io: File.open(pdf_path),
+    #   filename: "ky_sheet_#{@ky_sheet.id}.pdf",
+    #   content_type: 'application/pdf'
+    # )
+    # # 一時ファイルを削除
+    # File.delete(html_path)
+    # File.delete(pdf_path)
+  end
 
+  def show_pdf
+    
   end
   
   private
@@ -141,15 +150,14 @@ class KySheetsController < ApplicationController
     respond_to do |format|
       format.html do
         html_content = render_to_string(template: 'ky_sheets/show', layout: false)
-        html_path = Rails.root.join('tmp', 'new_ky_sheet.html')
+        html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
         File.write(html_path, html_content)
         
-        pdf_service = PdfGeneratorService.new(
-          html_path.to_s, Rails.root.join('tmp', 'new_ky_sheet.pdf').to_s
-        )
+        pdf_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.pdf")
+        pdf_service = PdfGeneratorService.new( html_path.to_s, pdf_path.to_s )
         pdf_service.generate_pdf
-        
-        send_file Rails.root.join('tmp', 'new_ky_sheet.pdf'), type: 'application/pdf', disposition: 'inline'
+        # PDFのプレビュー表示
+        send_file pdf_path, type: 'application/pdf', disposition: 'inline'
       end
       format.turbo_stream { redirect_to root_path }
     end
