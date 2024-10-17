@@ -3,18 +3,18 @@ class KySheet < ApplicationRecord
   belongs_to :user
   belongs_to :project
 
-  belongs_to :risk_level,              optional: true
-  belongs_to :incidence_rate,          optional: true
-  belongs_to :construction_type,       optional: true 
+  belongs_to_active_hash :risk_level,        optional: true
+  belongs_to_active_hash :incidence_rate,    optional: true
+  belongs_to_active_hash :construction_type, optional: true 
   
-  belongs_to :site_risk_prediction,    optional: true
-  belongs_to :site_risk_measure,       optional: true
-  belongs_to :safety_risk_prediction,  optional: true
-  belongs_to :safety_risk_measure,     optional: true
-  belongs_to :quality_risk_prediction, optional: true
-  belongs_to :quality_risk_measure,    optional: true
-  belongs_to :location,                optional: true
-  belongs_to :construction_content,    optional: true
+  belongs_to :site_risk_prediction,          optional: true
+  belongs_to :site_risk_measure,             optional: true
+  belongs_to :safety_risk_prediction,        optional: true
+  belongs_to :safety_risk_measure,           optional: true
+  belongs_to :quality_risk_prediction,       optional: true
+  belongs_to :quality_risk_measure,          optional: true
+  belongs_to :location,                      optional: true
+  belongs_to :construction_content,          optional: true
 
   has_one_attached :pdf_file
 
