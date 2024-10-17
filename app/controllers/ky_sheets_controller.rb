@@ -1,4 +1,10 @@
 class KySheetsController < ApplicationController
+
+  def index
+    @project = Project.find(params[:project_id])
+    @site = @project.site
+    @ky_sheets = @project.ky_sheets
+  end
   def new
     @project = Project.find(params[:project_id])
     @site = @project.site
@@ -58,10 +64,40 @@ class KySheetsController < ApplicationController
     @incidence_rate_5 = IncidenceRate.find(@ky_sheet.incidence_rate_id_5)
     
     if @ky_sheet.valid?
-      gemerate_pdf_and_send(@ky_sheet)
+      generate_pdf_and_send(@ky_sheet)
     else
       render :new
     end
+  end
+
+  def create
+    @project = Project.find(params[:project_id])
+    @ky_sheet = @project.ky_sheets.build(pdf_params)
+    @ky_sheet.user = current_user
+
+    if @ky_sheet.save
+      pdf_path = params[:pdf_path]
+      # html_path = params[:html_path]
+
+      # PDFをActiveAtorageに添付（保存）する処理
+      @ky_sheet.pdf_file.attach(
+        io: File.open(pdf_path),
+        filename: "ky_sheet_#{@ky_sheet.id}.pdf",
+        content_type: 'application/pdf'
+      )
+      # 一時ファイルを削除
+      # File.delete(html_path) if File.exist?(html_path)
+      File.delete(pdf_path) if File.exist?(pdf_path)
+
+      redirect_to @ky_sheet, notice: 'KYシートは正常に保存されました。'
+    else
+      render :new
+    end
+
+  end
+
+  def view_pdf
+    
   end
   
   private
@@ -122,24 +158,27 @@ class KySheetsController < ApplicationController
     )
   end
     
-  def gemerate_pdf_and_send(ky_sheet)
+  def generate_pdf_and_send(ky_sheet)
     @ky_sheet = ky_sheet
       
     respond_to do |format|
       format.html do
         html_content = render_to_string(template: 'ky_sheets/show', layout: false)
-        html_path = Rails.root.join('tmp', 'new_ky_sheet.html')
+        html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
         File.write(html_path, html_content)
         
-        pdf_service = PdfGeneratorService.new(
-          html_path.to_s, Rails.root.join('tmp', 'new_ky_sheet.pdf').to_s
-        )
+        pdf_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.pdf")
+        pdf_service = PdfGeneratorService.new( html_path.to_s, pdf_path.to_s )
         pdf_service.generate_pdf
-        
-        send_file Rails.root.join('tmp', 'new_ky_sheet.pdf'), type: 'application/pdf', disposition: 'inline'
+        # PDFのプレビュー表示
+        send_file pdf_path, type: 'application/pdf', disposition: 'inline'
       end
       format.turbo_stream { redirect_to root_path }
     end
+  end
+
+  def pdf_params
+    params.require(:ky_sheet).permit(:pdf_file).merge(user_id: current_user.id)
   end
 
 end
