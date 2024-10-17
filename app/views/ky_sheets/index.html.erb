@@ -1,78 +1,28 @@
-<%= render "shared/header" %>
-
 <div class="main">
-  <h3>入力項目一覧</h3>
+  <h3>実施済みKYシート一覧</h3>
   <div class="site_menu">
     <div class="site_create">
-      <%= link_to '戻る', site_projects_path(@project) %>
+      <%= link_to '戻る', site_projects_path(@site) %>
+    </div>
+  </div>
+
+  <div class="site_index">
+    <div class="title"><%= '〇月〇日' %></div>
+    <div class="title"><%= '実施済みKYシートpdf' %></div>
+    <div class="change">
+      <div class="edit"><%= link_to '見る(PDFのプレビュー画面？)' %></div>
     </div>
   </div>
   
+  <% @ky_sheets.each do |ky| %>
   <div class="site_index">
-    <div class="title">作業場所名称</div>
+    <div class="title"><%= ky.pdf %></div>
+    <div class="title"><%= '〇月〇日' %></div>
     <div class="change">
-      <div class="edit"><%= link_to '編集する', ky_sheet_locations_path(@ky_sheets) %></div>
+      <div class="edit"><%= link_to '見る(PDFのプレビュー画面？)' %></div>
     </div>
   </div>
-  <div class="category"><%= '（現場名）' %>におけるKY活動　※特筆注意事項※</div>
-  <div class="site_index">
-    <div class="title">作業内容</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">作業に伴うリスク / 危険Point</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">リスク低減対策</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="category">安全へのKY活動</div>
-  <div class="site_index">
-    <div class="title">作業内容</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">作業に伴うリスク / 危険Point</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">リスク低減対策</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="category">品質へのKY活動</div>
-  <div class="site_index">
-    <div class="title">作業内容</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">作業に伴うリスク / 危険Point</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
-  <div class="site_index">
-    <div class="title">リスク低減対策</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する' %></div>
-    </div>
-  </div>
+  <% end %>
 
   
 </div>
-
-<%= render "shared/footer" %>
