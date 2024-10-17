@@ -69,6 +69,13 @@ class KySheetsController < ApplicationController
       render :new
     end
   end
+
+  def download
+    @ky_sheet = KySheet.find(params[:id])
+    @project = @ky_sheet.project
+    @site = @project.site
+
+  end
   
   private
   
@@ -149,7 +156,7 @@ class KySheetsController < ApplicationController
   end
 
   def pdf_params
-    params.require(:ky_sheet).permit(:pdf).merge(user_id: current_user.id)
+    params.require(:ky_sheet).permit(:pdf_file).merge(user_id: current_user.id)
   end
 
 end

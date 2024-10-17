@@ -16,7 +16,7 @@ class KySheet < ApplicationRecord
   belongs_to :location,                optional: true
   belongs_to :construction_content,    optional: true
 
-  has_one_attached :pdf
+  has_one_attached :pdf_file
 
 
   with_options presence: true do

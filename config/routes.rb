@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :sites, shallow: true do
     resources :projects, shallow: true do
-      resources :ky_sheets, shallow: true
+      resources :ky_sheets, shallow: true do
+        member do
+          get 'download'
+        end
+      end
       post 'ky_sheets/preview_pdf', to: 'ky_sheets#preview_pdf'
     end
     member do
