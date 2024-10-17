@@ -11,7 +11,7 @@
     <%# <iframe src="<%= pdf_path(@pdf_path) " width="100%" height="600px"></iframe> %>
   <%# </div> %>
   <%# <div class="pdf_actions"> %>
-    <%#= button_to "Save PDF", download_pdf_path(filename: File.basename(@pdf_path)) method: :get, class: "save_pdf_button"%>
+    <%#= button_to "Save PDF", save_pdf_project_ky_sheets_path(filename: File.basename(@pdf_path)) method: :post, class: "save_pdf_button"%>
   <%# </div> %>
 
   <div class="default_format">
@@ -20,7 +20,6 @@
       <div class="return"><%= link_to '戻る', new_project_ky_sheet_path(@project) %></div>
     </div>
 
-    <%= form_with model: [@project, @ky_sheet], url: project_ky_sheets_preview_pdf_path(@project, @ky_sheet), method: :post, local: true, data: { turbo: false } do |f| %>
     <div data-controller="signature">
       <div class="ky">
         <div class="top_content">
@@ -212,28 +211,28 @@
               <div class="check_content">
                 <div>本日の安全通路及び立ち入り禁止区域について理解している</div>
                 <div>
-                  <%= f.radio_button :answer_1, 'yes', require: true %>
-                  <%= f.label :answer_1_yes, 'はい' %>
-                  <%= f.radio_button :answer_1, 'no', require: true %>
-                  <%= f.label :answer_1_no, '該当なし' %>
+                  <input type="radio" id="answer_1_yes" <%= 'checked' if @ky_sheet.answer_1 == 'yes' %> disabled>
+                  <label for="answer_1_yes">はい</label>
+                  <input type="radio" id="answer_1_no" <%= 'checked' if @ky_sheet.answer_1 == 'no' %> disabled>
+                  <label for="answer_1_no">該当なし</label>
                 </div>
               </div>
               <div class="check_content">
                 <div>作業に必要な資格証、工具の許可証を携帯及び表示している</div>
                 <div>
-                  <%= f.radio_button :answer_2, 'yes', require: true %>
-                  <%= f.label :answer_2_yes, 'はい' %>
-                  <%= f.radio_button :answer_2, 'no', require: true %>
-                  <%= f.label :answer_2_no, '該当なし' %>
+                  <input type="radio" id="answer_2_yes" <%= 'checked' if @ky_sheet.answer_2 == 'yes' %> disabled>
+                  <label for="answer_2_yes">はい</label>
+                  <input type="radio" id="answer_2_no" <%= 'checked' if @ky_sheet.answer_2 == 'no' %> disabled>
+                  <label for="answer_2_no">該当なし</label>
                 </div>
               </div>
               <div class="check_content">
                 <div>使用する電動工具、仮設材及び作業足場の点検をしている</div>
                 <div>
-                  <%= f.radio_button :answer_3, 'yes', require: true %>
-                  <%= f.label :answer_3_yes, 'はい' %>
-                  <%= f.radio_button :answer_3, 'no', require: true %>
-                  <%= f.label :answer_3_no, '該当なし' %>
+                  <input type="radio" id="answer_3_yes" <%= 'checked' if @ky_sheet.answer_3 == 'yes' %> disabled>
+                  <label for="answer_3_yes">はい</label>
+                  <input type="radio" id="answer_3_no" <%= 'checked' if @ky_sheet.answer_3 == 'no' %> disabled>
+                  <label for="answer_3_no">該当なし</label>
                 </div>
               </div>
             </div>
@@ -241,28 +240,28 @@
               <div class="check_content">
                 <div>本日の作業に危険作業に該当するものがあるか把握している</div>
                 <div>
-                  <%= f.radio_button :answer_4, 'yes', require: true %>
-                  <%= f.label :answer_4_yes, 'はい' %>
-                  <%= f.radio_button :answer_4, 'no', require: true %>
-                  <%= f.label :answer_4_no, '該当なし' %>
+                  <input type="radio" id="answer_4_yes" <%= 'checked' if @ky_sheet.answer_4 == 'yes' %> disabled>
+                  <label for="answer_4_yes">はい</label>
+                  <input type="radio" id="answer_4_no" <%= 'checked' if @ky_sheet.answer_4 == 'no' %> disabled>
+                  <label for="answer_4_no">該当なし</label>
                 </div>
               </div>
               <div class="check_content">
                 <div>本日の作業計画及び内容を把握している</div>
                 <div>
-                  <%= f.radio_button :answer_5, 'yes', require: true %>
-                  <%= f.label :answer_5_yes, 'はい' %>
-                  <%= f.radio_button :answer_5, 'no', require: true %>
-                  <%= f.label :answer_5_no, '該当なし' %>
+                  <input type="radio" id="answer_5_yes" <%= 'checked' if @ky_sheet.answer_5 == 'yes' %> disabled>
+                  <label for="answer_5_yes">はい</label>
+                  <input type="radio" id="answer_5_no" <%= 'checked' if @ky_sheet.answer_5 == 'no' %> disabled>
+                  <label for="answer_5_no">該当なし</label>
                 </div>
               </div>
               <div class="check_content">
                 <div>体調が平常時と異なる作業員がいないか確認している</div>
                 <div>
-                  <%= f.radio_button :answer_6, 'yes', require: true %>
-                  <%= f.label :answer_6_yes, 'はい' %>
-                  <%= f.radio_button :answer_6, 'no', require: true %>
-                  <%= f.label :answer_6_no, '該当なし' %>
+                  <input type="radio" id="answer_6_yes" <%= 'checked' if @ky_sheet.answer_6 == 'yes' %> disabled>
+                  <label for="answer_6_yes">はい</label>
+                  <input type="radio" id="answer_6_no" <%= 'checked' if @ky_sheet.answer_6 == 'no' %> disabled>
+                  <label for="answer_6_no">該当なし</label>
                 </div>
               </div>
             </div>
@@ -329,7 +328,6 @@
         </div>
       </div>
     </div>
-    <% end %>
   </div>
 
 </body>

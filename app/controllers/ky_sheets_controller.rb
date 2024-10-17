@@ -71,18 +71,32 @@ class KySheetsController < ApplicationController
   end
 
   def save_pdf
-    # # PDFをActiveAtorageに添付（保存）する処理
-    # @ky_sheet.pdf_file.attach(
-    #   io: File.open(pdf_path),
-    #   filename: "ky_sheet_#{@ky_sheet.id}.pdf",
-    #   content_type: 'application/pdf'
-    # )
-    # # 一時ファイルを削除
-    # File.delete(html_path)
-    # File.delete(pdf_path)
+    @project = Project.find(params[:project_id])
+    @ky_sheet = @project.ky_sheets.build(pdf_params)
+    @ky_sheet.user = current_user
+
+    if @ky_sheet.save
+      pdf_path = params[:pdf_path]
+      # html_path = params[:html_path]
+
+      # PDFをActiveAtorageに添付（保存）する処理
+      @ky_sheet.pdf_file.attach(
+        io: File.open(pdf_path),
+        filename: "ky_sheet_#{@ky_sheet.id}.pdf",
+        content_type: 'application/pdf'
+      )
+      # 一時ファイルを削除
+      # File.delete(html_path) if File.exist?(html_path)
+      File.delete(pdf_path) if File.exist?(pdf_path)
+
+      redirect_to @ky_sheet, notice: 'KYシートは正常に保存されました。'
+    else
+      render :new
+    end
+
   end
 
-  def show_pdf
+  def view_pdf
     
   end
   
