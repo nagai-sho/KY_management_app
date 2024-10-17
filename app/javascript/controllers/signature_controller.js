@@ -23,6 +23,7 @@ export default class extends Controller {
   }
 
   setupFormSubmitListener(canvas, signaturePad) {
+    debugger;
     const form = canvas.closest('form');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -31,6 +32,7 @@ export default class extends Controller {
         `signature_${canvas.id}`
       );
       signatureDataInput.value = dataURL;
+      form.target = '_blank';
       form.submit();
     });
   }
