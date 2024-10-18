@@ -6,6 +6,11 @@
   <title>Preview PDF</title>
 </head>
 <body>
+  <%# <div class="preview_pdf">
+    <h1>この画面はPDFのプレビュー表示です。</h1>
+    <h1>確認後、PDF保存ボタンより保存してください。</h1>
+    アラートで表示する？
+  </div> %>
 
   <div class="default_format">
     <div class="title">
@@ -41,7 +46,7 @@
               <div class="header_name">
                 <div class="work_day">作業日</div>
                 <div class="calendar">
-                  <%= '今日（作業日）の日付' %>
+                  <%= '今日（作業日）の日付'@ky_sheet.construction_date %>
                 </div>
               </div>
             </div>
