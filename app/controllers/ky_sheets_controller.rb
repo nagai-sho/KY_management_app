@@ -105,7 +105,7 @@ class KySheetsController < ApplicationController
   def ky_sheet_params
     params.require(:ky_sheet).permit(
       :construction_type_id,
-      :construction_completion,
+      :construction_date,
       :location_id_1,
       :location_id_2,
       :location_id_3,
@@ -178,7 +178,7 @@ class KySheetsController < ApplicationController
   end
 
   def pdf_params
-    params.require(:ky_sheet).permit(:pdf_file).merge(user_id: current_user.id)
+    params.require(:ky_sheet).permit(:pdf_file, :construction_date).merge(user_id: current_user.id)
   end
 
 end
