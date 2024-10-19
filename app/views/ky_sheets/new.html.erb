@@ -4,6 +4,7 @@
     <div class="return"><%= link_to '戻る', site_projects_path(@site) %></div>
   </div>
 
+  <div data-controller="save-and-preview" data-project-id="<%= @project.id %>">
   <%= form_with model: [@project, @ky_sheet],
                 url: project_ky_sheets_path(@project, @ky_sheet),
                 method: :post,
@@ -389,6 +390,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
   <% end %>
