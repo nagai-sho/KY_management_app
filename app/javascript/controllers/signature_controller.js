@@ -26,7 +26,15 @@ export default class extends Controller {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       canvases.forEach((canvas) => this.insertHiddenValue(canvas));
-      this.submit(form);
+      // this.submit(form);
+      // 別のjsファイルにて送信処理を実行
+      const signatureData = Array.from(canvases).map(
+        (canvas) => document.getElementById(`signature_${canvas.id}`).value
+      );
+      const event = new CustomEvent('signatureComplete', {
+        detail: { signatureData: signatureData },
+      });
+      document.dispatchEvent(event);
     });
   }
 
@@ -39,10 +47,10 @@ export default class extends Controller {
     signatureDataInput.value = dataURL;
   }
 
-  submit(form) {
-    form.target = '_blank';
-    form.submit();
-  }
+  // submit(form) {
+  //   form.target = '_blank';
+  //   form.submit();
+  // }
 }
 
 // canvasに記入
