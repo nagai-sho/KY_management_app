@@ -6,23 +6,13 @@
     </div>
   </div>
 
-  <div class="site_index">
-    <div class="title"><%= '〇月〇日' %></div>
-    <div class="title"><%= '実施済みKYシートpdf' %></div>
-    <div class="change">
-      <div class="edit"><%= link_to '見る(PDFのプレビュー画面？)' %></div>
+  <% @blobs.each do |b| %>
+    <div class="site_index">
+      <div class="title"><%= b.filename %></div>
+      <div class="title"><%#= @ky_sheets.construction_date %></div>
+      <div class="change">
+        <div class="edit"><%= link_to '見る', rails_blob_path(b, disposition: "inline") %></div>
+      </div>
     </div>
-  </div>
-  
-  <% @ky_sheets.each do |ky| %>
-  <div class="site_index">
-    <div class="title"><%= ky.pdf %></div>
-    <div class="title"><%= '〇月〇日' %></div>
-    <div class="change">
-      <div class="edit"><%= link_to '見る(PDFのプレビュー画面？)' %></div>
-    </div>
-  </div>
   <% end %>
-
-  
 </div>

@@ -4,10 +4,10 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
   connect() {
     console.log('Hello! save and preview.');
-    this.preview();
+    // this.save_pdf();
   }
 
-  preview() {
+  save_pdf() {
     document.addEventListener('signatureComplete', (e) => {
       debugger;
       const signatureData = e.detail.signatureData;
