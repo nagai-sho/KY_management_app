@@ -27,7 +27,7 @@ class KySheet < ApplicationRecord
 
   # 一時的なデータ処理のための属性
   attr_accessor :construction_type_id,
-                :construction_completion,
+                :construction_date,
                 :location_id_1,
                 :location_id_2,
                 :location_id_3,
