@@ -13,9 +13,8 @@
                 html: { id: 'form' } do |f| %>
   <%= render 'shared/error_messages', model: @ky_sheet %>
   <div class="title">
-    <%= f.submit 'Preview PDF', id: 'preview_form', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet) %>
-    <%= f.submit "Save PDF", id: 'save_form', formaction: project_ky_sheets_path(@project, @ky_sheet) %>
-    <%#= f.submit "Save PDF", project_ky_sheets_path(filename: File.basename(@pdf_path.to_s)), method: :post, class: "save_pdf_button" %>
+    <%#= f.submit 'Preview PDF', id: 'preview_form', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet) %>
+    <%= f.submit "Save PDF", id: 'save_form' %>
   </div>
   <div data-controller="signature">
     <div class="ky">
