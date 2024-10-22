@@ -1,5 +1,5 @@
 class AddSiteIdToProjects < ActiveRecord::Migration[7.0]
   def change
-    add_column :projects, :site_id, :integer
+    add_reference :projects, :site, foreign_key: true
   end
 end

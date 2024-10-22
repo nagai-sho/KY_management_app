@@ -30,5 +30,7 @@ after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
+    execute "sudo systemctl restart nginx"  # Nginx再起動を追加
   end
 end
+
