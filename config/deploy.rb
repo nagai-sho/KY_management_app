@@ -27,12 +27,22 @@ set :keep_releases, 5
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
+# namespace :deploy do
+#   task :restart do
+#     invoke 'unicorn:restart'
+#     on roles(:app) do
+#       execute "sudo systemctl restart nginx" # Nginx再起動を追加
+#     end
+#   end
+# end
+
 namespace :deploy do
   task :restart do
-    invoke 'unicorn:restart'
     on roles(:app) do
-      execute "sudo systemctl restart nginx" # Nginx再起動を追加
+      within current_path do  # これを追加
+        execute :bundle, :exec, :unicorn, "-c #{current_path}/config/unicorn.rb -E production -D"
+        execute "sudo systemctl restart nginx" # Nginx再起動を追加
+      end
     end
   end
 end
-
