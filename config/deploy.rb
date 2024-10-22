@@ -39,10 +39,8 @@ after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
     on roles(:app) do
-      within current_path do  # これを追加
-        execute :bundle, :exec, :unicorn, "-c #{current_path}/config/unicorn.rb -E production -D"
-        execute "sudo systemctl restart nginx" # Nginx再起動を追加
-      end
+      execute "kill -USR2 `cat #{shared_path}/tmp/pids/unicorn.pid`"
+      execute "sudo systemctl restart nginx"
     end
   end
 end
