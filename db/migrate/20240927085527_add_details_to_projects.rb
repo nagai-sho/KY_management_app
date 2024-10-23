@@ -6,6 +6,5 @@ class AddDetailsToProjects < ActiveRecord::Migration[7.0]
     # add_column :projects, :construction_completion, :date
     # add_column :projects, :construction_content,    :text
 
-    # add_reference :projects, :sites, null: false, foreign_key: true
   end
 end
