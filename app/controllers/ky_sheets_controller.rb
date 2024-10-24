@@ -1,10 +1,18 @@
 class KySheetsController < ApplicationController
 
   def index
-    @blobs = ActiveStorage::Blob.all
+    # @blobs = ActiveStorage::Blob.all
     @project = Project.find(params[:project_id])
     @site = @project.site
     @ky_sheets = @project.ky_sheets
+  end
+
+  def destroy
+    @ky_sheet = KySheet.find(params[:id])
+    @project = @ky_sheet.project
+
+    @ky_sheet.destroy
+    redirect_to project_ky_sheets_path(@project), notice: 'PDFが削除されました'
   end
 
   def new
@@ -77,7 +85,7 @@ class KySheetsController < ApplicationController
     @incidence_rate_4 = IncidenceRate.find(@ky_sheet.incidence_rate_id_4)
     @incidence_rate_5 = IncidenceRate.find(@ky_sheet.incidence_rate_id_5)
     
-    if @ky_sheet.valid?
+    if @ky_sheet.save
 
       html_content = render_to_string(template: 'ky_sheets/show', layout: false)
       html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
@@ -89,9 +97,9 @@ class KySheetsController < ApplicationController
 
       # PDFをActiveStorageに添付（保存）する処理
       # ファイルをActiveStorageで管理しつつ、関連するモデルをデータベースに保存せずにファイルだけを扱う
-      blob = ActiveStorage::Blob.create_and_upload!(
+      @ky_sheet.pdf_file.attach(
+      # blob = ActiveStorage::Blob.create_and_upload!(
         io: File.open(pdf_path),
-        # filename: "ky_sheet_#{@ky_sheet.id}.pdf",
         filename: "#{Time.current.to_date}_#{@project.name}.pdf",
         # filename: "kYシート_#{@project.name}_#{Time.current.to_i}.pdf", # 現在のUNIXタイムスタンプ（秒単位の整数）で一意性のファイルを生成
         content_type: 'application/pdf'
@@ -104,10 +112,7 @@ class KySheetsController < ApplicationController
     else
     end
   end
-
-  def view_pdf
-    
-  end
+  
   
   private
   
@@ -133,6 +138,7 @@ class KySheetsController < ApplicationController
       :signature_sig7, :signature_sig8, :signature_sig9, :signature_sig10, :signature_sig11,
       :worker,
       :manager,
+      :pdf_file,
     )
   end
     
@@ -142,8 +148,8 @@ class KySheetsController < ApplicationController
     respond_to do |format|
       format.html do
         html_content = render_to_string(template: 'ky_sheets/show', layout: false)
-        html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
         File.write(html_path, html_content)
+        html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
         
         pdf_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.pdf")
         pdf_service = PdfGeneratorService.new( html_path.to_s, pdf_path.to_s )
