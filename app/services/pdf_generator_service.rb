@@ -15,6 +15,15 @@ class PdfGeneratorService
       path: @output_path,
       format: :A4,
       landscape: true,
+      encoding: 'UTF-8',
+      # ページのサイズをCSSの設定を優先して使用する（@page規則など）
+      preferCSSPageSize: true,
+      # 背景色や背景画像を印刷に含める
+      printBackground: true,
+      # ヘッダーとフッターを非表示にする（ページ番号などが自動で付かなくなる）
+      displayHeaderFooter: false,
+      # 日本語フォントを指定
+      font_family: 'IPAPGothic',
     )
     browser.quit
   end
