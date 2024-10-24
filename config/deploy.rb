@@ -27,20 +27,15 @@ set :keep_releases, 5
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
-# namespace :deploy do
-#   task :restart do
-#     invoke 'unicorn:restart'
-#     on roles(:app) do
-#       execute "sudo systemctl restart nginx" # Nginx再起動を追加
-#     end
-#   end
-# end
-
 namespace :deploy do
   task :restart do
     on roles(:app) do
-      execute "kill -USR2 `cat #{shared_path}/tmp/pids/unicorn.pid`"
-      execute "sudo systemctl restart nginx"
+      if test("[ -f #{shared_path}/tmp/pids/unicorn.pid ]") && test("ps -p $(cat #{shared_path}/tmp/pids/unicorn.pid}) > /dev/null")
+        execute "kill -USR2 `cat #{shared_path}/tmp/pids/unicorn.pid`"
+      else
+        info "Unicorn is not running - skipping restart"
+      end
+      execute "sudo systemctl restart nginx" # Nginx再起動を追加
     end
   end
 end
