@@ -7,6 +7,14 @@ class KySheetsController < ApplicationController
     @ky_sheets = @project.ky_sheets
   end
 
+  def destroy
+    @ky_sheet = KySheet.find(params[:id])
+    @project = @ky_sheet.project
+
+    @ky_sheet.destroy
+    redirect_to project_ky_sheets_path(@project), notice: 'PDFが削除されました'
+  end
+
   def new
     @project = Project.find(params[:project_id])
     @site = @project.site
@@ -105,15 +113,6 @@ class KySheetsController < ApplicationController
     end
   end
   
-  def destroy
-    @project = Project.find(params[:project_id])
-    @site = @project.site
-    @ky_sheets = @project.ky_sheets
-
-    ky_sheet = KySheet.find(params[:id])
-    ky_sheet.destroy
-    redirect_to project_ky_sheets_path(@project), notice: 'PDFが削除されました'
-  end
   
   private
   
