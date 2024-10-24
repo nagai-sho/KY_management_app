@@ -86,22 +86,21 @@ class KySheetsController < ApplicationController
       pdf_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.pdf")
       pdf_service = PdfGeneratorService.new( html_path.to_s, pdf_path.to_s )
       pdf_service.generate_pdf
-      send_file pdf_path, type: 'application/pdf', disposition: 'inline'
 
       # PDFをActiveStorageに添付（保存）する処理
       # ファイルをActiveStorageで管理しつつ、関連するモデルをデータベースに保存せずにファイルだけを扱う
       blob = ActiveStorage::Blob.create_and_upload!(
         io: File.open(pdf_path),
         # filename: "ky_sheet_#{@ky_sheet.id}.pdf",
-        filename: "ky_sheet_#{Time.current.to_i}.pdf", # 現在のUNIXタイムスタンプ（秒単位の整数）で一意性のファイルを生成
+        filename: "#{Time.current.to_date}_#{@project.name}.pdf",
+        # filename: "kYシート_#{@project.name}_#{Time.current.to_i}.pdf", # 現在のUNIXタイムスタンプ（秒単位の整数）で一意性のファイルを生成
         content_type: 'application/pdf'
       )
       # 一時ファイルを削除
       File.delete(html_path) if File.exist?(html_path)
       File.delete(pdf_path) if File.exist?(pdf_path)
 
-      # redirect_to rails_blob_path(blob, disposition: "inline"), notice: 'PDFが生成されました'
-      # redirect_to new_project_ky_sheet_path(@project), notice: 'PDFが生成されました'
+      redirect_to project_ky_sheets_path(@project), notice: 'PDFが生成されました!'
     else
     end
   end
