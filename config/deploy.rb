@@ -35,6 +35,7 @@ namespace :deploy do
       else
         info "Unicorn is not running - skipping restart"
       end
+      invoke 'unicorn:restart'
       execute "sudo systemctl restart nginx" # Nginx再起動を追加
     end
   end
