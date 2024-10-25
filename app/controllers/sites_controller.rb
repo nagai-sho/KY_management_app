@@ -1,6 +1,8 @@
 class SitesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @sites = Site.all
+    @sites = Site.all().order(created_at: :desc)
   end
   def new
     @site = Site.new

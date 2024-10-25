@@ -1,7 +1,9 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_site, only: [:index, :new, :create]
+
   def index
-    @projects = @site.projects
+    @projects = @site.projects().order(created_at: :desc)
   end
 
   def new
