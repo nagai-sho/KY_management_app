@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = @site.projects
   end
+
   def new
     @project = Project.new
   end
@@ -15,6 +16,18 @@ class ProjectsController < ApplicationController
       flash.now[:alert] = '工事件名の作成に失敗しました。'
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+    @site = @project.site
+  end
+  
+  def update
+    project = Project.find(params[:id])
+    @site = project.site
+    project.update(project_params)
+    redirect_to site_projects_path(@site)
   end
 
   def destroy

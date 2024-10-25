@@ -25,7 +25,7 @@
         <div class="project_detail"><%= project.construction_content %></div>
       </div>
       <div class="projects">
-        <a href="#">編集</a>
+        <%= link_to '編集', edit_project_path(project) %>
         <%= link_to '削除', project_path(project),
           data: { turbo_method: :delete }
         %>
