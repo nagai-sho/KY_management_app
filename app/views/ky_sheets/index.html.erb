@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <% @project.ky_sheets.each do |ky_sheet| %>
+  <% @ky_sheets.each do |ky_sheet| %>
     <% if ky_sheet.pdf_file.attached? %>
     <div class="site_index">
       <div class="title"><%= ky_sheet.pdf_file.filename %></div>
