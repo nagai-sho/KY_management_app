@@ -25,12 +25,17 @@
         <div class="project_detail"><%= project.construction_content %></div>
       </div>
       <div class="projects">
-        <%= link_to '編集', edit_project_path(project) %>
-        <%= link_to '削除', project_path(project),
-          data: { turbo_method: :delete }
-        %>
         <%= link_to 'KYシート作成', new_project_ky_sheet_path(project) %>
         <%= link_to '実施済みKYシート一覧', project_ky_sheets_path(project) %>
+        <%= link_to '編集', edit_project_path(project) %>
+        <%= link_to '削除', project_path(project),
+          data: { turbo_method: :delete,
+            turbo_confirm: '
+            作成した全てのKYシートのデータも削除されます。
+
+            本当に削除しますか？'
+          }
+        %>
       </div>
       <div class="form">
       </div>

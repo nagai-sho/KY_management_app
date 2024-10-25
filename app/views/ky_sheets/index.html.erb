@@ -6,11 +6,10 @@
     </div>
   </div>
 
-  <% @project.ky_sheets.each do |ky_sheet| %>
+  <% @ky_sheets.each do |ky_sheet| %>
     <% if ky_sheet.pdf_file.attached? %>
     <div class="site_index">
       <div class="title"><%= ky_sheet.pdf_file.filename %></div>
-      <div class="title"><%#= @ky_sheets.construction_date %></div>
       <div class="change">
         <div class="edit"><%= link_to '見る', rails_blob_path(ky_sheet.pdf_file, disposition: "inline") %></div>
         <div class="edit"><%= link_to '削除する', ky_sheet_path(ky_sheet), data: { turbo_method: :delete, project_id: @project.id } %></div>

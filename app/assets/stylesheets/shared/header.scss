@@ -1,21 +1,126 @@
-* {
-  font-family: YuGothic;
+// Variables
+$color-earth: #766153;
+$color-moss: #8b9d77;
+$color-stone: #8e8e8e;
+$color-sand: #e6d5c0;
+$color-clay: #96786d;
+$color-forest: #4a593d;
+$color-sunset: #cb8e6e;
+$color-cloud: #f4f1ed;
+
+// Mixins
+@mixin button-base {
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-size: 0.9rem;
+
+  &:active {
+    transform: scale(0.97);
+  }
 }
+
 header {
   display: flex;
-  color: blue;
+  color: brown;
+  justify-content: space-between;
   .logo {
-    font-family: '美し行書', cursive;
-    font-size: 30px;
+    display: flex;
+    .logo_image {
+      margin: 20px;
+    }
+    .logo_content {
+      color: $color-earth;
+      .h1 {
+        font-size: 2rem;
+      }
+      .p {
+        font-size: 1rem;
+      }
+    }
   }
+
+  // .list {
+  //   display: flex;
+  //   li {
+  //     list-style-type: none;
+  //     margin: 10px;
+  //     padding: 5px;
+  //     border: 1px solid;
+  //     border-radius: 5px;
+  //   }
+  // }
+
   .list {
     display: flex;
+    align-items: center;
+    text-decoration: none;
+
     li {
+      gap: 1.2rem;
       list-style-type: none;
-      margin: 10px;
-      padding: 5px;
-      border: 1px solid;
-      border-radius: 5px;
+
+      @include button-base;
+      position: relative;
+      overflow: hidden;
+      margin: 20px;
+
+      a {
+        text-decoration: none;
+        color: inherit; // リンクの色を親要素から継承
+      }
+
+      &:first-child {
+        // 工事一覧
+        background-color: $color-clay;
+        color: white;
+
+        &:hover {
+          background-color: darken($color-clay, 8%);
+        }
+      }
+
+      &:nth-child(2) {
+        // 編集する
+        background-color: $color-moss;
+        color: white;
+
+        &:hover {
+          background-color: darken($color-moss, 8%);
+        }
+      }
+
+      &:last-child {
+        // 削除する
+        background-color: $color-sunset;
+        color: white;
+
+        &:hover {
+          background-color: darken($color-sunset, 8%);
+        }
+      }
+
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   width: 100%;
+      //   height: 100%;
+      //   top: 0;
+      //   left: -100%;
+      //   background: linear-gradient(
+      //     120deg,
+      //     transparent,
+      //     rgba(255, 255, 255, 0.2),
+      //     transparent
+      //   );
+      //   transition: 0.5s;
+      // }
+
+      // &:hover::after {
+      //   left: 100%;
+      // }
     }
   }
 }

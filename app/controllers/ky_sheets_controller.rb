@@ -1,10 +1,10 @@
 class KySheetsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    # @blobs = ActiveStorage::Blob.all
     @project = Project.find(params[:project_id])
     @site = @project.site
-    @ky_sheets = @project.ky_sheets
+    @ky_sheets = @project.ky_sheets.with_attached_pdf_file.order(created_at: :desc)
   end
 
   def destroy

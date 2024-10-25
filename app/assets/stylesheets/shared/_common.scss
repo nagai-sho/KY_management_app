@@ -1,0 +1,286 @@
+// Variables
+$color-earth: #766153;
+$color-moss: #8b9d77;
+$color-stone: #8e8e8e;
+$color-sand: #e6d5c0;
+$color-clay: #96786d;
+$color-forest: #4a593d;
+$color-sunset: #cb8e6e;
+$color-cloud: #f4f1ed;
+
+// Mixins
+@mixin button-base {
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-size: 0.9rem;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background-color: rgba($color-cloud, 0.5);
+
+  h3 {
+    font-size: 2rem;
+    color: $color-earth;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, $color-moss, $color-earth);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  }
+}
+
+@keyframes slideIn {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.site_menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  gap: 1.5rem;
+
+  input {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba($color-stone, 0.2);
+    border-radius: 4px;
+    flex-grow: 1;
+    background-color: rgba($color-cloud, 0.8);
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $color-moss;
+      box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+      background-color: white;
+    }
+  }
+
+  .site_search {
+    input[type='submit'] {
+      @include button-base;
+      background-color: $color-moss;
+      color: white;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      &:hover::before {
+        left: 100%;
+      }
+
+      &:hover {
+        background-color: darken($color-moss, 10%);
+      }
+    }
+  }
+
+  .site_create {
+    a {
+      @include button-base;
+      background-color: $color-forest;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(white, 0.5);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        background-color: darken($color-forest, 5%);
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
+
+.site_index {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 15px rgba($color-earth, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background-color: $color-moss;
+    transition: height 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba($color-earth, 0.12);
+
+    &::before {
+      height: 100%;
+    }
+  }
+
+  .title {
+    font-size: 1.2rem;
+    color: $color-earth;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '●';
+      color: $color-moss;
+      margin-right: 0.5rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+  }
+
+  .projects {
+    display: flex;
+    gap: 1.2rem;
+
+    a {
+      @include button-base;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+
+      &:first-child {
+        // 工事一覧
+        background-color: $color-clay;
+        color: white;
+
+        &:hover {
+          background-color: darken($color-clay, 8%);
+        }
+      }
+
+      &:nth-child(2) {
+        // 編集する
+        background-color: $color-moss;
+        color: white;
+
+        &:hover {
+          background-color: darken($color-moss, 8%);
+        }
+      }
+
+      &:last-child {
+        // 削除する
+        background-color: $color-sunset;
+        color: white;
+
+        &:hover {
+          background-color: darken($color-sunset, 8%);
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      &:hover::after {
+        left: 100%;
+      }
+    }
+  }
+}
+
+body {
+  background-color: $color-cloud;
+  color: $color-earth;
+  line-height: 1.6;
+}
+
+// アニメーション
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.site_index {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
+}
