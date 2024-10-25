@@ -15,6 +15,7 @@
       <div class="title">現場名：<%= site.name %></div>
       <div class="projects">
         <%= link_to '工事一覧', site_projects_path(site) %>
+        <%= link_to '編集する', edit_site_path(site) %>
         <%= link_to '削除する', site_path(site),
           data: { turbo_method: :delete,
             turbo_confirm: '
