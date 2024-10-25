@@ -1,5 +1,13 @@
 <header>
-  <div class="logo">KYシート作成アプリ</div>
+  <div class="logo">
+    <div class="logo_image">
+      <%= image_tag("/images/ラマImageNameHere.png", size: "85x85", class: "lama_image") %>
+    </div>
+    <div class="logo_content">
+      <h1>らまたんKY</h1>
+      <p>楽に毎日簡単に。KY(危険予知)管理シート作成アプリ。</p>
+    </div>
+  </div>
   <ul class="list">
     <li><%= link_to '現場一覧', root_path %></li>
     <% if user_signed_in? %>
