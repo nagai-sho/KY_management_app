@@ -24,7 +24,6 @@ $color-cloud: #f4f1ed;
 
 header {
   display: flex;
-  color: brown;
   justify-content: space-between;
   .logo {
     display: flex;
@@ -33,25 +32,18 @@ header {
     }
     .logo_content {
       color: $color-earth;
-      .h1 {
+      h1 {
         font-size: 2rem;
       }
-      .p {
+      p {
         font-size: 1rem;
+        span {
+          font-size: 1.5rem;
+          color: $color-sunset;
+        }
       }
     }
   }
-
-  // .list {
-  //   display: flex;
-  //   li {
-  //     list-style-type: none;
-  //     margin: 10px;
-  //     padding: 5px;
-  //     border: 1px solid;
-  //     border-radius: 5px;
-  //   }
-  // }
 
   .list {
     display: flex;
@@ -73,7 +65,6 @@ header {
       }
 
       &:first-child {
-        // 工事一覧
         background-color: $color-clay;
         color: white;
 
@@ -83,7 +74,6 @@ header {
       }
 
       &:nth-child(2) {
-        // 編集する
         background-color: $color-moss;
         color: white;
 
@@ -93,7 +83,6 @@ header {
       }
 
       &:last-child {
-        // 削除する
         background-color: $color-sunset;
         color: white;
 
@@ -101,26 +90,6 @@ header {
           background-color: darken($color-sunset, 8%);
         }
       }
-
-      // &::after {
-      //   content: '';
-      //   position: absolute;
-      //   width: 100%;
-      //   height: 100%;
-      //   top: 0;
-      //   left: -100%;
-      //   background: linear-gradient(
-      //     120deg,
-      //     transparent,
-      //     rgba(255, 255, 255, 0.2),
-      //     transparent
-      //   );
-      //   transition: 0.5s;
-      // }
-
-      // &:hover::after {
-      //   left: 100%;
-      // }
     }
   }
 }
