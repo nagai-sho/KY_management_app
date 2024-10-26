@@ -22,7 +22,7 @@ $color-cloud: #f4f1ed;
   }
 }
 
-.format {
+.previous_page {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
@@ -34,17 +34,12 @@ $color-cloud: #f4f1ed;
     overflow: hidden;
 
     &:first-child {
-      background-color: $color-earth;
+      background-color: rgb(49, 56, 52);
       color: white;
 
       &:hover {
-        background-color: darken($color-earth, 8%);
+        background-color: darken(rgb(49, 56, 52), 8%);
       }
     }
   }
-}
-
-.title {
-  display: flex;
-  flex-direction: column;
 }
