@@ -22,7 +22,7 @@ $color-cloud: #f4f1ed;
   }
 }
 
-.format {
+.previous_page {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
@@ -34,17 +34,32 @@ $color-cloud: #f4f1ed;
     overflow: hidden;
 
     &:first-child {
-      background-color: $color-earth;
+      background-color: rgb(49, 56, 52);
       color: white;
 
       &:hover {
-        background-color: darken($color-earth, 8%);
+        background-color: darken(rgb(49, 56, 52), 8%);
       }
     }
   }
 }
 
-.title {
+.category {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  color: $color-earth;
+  font-size: 1.3rem;
+  margin-top: 50px;
+}
+
+.category {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
 }

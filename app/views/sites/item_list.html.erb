@@ -1,63 +1,68 @@
 <div class="main">
   <h3><%= @site.name %>　入力項目一覧</h3>
-  <div class="site_menu">
-    <div class="site_create">
-      <%= link_to '戻る', site_projects_path(@site) %>
-    </div>
+  <div class="previous_page">
+    <%= link_to '戻る', site_projects_path(@site) %>
   </div>
   
   <div class="site_index">
     <div class="title">作業場所名称</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_locations_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_locations_path(@site) %>
     </div>
   </div>
   <div class="site_index">
     <div class="title">作業内容　※全ての項目にて使用※</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_construction_contents_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_construction_contents_path(@site) %>
     </div>
   </div>
 
-  <div class="category"><%= @site.name %>におけるKY活動　※特筆注意事項※</div>
+  <div class="category">
+    <div>
+      <%= @site.name %>におけるKY活動
+    </div>
+    <div>
+      ※特筆注意事項※
+    </div>
+  </div>
   <div class="site_index">
     <div class="title">作業に伴うリスク / 危険Point</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_site_risk_predictions_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_site_risk_predictions_path(@site) %>
     </div>
   </div>
   <div class="site_index">
     <div class="title">リスク低減対策</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_site_risk_measures_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_site_risk_measures_path(@site) %>
     </div>
   </div>
 
   <div class="category">安全へのKY活動</div>
   <div class="site_index">
     <div class="title">作業に伴うリスク / 危険Point</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_safety_risk_predictions_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_safety_risk_predictions_path(@site) %>
     </div>
   </div>
   <div class="site_index">
     <div class="title">リスク低減対策</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_safety_risk_measures_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_safety_risk_measures_path(@site) %>
     </div>
   </div>
 
   <div class="category">品質へのKY活動</div>
   <div class="site_index">
     <div class="title">作業に伴うリスク / 危険Point</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_quality_risk_predictions_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_quality_risk_predictions_path(@site) %>
     </div>
   </div>
   <div class="site_index">
     <div class="title">リスク低減対策</div>
-    <div class="change">
-      <div class="edit"><%= link_to '編集する', site_quality_risk_measures_path(@site) %></div>
+    <div class="projects">
+      <%= link_to '編集する', site_quality_risk_measures_path(@site) %>
     </div>
   </div>
 
