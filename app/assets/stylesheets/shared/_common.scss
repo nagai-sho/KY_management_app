@@ -204,7 +204,6 @@ $color-cloud: #f4f1ed;
       overflow: hidden;
 
       &:first-child {
-        // 工事一覧
         background-color: $color-clay;
         color: white;
 
@@ -214,7 +213,6 @@ $color-cloud: #f4f1ed;
       }
 
       &:nth-child(2) {
-        // 編集する
         background-color: $color-moss;
         color: white;
 
@@ -223,8 +221,16 @@ $color-cloud: #f4f1ed;
         }
       }
 
+      &:nth-child(3) {
+        background-color: $color-forest;
+        color: white;
+
+        &:hover {
+          background-color: darken($color-forest, 8%);
+        }
+      }
+
       &:last-child {
-        // 削除する
         background-color: $color-sunset;
         color: white;
 

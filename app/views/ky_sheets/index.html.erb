@@ -10,9 +10,17 @@
     <% if ky_sheet.pdf_file.attached? %>
     <div class="site_index">
       <div class="title"><%= ky_sheet.pdf_file.filename %></div>
-      <div class="change">
-        <div class="edit"><%= link_to '見る', rails_blob_path(ky_sheet.pdf_file, disposition: "inline") %></div>
-        <div class="edit"><%= link_to '削除する', ky_sheet_path(ky_sheet), data: { turbo_method: :delete, project_id: @project.id } %></div>
+      <div class="projects">
+        <%= link_to '見る', rails_blob_path(ky_sheet.pdf_file, disposition: "inline") %>
+        <%= link_to '削除', ky_sheet_path(ky_sheet),
+          data: { turbo_method: :delete,
+            project_id: @project.id,
+            turbo_confirm: '
+            削除したPDFは復旧できません。
+
+            本当に削除しますか？'
+          }
+        %>
       </div>
     </div>
     <% end %>
