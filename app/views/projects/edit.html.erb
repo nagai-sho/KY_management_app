@@ -2,7 +2,7 @@
   <h3>工事内容編集ページ</h3>
   <%= form_with model: [@project], local: true do |f| %>
   <%= render 'shared/error_messages', model: @project %>
-  <div class="site_new">
+  <div class="new_form">
     <%= f.label :name, '工事件名' %>
     <%= f.text_field :name, autofocus: true, placeholder: '※必須' %>
     <%= f.label :client, '受注先' %>
@@ -14,9 +14,11 @@
     <%= f.label :construction_content, '工事内容' %>
     <%= f.text_field :construction_content, placeholder: '' %>
   </div>
-  <div class="button">
+  <div class="create_button">
     <%= f.submit '変更する' %>
   </div>
   <% end %>
-  <div><%= link_to '戻る', site_projects_path(@site), class: 'return' %></div>
+  <div class="previous_page">
+    <%= link_to '戻る', site_projects_path(@site) %>
+  </div>
 </div>
