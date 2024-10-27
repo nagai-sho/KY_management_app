@@ -1,9 +1,7 @@
-<div class="default_format">
-  <div class="title">
-    <h3>KY活動チェックシート</h3>
-    <div class="previous_page">
-      <%= link_to '戻る', site_projects_path(@site) %>
-    </div>
+<div class="main">
+  <h3>KY活動チェックシート</h3>
+  <div class="previous_page">
+    <%= link_to '戻る', site_projects_path(@site) %>
   </div>
 
   <div data-controller="save-and-preview" data-project-id="<%= @project.id %>">
@@ -14,49 +12,21 @@
                 data: { turbo: false },
                 html: { id: 'form' } do |f| %>
   <%= render 'shared/error_messages', model: @ky_sheet %>
-  <div class="title">
-    <%#= f.submit 'Preview PDF', id: 'preview_form', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet) %>
-    <%= f.submit "Save PDF", id: 'save_form', class: "create_button" %>
-  </div>
   <div data-controller="signature">
     <div class="new_form">
-      <div class="top_content">
-        <div class="ky_header">
-          <div class="header_left">
-            <div class="header_name">
-              <div class="site_name">現場名　</div>
-              <%= @ky_sheet.project.site.name %>
-            </div>
-            <div class="header_name">
-              <div class="construction_name">工事件名　</div>
-              <%= @ky_sheet.project.name %>
-            </div>
-          </div>
-          <div class="header_center">
-            <div class="header_name">
-              <div class="company_name">会社名　</div>
-              <%= current_user.company %>
-            </div>
-            <div class="header_name">
-              <div class="construction_type">工事種別　</div>
-              <%= f.collection_select(:construction_type_id, ConstructionType.all, :id, :name, {}, 
-                {class:"construction_type-select"})
-              %>
-            </div>
-          </div>
-          <div class="header_right">
-            <div class="header_name">
-              <div class="work_day">作業日</div>
-              <div class="calendar">
-                <%= f.date_field :construction_date, value: Date.current %>
-                <%#= f.text_field :construction_date, placeholder: '今日（作業日）の日付' %>
-              </div>
-            </div>
-          </div>
+      <h4 class="sub_title">入力フォーム</h4>
+      <div class="form_block">
+        <%= f.label :construction_type_id, '工事種別' %><br>
+        <%= f.collection_select(:construction_type_id, ConstructionType.all, :id, :name, {}, 
+          {class:"construction_type-select"})
+        %>
+        <div class="work_day">
+          <%= f.label :construction_date, '作業日' %><br>
+          <%= f.date_field :construction_date, value: Date.current %>
         </div>
       </div>
 
-      <div class="column">
+      <%# <div class="form_block">
         <div class="column_list">主な作業場所</div>
         <div class="column_list">作業内容</div>
         <div class="column_list">作業に伴うリスク / 危険Point</div>
@@ -70,198 +40,186 @@
         <div id="", class="column_list">リスクレベル</div>
         <div class="column_list">リスク低減対策</div>
         <div class="column_list">管理者確認サイン</div>
+      </div> %>
+
+      <h4 class="sub_title">安全へのKY活動 .1</h4>
+      <div class="form_block">
+        <%= f.label :location_id_1, '主な作業場所' %><br>
+        <%= f.collection_select :location_id_1, @locations, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :construction_content_id_1, '作業内容' %><br>
+        <%= f.collection_select :construction_content_id_1, @construction_contents, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :safety_risk_prediction_id_1, '作業に伴うリスク / 危険Point' %><br>
+        <%= f.collection_select :safety_risk_prediction_id_1, @safety_risk_predictions, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <div class="risk_assessment">リスク評価
+          <div class="risk_rate">
+            <%= f.label :risk_level_id_1, '危険度' %><br>
+            <%= f.collection_select(
+              :risk_level_id_1, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+            %>
+            <%= f.label :incidence_rate_id_1, '発生率' %><br>
+            <%= f.collection_select(
+              :incidence_rate_id_1, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+            %>
+            <label>リスクレベル</label><br>
+            <span class="assessment" id="risk1">---<span>
+          </div>
+        </div>
+        <%= f.label :safety_risk_measure_id_1, 'リスク低減対策' %><br>
+        <%= f.collection_select :safety_risk_measure_id_1, @safety_risk_measures, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :signature_sig1, '管理者確認サイン' %><br>
+        <canvas class="signature-pad" id="sig1" width="320" height="150"></canvas>
+        <%= f.hidden_field :signature_sig1, id: 'signature_sig1' %>
       </div>
 
-      <div class="input_area">
-        <div class="safety_measure">
-          <div class="sub_title">安全へのKY活動</div>
-          <div class="risk_content">
-            <div class="location">
-              <%= f.collection_select :location_id_1, @locations, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="action_content">
-              <%= f.collection_select :construction_content_id_1, @construction_contents, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_prediction">
-              <%= f.collection_select :safety_risk_prediction_id_1, @safety_risk_predictions, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_rate">
-              <%= f.collection_select(
-                :risk_level_id_1, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-              %>
-              <%= f.collection_select(
-                :incidence_rate_id_1, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-              %>
-            </div>
-            <div class="risk_rate">
-              <span class="assessment" id="risk1">---<span>
-            </div>
-            <div class="risk_measure">
-              <%= f.collection_select :safety_risk_measure_id_1, @safety_risk_measures, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="director_sign">
-              <canvas class="signature-pad" id="sig1" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature_sig1, id: 'signature_sig1' %>
-            </div>
-          </div>
-          
-          <div class="risk_content">
-            <div class="location">
-              <%= f.collection_select :location_id_2, @locations, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="action_content">
-              <%= f.collection_select :construction_content_id_2, @construction_contents, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_prediction">
-              <%= f.collection_select :safety_risk_prediction_id_2, @safety_risk_predictions, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_rate">
-              <%= f.collection_select(
-                :risk_level_id_2, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-              %>
-              <%= f.collection_select(
-                :incidence_rate_id_2, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-              %>
-            </div>
-            <div class="risk_rate">
-              <span class="assessment" id="risk2">---<span>
-            </div>
-            <div class="risk_measure">
-              <%= f.collection_select :safety_risk_measure_id_2, @safety_risk_measures, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="director_sign">
-              <canvas class="signature-pad" id="sig2" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature_sig2, id: 'signature_sig2' %>
-            </div>
+      <h4 class="sub_title">安全へのKY活動 .2</h4>
+      <div class="form_block">
+        <%= f.label :location_id_2, '主な作業場所' %><br>
+        <%= f.collection_select :location_id_2, @locations, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :construction_content_id_2, '作業内容' %><br>
+        <%= f.collection_select :construction_content_id_2, @construction_contents, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :safety_risk_prediction_id_2, '作業に伴うリスク / 危険Point' %><br>
+        <%= f.collection_select :safety_risk_prediction_id_2, @safety_risk_predictions, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <div class="risk_assessment">リスク評価
+          <div class="risk_rate">
+            <%= f.label :risk_level_id_2, '危険度' %><br>
+            <%= f.collection_select(
+              :risk_level_id_2, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+            %>
+            <%= f.label :incidence_rate_id_2, '発生率' %><br>
+            <%= f.collection_select(
+              :incidence_rate_id_2, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+            %>
+            <label>リスクレベル</label><br>
+            <span class="assessment" id="risk2">---<span>
           </div>
         </div>
+        <%= f.label :safety_risk_measure_id_2, 'リスク低減対策' %><br>
+        <%= f.collection_select :safety_risk_measure_id_2, @safety_risk_measures, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :signature_sig2, '管理者確認サイン' %><br>
+        <canvas class="signature-pad" id="sig2" width="320" height="150"></canvas>
+        <%= f.hidden_field :signature_sig2, id: 'signature_sig2' %>
+      </div>
 
-        <div class="quality_measure">
-          <div class="sub_title">品質へのKY活動</div>
-          <div class="risk_content">
-            <div class="location">
-              <%= f.collection_select :location_id_3, @locations, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="action_content">
-              <%= f.collection_select :construction_content_id_3, @construction_contents, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_prediction">
-              <%= f.collection_select :quality_risk_prediction_id, @quality_risk_predictions, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_rate">
-              <%= f.collection_select(
-                :risk_level_id_3, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-              %>
-              <%= f.collection_select(
-                :incidence_rate_id_3, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-              %>
-            </div>
-            <div class="risk_rate">
-              <span class="assessment" id="risk3">---<span>
-            </div>
-            <div class="risk_measure">
-              <%= f.collection_select :quality_risk_measure_id, @quality_risk_measures, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="director_sign">
-              <canvas class="signature-pad" id="sig3" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature_sig3, id: 'signature_sig3' %>
-            </div>
-          </div>
-        </div>
 
-        <div class="the_site_measure">
-          <div class="sub_title">当該現場で特筆すべきKY活動</div>
-          <div class="risk_content">
-            <div class="location">
-              <%= f.collection_select :location_id_4, @locations, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="action_content">
-              <%= f.collection_select :construction_content_id_4, @construction_contents, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_prediction">
-              <%= f.collection_select :site_risk_prediction_id, @site_risk_predictions, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="risk_rate">
-              <%= f.collection_select(
-                :risk_level_id_4, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-              %>
-              <%= f.collection_select(
-                :incidence_rate_id_4, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-              %>
-            </div>
-            <div class="risk_rate">
-              <span class="assessment" id="risk4">---<span>
-            </div>
-            <div class="risk_measure">
-              <%= f.collection_select :site_risk_measure_id, @site_risk_measures, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <div class="director_sign">
-              <canvas class="signature-pad" id="sig4" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature_sig4, id: 'signature_sig4' %>
-            </div>
+      <h4 class="sub_title">品質へのKY活動</h4>
+      <div class="form_block">
+        <%= f.label :location_id_3, '主な作業場所' %><br>
+        <%= f.collection_select :location_id_3, @locations, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :construction_content_id_3, '作業内容' %><br>
+        <%= f.collection_select :construction_content_id_3, @construction_contents, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :quality_risk_prediction_id, '作業に伴うリスク / 危険Point' %><br>
+        <%= f.collection_select :quality_risk_prediction_id, @quality_risk_predictions, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <div class="risk_assessment">リスク評価
+          <div class="risk_rate">
+            <%= f.label :risk_level_id_3, '危険度' %><br>
+            <%= f.collection_select(
+              :risk_level_id_3, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+            %>
+            <%= f.label :incidence_rate_id_3, '発生率' %><br>
+            <%= f.collection_select(
+              :incidence_rate_id_3, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+            %>
           </div>
+          <label>リスクレベル</label><br>
+          <span class="assessment" id="risk3">---<span>
         </div>
+        <%= f.label :quality_risk_measure_id, 'リスク低減対策' %><br>
+        <%= f.collection_select :quality_risk_measure_id, @quality_risk_measures, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :signature_sig3, '管理者確認サイン' %><br>
+        <canvas class="signature-pad" id="sig3" width="320" height="150"></canvas>
+        <%= f.hidden_field :signature_sig3, id: 'signature_sig3' %>
+      </div>
 
-        <div class="priority_measure">
-          <div class="sub_title">本日のKY重点対策目標</div>
-          <div class="risk_content">
-            <div class="location">
-              <%= f.collection_select :location_id_5, @locations, :id, :content,
-                { prompt: "選択してください" }, {class: "form-control" }
-              %>
-            </div>
-            <%= f.text_area :priority_content, placeholder: '作業内容を記述してください', class: 'action_content' %>
-            <%= f.text_area :priority_measure_risk, placeholder: '作業におけるリスクを記述してください', class: 'risk_prediction' %>
-            <div class="risk_rate">
-              <%= f.collection_select(
-                :risk_level_id_5, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-              %>
-              <%= f.collection_select(
-                :incidence_rate_id_5, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-              %>
-            </div>
-            <div class="risk_rate">
-              <span class="assessment" id="risk5">---<span>
-            </div>
-            <%= f.text_area :priority_measure, placeholder: 'リスクにおける対策を記述してください', class: 'risk_measure' %>
-            <div class="director_sign">
-              <canvas class="signature-pad" id="sig5" width="100" height="45"></canvas>
-              <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>
-            </div>
+      <h4 class="sub_title">当該現場で特筆すべきKY活動</h4>
+      <div class="form_block">
+        <%= f.label :location_id_4, '主な作業場所' %><br>
+        <%= f.collection_select :location_id_4, @locations, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :construction_content_id_4, '作業内容' %><br>
+        <%= f.collection_select :construction_content_id_4, @construction_contents, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :site_risk_prediction_id, '作業に伴うリスク / 危険Point' %><br>
+        <%= f.collection_select :site_risk_prediction_id, @site_risk_predictions, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <div class="risk_assessment">リスク評価
+          <div class="risk_rate">
+            <%= f.label :risk_level_id_4, '危険度' %><br>
+            <%= f.collection_select(
+              :risk_level_id_4, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+            %>
+            <%= f.label :incidence_rate_id_4, '発生率' %><br>
+            <%= f.collection_select(
+              :incidence_rate_id_4, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+            %>
+            <label>リスクレベル</label><br>
+            <span class="assessment" id="risk4">---<span>
           </div>
         </div>
+        <%= f.label :site_risk_measure_id, 'リスク低減対策' %><br>
+        <%= f.collection_select :site_risk_measure_id, @site_risk_measures, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :signature_sig4, '管理者確認サイン' %><br>
+        <canvas class="signature-pad" id="sig4" width="320" height="150"></canvas>
+        <%= f.hidden_field :signature_sig4, id: 'signature_sig4' %>
+      </div>
+
+      <h4 class="sub_title">本日のKY重点対策目標</h4>
+      <div class="form_block">
+        <%= f.label :location_id_5, '主な作業場所' %><br>
+        <%= f.collection_select :location_id_5, @locations, :id, :content,
+          { prompt: "選択してください" }, {class: "form-control" }
+        %>
+        <%= f.label :priority_content, '作業内容' %><br>
+        <%= f.text_area :priority_content, placeholder: '作業内容を記述してください' %>
+        <%= f.label :priority_measure_risk, '作業に伴うリスク / 危険Point' %><br>
+        <%= f.text_area :priority_measure_risk, placeholder: '作業におけるリスクを記述してください' %>
+        <div class="risk_assessment">リスク評価
+          <div class="risk_rate">
+            <%= f.label :risk_level_id_5, '危険度' %><br>
+            <%= f.collection_select(
+              :risk_level_id_5, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+            %>
+            <%= f.label :incidence_rate_id_5, '発生率' %><br>
+            <%= f.collection_select(
+              :incidence_rate_id_5, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+            %>
+            <label>リスクレベル</label><br>
+            <span class="assessment" id="risk5">---<span>
+          </div>
+        </div>
+        <%= f.label :priority_measure, 'リスク低減対策' %><br>
+        <%= f.text_area :priority_measure, placeholder: 'リスクにおける対策を記述してください' %>
+        <%= f.label :signature_sig5, '管理者確認サイン' %><br>
+        <canvas class="signature-pad" id="sig5" width="320" height="150"></canvas>
+        <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>
       </div>
 
       <div class="check_area">
@@ -393,6 +351,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="create_button">
+    <%#= f.submit 'Preview PDF', id: 'preview_form', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet) %>
+    <%= f.submit "Save PDF", id: 'save_form' %>
   </div>
   <% end %>
 </div>

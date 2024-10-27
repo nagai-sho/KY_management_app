@@ -1,163 +1,202 @@
-// .default_format {
-// }
-.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  .return {
-    font-size: 20px;
+// Variables
+$color-earth: #766153;
+$color-moss: #8b9d77;
+$color-stone: #8e8e8e;
+$color-sand: #e6d5c0;
+$color-clay: #96786d;
+$color-forest: #4a593d;
+$color-sunset: #cb8e6e;
+$color-cloud: #f4f1ed;
+
+// Mixins
+@mixin button-base {
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-size: 0.9rem;
+
+  &:active {
+    transform: scale(0.97);
   }
 }
 
-.ky {
-  border: 1px solid;
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background-color: rgba($color-cloud, 0.5);
+
+  h3 {
+    font-size: 2rem;
+    color: $color-earth;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, $color-moss, $color-earth);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  }
+}
+
+@keyframes slideIn {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+// new.html.erb用
+
+.new_form {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 2.5rem;
 
-  .ky_header {
-    display: flex;
-    justify-content: space-around;
-    .header_left {
-      .header_name {
-        display: flex;
-      }
+  .risk_assessment {
+    margin-top: 20px;
+    // display: flex;
+    // justify-content: space-around;
+  }
+
+  label {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  label:first-of-type {
+    margin-top: 20px;
+  }
+
+  input {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba($color-stone, 0.2);
+    border-radius: 4px;
+    flex-grow: 1;
+    background-color: rgba($color-cloud, 0.8);
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $color-moss;
+      box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+      background-color: white;
     }
-    .header_center {
-      .header_name {
-        display: flex;
-      }
-    }
-    .header_right {
-      display: flex;
-      .header_name {
-        display: flex;
+  }
+}
+
+.previous_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 40px;
+
+  a {
+    @include button-base;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    &:first-child {
+      background-color: rgb(49, 56, 52);
+      color: white;
+
+      &:hover {
+        background-color: darken(rgb(49, 56, 52), 8%);
       }
     }
   }
+}
 
-  .column {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 2px solid;
-    .risk_evaluation {
-      display: flex;
-      flex-direction: column;
-      .risk_degree {
-        display: flex;
-        .rate {
-          margin: 0 5px;
-        }
-      }
+.create_button {
+  text-align: center;
+  margin-bottom: 30px;
+  input[type='submit'] {
+    @include button-base;
+    background-color: $color-moss;
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+
+    &:hover {
+      background-color: darken($color-moss, 10%);
     }
   }
+}
 
-  .input_area {
-    // border: 2px solid;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    .risk_content {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      text-align: center;
-      border: 2px solid;
-      width: calc(100vw - 20px);
-      height: 50px;
-      margin-bottom: 2px;
-      .location {
-        padding: 0 10px;
-      }
-      .action_content {
-        padding: 0 10px;
-      }
-      .risk_prediction {
-        padding: 0 10px;
-      }
-      .risk_measure {
-        padding: 0 10px;
-      }
-      .risk_rate {
-        padding: 0 10px;
-      }
+.form_block {
+  border: 1px solid $color-cloud;
+  border-radius: 5px;
+  margin: 20px;
+  background-color: $color-cloud;
+  select {
+    width: 100%;
+  }
+}
+
+// アニメーション
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form_block {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
     }
   }
+}
 
-  .check_area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    .check_content_all {
-      display: flex;
-      justify-content: space-between;
-      .check_content_reft {
-        padding: 0 10px;
-        display: inline-block;
-        .check_content {
-          display: flex;
-          justify-content: space-between;
-          form {
-            padding-left: 50px;
-          }
-        }
-      }
-      .check_content_right {
-        padding: 0 10px;
-        display: inline-block;
-        .check_content {
-          display: flex;
-          justify-content: space-between;
-          form {
-            padding-left: 50px;
-          }
-        }
-      }
-    }
-  }
+h4 {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
 
-  .ky_footer {
-    text-align: center;
-    display: flex;
-    border: 2px solid;
-    .sign_area {
-      width: calc(100vw - 20px - 500px);
-      display: flex;
-      flex-direction: column;
-      border: 2px solid;
-      .footer_title {
-        border: 2px solid;
-      }
-    }
-    .personnel_area {
-      text-align: center;
-      border: 2px solid;
-      width: calc(100vw - 20px - 800px);
-      .personnel {
-        height: 105px;
-        border: 2px solid;
-        display: flex;
-        justify-content: space-around;
-      }
-    }
-    .manager_sign_area {
-      text-align: center;
-      border: 2px solid;
-      width: calc(100vw - 20px - 800px);
-      .confirmed_area {
-        display: flex;
-        border: 2px solid;
-        .confirmed {
-          height: 100px;
-          border: 2px solid;
-          display: flex;
-          flex-direction: column;
-        }
-      }
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
     }
   }
 }
