@@ -2,24 +2,23 @@
   <h3>安全面へのリスク低減対策</h3>
   <div class="site_menu">
     <%= form_with model: [@site, @safety_risk_measure], local: false do |f| %>
-      <div id="error_messages">
-        <%= render'shared/error_messages', model: @safety_risk_measure %>
+      <div>
+        <%= f.label :content, 'リスク低減対策を入力する' %><br>
+        <%= f.text_area :content, autofocus: true, class: "item_input" %>
       </div>
-      <%= f.label :content, 'リスク低減対策を入力する' %><br>
-      <%= f.text_area :content, autofocus: true %>
       <div class="site_search">
         <%= f.submit '作成する' %>
       </div>
     <% end %>
   </div>
-  <div class="site_create">
+  <div class="previous_page">
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
 
   <% @safety_risk_measures.each do |safety_risk_measure| %>
   <div class="site_index">
     <div class="title"><%= safety_risk_measure.content %></div>
-    <div class="change">
+    <div class="projects">
       <%= link_to '削除', safety_risk_measure_path(safety_risk_measure),
         data: { turbo_method: :delete }
       %>

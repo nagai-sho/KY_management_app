@@ -8,12 +8,15 @@
     gap: 10px;
   }
 
-  input[type='text'] {
+  .item_input {
     padding: 0.8rem 1.2rem;
     border: 2px solid rgba($color-stone, 0.2);
     border-radius: 4px;
     background-color: rgba($color-cloud, 0.8);
     transition: all 0.3s ease;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
 
     &:focus {
       outline: none;
