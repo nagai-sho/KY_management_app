@@ -22,28 +22,6 @@ $color-cloud: #f4f1ed;
   }
 }
 
-.previous_page {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-
-  a {
-    @include button-base;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-
-    &:first-child {
-      background-color: rgb(49, 56, 52);
-      color: white;
-
-      &:hover {
-        background-color: darken(rgb(49, 56, 52), 8%);
-      }
-    }
-  }
-}
-
 .category {
   display: flex;
   flex-direction: column;

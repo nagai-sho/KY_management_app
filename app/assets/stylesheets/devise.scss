@@ -1,92 +1,92 @@
-.devise-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// .devise-form {
+//   max-width: 400px;
+//   margin: 0 auto;
+//   padding: 20px;
+//   background-color: #f8f8f8;
+//   border-radius: 8px;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
+//   h2 {
+//     text-align: center;
+//     color: #333;
+//     margin-bottom: 20px;
+//   }
 
-  .form-field {
-    margin-bottom: 15px;
+//   .form-field {
+//     margin-bottom: 15px;
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      color: #555;
-    }
+//     label {
+//       display: block;
+//       margin-bottom: 5px;
+//       color: #555;
+//     }
 
-    .form-input {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 16px;
+//     .form-input {
+//       width: 100%;
+//       padding: 8px;
+//       border: 1px solid #ddd;
+//       border-radius: 4px;
+//       font-size: 16px;
 
-      &:focus {
-        outline: none;
-        border-color: #007bff;
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-      }
-    }
+//       &:focus {
+//         outline: none;
+//         border-color: #007bff;
+//         box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+//       }
+//     }
 
-    em {
-      font-size: 12px;
-      color: #666;
-    }
-  }
+//     em {
+//       font-size: 12px;
+//       color: #666;
+//     }
+//   }
 
-  .form-actions {
-    text-align: center;
-    margin-top: 20px;
+//   .form-actions {
+//     text-align: center;
+//     margin-top: 20px;
 
-    .submit-button {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+//     .submit-button {
+//       background-color: #007bff;
+//       color: white;
+//       padding: 10px 20px;
+//       border: none;
+//       border-radius: 4px;
+//       font-size: 16px;
+//       cursor: pointer;
+//       transition: background-color 0.3s;
 
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
+//       &:hover {
+//         background-color: #0056b3;
+//       }
+//     }
+//   }
 
-  // チェックボックスのスタイル（ログインフォームの「ログイン状態を保持する」用）
-  .remember-me {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+//   // チェックボックスのスタイル（ログインフォームの「ログイン状態を保持する」用）
+//   .remember-me {
+//     display: flex;
+//     align-items: center;
+//     margin-bottom: 15px;
 
-    input[type='checkbox'] {
-      margin-right: 5px;
-    }
+//     input[type='checkbox'] {
+//       margin-right: 5px;
+//     }
 
-    label {
-      display: inline;
-      margin-bottom: 0;
-    }
-  }
-}
+//     label {
+//       display: inline;
+//       margin-bottom: 0;
+//     }
+//   }
+// }
 
-// 個別のフォームに特有のスタイルが必要な場合、ここに追加
-.signup-form {
-  // 新規登録フォーム固有のスタイル
-}
+// // 個別のフォームに特有のスタイルが必要な場合、ここに追加
+// .signup-form {
+//   // 新規登録フォーム固有のスタイル
+// }
 
-.login-form {
-  // ログインフォーム固有のスタイル
-}
+// .login-form {
+//   // ログインフォーム固有のスタイル
+// }
 
-.password-reset-form {
-  // パスワードリセットフォーム固有のスタイル
-}
+// .password-reset-form {
+//   // パスワードリセットフォーム固有のスタイル
+// }

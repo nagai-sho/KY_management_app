@@ -262,6 +262,28 @@ $color-cloud: #f4f1ed;
   }
 }
 
+// .create_button {
+//   display: flex;
+//   justify-content: center;
+//   margin-bottom: 40px;
+
+//   a {
+//     @include button-base;
+//     text-decoration: none;
+//     position: relative;
+//     overflow: hidden;
+
+//     &:first-child {
+//       background-color: $color-moss;
+//       color: white;
+
+//       &:hover {
+//         background-color: darken($color-moss, 8%);
+//       }
+//     }
+//   }
+// }
+
 body {
   background-color: $color-cloud;
   color: $color-earth;
@@ -287,6 +309,101 @@ body {
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
       animation-delay: $i * 0.1s;
+    }
+  }
+}
+
+// new.html.erb用
+
+.new_form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 2.5rem;
+
+  label {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  label:first-of-type {
+    margin-top: 20px;
+  }
+
+  input {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba($color-stone, 0.2);
+    border-radius: 4px;
+    flex-grow: 1;
+    background-color: rgba($color-cloud, 0.8);
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $color-moss;
+      box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+      background-color: white;
+    }
+  }
+}
+
+.previous_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 40px;
+
+  a {
+    @include button-base;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    &:first-child {
+      background-color: rgb(49, 56, 52);
+      color: white;
+
+      &:hover {
+        background-color: darken(rgb(49, 56, 52), 8%);
+      }
+    }
+  }
+}
+
+.create_button {
+  text-align: center;
+  margin-bottom: 30px;
+  input[type='submit'] {
+    @include button-base;
+    background-color: $color-moss;
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+
+    &:hover {
+      background-color: darken($color-moss, 10%);
     }
   }
 }

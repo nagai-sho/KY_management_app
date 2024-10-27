@@ -1,7 +1,9 @@
 <div class="default_format">
   <div class="title">
     <h3>KY活動チェックシート</h3>
-    <div class="return"><%= link_to '戻る', site_projects_path(@site) %></div>
+    <div class="previous_page">
+      <%= link_to '戻る', site_projects_path(@site) %>
+    </div>
   </div>
 
   <div data-controller="save-and-preview" data-project-id="<%= @project.id %>">
@@ -14,10 +16,10 @@
   <%= render 'shared/error_messages', model: @ky_sheet %>
   <div class="title">
     <%#= f.submit 'Preview PDF', id: 'preview_form', formaction: project_ky_sheets_preview_pdf_path(@project, @ky_sheet) %>
-    <%= f.submit "Save PDF", id: 'save_form' %>
+    <%= f.submit "Save PDF", id: 'save_form', class: "create_button" %>
   </div>
   <div data-controller="signature">
-    <div class="ky">
+    <div class="new_form">
       <div class="top_content">
         <div class="ky_header">
           <div class="header_left">
@@ -390,7 +392,6 @@
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
   <% end %>

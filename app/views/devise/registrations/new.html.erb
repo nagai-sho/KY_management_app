@@ -1,55 +1,63 @@
-<h2>新規登録</h2>
+<div class="main">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "devise-form signup-form" }) do |f| %>
+  <h3>新規登録</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "devise-form signup-form" }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="new_form">
 
-  <div class="form-field">
-    <%= f.label :email, 'メールアドレス' %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", placeholder: '※必須' %>
+    <div class="form-field">
+      <%= f.label :email, 'メールアドレス' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", placeholder: '※必須' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :password, 'パスワード' %>
+      <% if @minimum_password_length %>
+      <em>（<%= @minimum_password_length %> 文字以上）</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-input", placeholder: '※必須' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :password_confirmation, 'パスワード（確認）' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input", placeholder: '※必須' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :company, '会社名' %><br />
+      <%= f.text_field :company, autofocus: true, autocomplete: "organization", class: "form-input", placeholder: '※必須' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :name, '名前(フルネーム)' %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-input", placeholder: '※必須' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :name_kana, '名前(フリガナ)' %><br />
+      <%= f.text_field :name_kana, autofocus: true, autocomplete: "name", class: "form-input", placeholder: '※必須' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :phone_number, '電話番号' %><br />
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "on", class: "form-input", placeholder: '※必須' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :position, '役職' %><br />
+      <%= f.text_field :position, autofocus: true, autocomplete: "on", class: "form-input", placeholder: '' %>
+    </div>
+
   </div>
 
-  <div class="form-field">
-    <%= f.label :password, 'パスワード' %>
-    <% if @minimum_password_length %>
-    <em>（<%= @minimum_password_length %> 文字以上）</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-input", placeholder: '※必須' %>
+  <div class="create_button">
+    <%= f.submit "新規登録", class: "submit-button" %>
   </div>
+  <% end %>
 
-  <div class="form-field">
-    <%= f.label :password_confirmation, 'パスワード（確認）' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input", placeholder: '※必須' %>
+  <div class="previous_page">
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="form-field">
-    <%= f.label :company, '会社名' %><br />
-    <%= f.text_field :company, autofocus: true, autocomplete: "organization", class: "form-input", placeholder: '※必須' %>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :name, '名前(フルネーム)' %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-input", placeholder: '※必須' %>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :name_kana, '名前(フリガナ)' %><br />
-    <%= f.text_field :name_kana, autofocus: true, autocomplete: "name", class: "form-input", placeholder: '※必須' %>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :phone_number, '電話番号' %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "on", class: "form-input", placeholder: '※必須　入力例：000-1234-5678' %>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :position, '役職' %><br />
-    <%= f.text_field :position, autofocus: true, autocomplete: "on", class: "form-input", placeholder: '' %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit "登録する", class: "submit-button" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
