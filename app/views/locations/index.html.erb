@@ -4,14 +4,13 @@
     <%= form_with model: [@site, @location], local: false do |f| %>
       <div>
         <%= f.label :content, '作業場所を入力する' %><br>
-        <%= f.text_field :content, autofocus: true %>
+        <%= f.text_field :content, autofocus: true, class: "item_input" %>
       </div>
       <div class="site_search">
         <%= f.submit '作成する' %>
       </div>
     <% end %>
   </div>
-  
   <div class="previous_page">
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
