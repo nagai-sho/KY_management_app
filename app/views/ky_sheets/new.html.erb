@@ -58,9 +58,6 @@
         <%= f.collection_select :safety_risk_measure_id_1, @safety_risk_measures, :id, :content,
           { prompt: "選択してください" }, {class: "form-control" }
         %>
-        <%= f.label :signature_sig1, '管理者確認サイン' %><br>
-        <canvas class="signature-pad" id="sig1"></canvas>
-        <%= f.hidden_field :signature_sig1, id: 'signature_sig1' %>
       </div>
 
       <h4 class="sub_title">安全へのKY活動 .2</h4>
@@ -95,9 +92,6 @@
         <%= f.collection_select :safety_risk_measure_id_2, @safety_risk_measures, :id, :content,
           { prompt: "選択してください" }, {class: "form-control" }
         %>
-        <%= f.label :signature_sig2, '管理者確認サイン' %><br>
-        <canvas class="signature-pad" id="sig2"></canvas>
-        <%= f.hidden_field :signature_sig2, id: 'signature_sig2' %>
       </div>
 
 
@@ -133,9 +127,6 @@
         <%= f.collection_select :quality_risk_measure_id, @quality_risk_measures, :id, :content,
           { prompt: "選択してください" }, {class: "form-control" }
         %>
-        <%= f.label :signature_sig3, '管理者確認サイン' %><br>
-        <canvas class="signature-pad" id="sig3"></canvas>
-        <%= f.hidden_field :signature_sig3, id: 'signature_sig3' %>
       </div>
 
       <h4 class="sub_title">当該現場で特筆すべきKY活動</h4>
@@ -170,9 +161,6 @@
         <%= f.collection_select :site_risk_measure_id, @site_risk_measures, :id, :content,
           { prompt: "選択してください" }, {class: "form-control" }
         %>
-        <%= f.label :signature_sig4, '管理者確認サイン' %><br>
-        <canvas class="signature-pad" id="sig4"></canvas>
-        <%= f.hidden_field :signature_sig4, id: 'signature_sig4' %>
       </div>
 
       <h4 class="sub_title">本日のKY重点対策目標</h4>
@@ -207,9 +195,6 @@
         <%= f.text_area :priority_measure,
           placeholder: 'リスクにおける対策を記述してください'
         %>
-        <%= f.label :signature_sig5, '管理者確認サイン' %><br>
-        <canvas class="signature-pad" id="sig5"></canvas>
-        <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>
       </div>
 
       <h4 class="sub_title">作業前チェック項目</h4>
@@ -276,25 +261,46 @@
         </div>
       </div>
 
-      <h4 class="sub_title">管理者サイン</h4>
+      <h4 class="sub_title">管理者サインフォーム</h4>
       <div class="form_block">
-        <%= f.label :signature_sig7, 'サイン .1' %><br>
+        <%= f.label :signature_sig1, '安全へのKY活動 .1　確認サイン' %><br>
+        <canvas class="signature-pad" id="sig1"></canvas>
+        <%= f.hidden_field :signature_sig1, id: 'signature_sig1' %>
+
+        <%= f.label :signature_sig2, '安全へのKY活動 .2　確認サイン' %><br>
+        <canvas class="signature-pad" id="sig2"></canvas>
+        <%= f.hidden_field :signature_sig2, id: 'signature_sig2' %>
+
+        <%= f.label :signature_sig3, '品質へのKY活動　確認サイン' %><br>
+        <canvas class="signature-pad" id="sig3"></canvas>
+        <%= f.hidden_field :signature_sig3, id: 'signature_sig3' %>
+
+        <%= f.label :signature_sig4, '特筆KY活動　確認サイン' %><br>
+        <canvas class="signature-pad" id="sig4"></canvas>
+        <%= f.hidden_field :signature_sig4, id: 'signature_sig4' %>
+
+        <%= f.label :signature_sig5, '本日のKY重点対策目標　確認サイン' %><br>
+        <canvas class="signature-pad" id="sig5"></canvas>
+        <%= f.hidden_field :signature_sig5, id: 'signature_sig5' %>
+
+
+        <%= f.label :signature_sig7, '上長他　サイン .1' %><br>
         <canvas class="signature-pad" id="sig7"></canvas>
         <%= f.hidden_field :signature_sig7, id: 'signature_sig7' %>
 
-        <%= f.label :signature_sig8, 'サイン .2' %><br>
+        <%= f.label :signature_sig8, '上長他　サイン .2' %><br>
         <canvas class="signature-pad" id="sig8"></canvas>
         <%= f.hidden_field :signature_sig8, id: 'signature_sig8' %>
 
-        <%= f.label :signature_sig9, 'サイン .3' %><br>
+        <%= f.label :signature_sig9, '上長他　サイン .3' %><br>
         <canvas class="signature-pad" id="sig9"></canvas>
         <%= f.hidden_field :signature_sig9, id: 'signature_sig9' %>
 
-        <%= f.label :signature_sig10, 'サイン .4' %><br>
+        <%= f.label :signature_sig10, '上長他　サイン .4' %><br>
         <canvas class="signature-pad" id="sig10"></canvas>
         <%= f.hidden_field :signature_sig10, id: 'signature_sig10' %>
 
-        <%= f.label :signature_sig11, 'サイン .5' %><br>
+        <%= f.label :signature_sig11, '現場管理者　サイン' %><br>
         <canvas class="signature-pad" id="sig11"></canvas>
         <%= f.hidden_field :signature_sig11, id: 'signature_sig11' %>
       </div>
