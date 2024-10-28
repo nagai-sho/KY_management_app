@@ -58,7 +58,7 @@ $color-cloud: #f4f1ed;
 
 // new.html.erb用
 
-.new_form {
+.new_form_ky {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -72,7 +72,7 @@ $color-cloud: #f4f1ed;
   }
 
   label {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 10px;
   }
 
@@ -94,6 +94,34 @@ $color-cloud: #f4f1ed;
       box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
       background-color: white;
     }
+  }
+
+  textarea {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid rgba($color-stone, 0.2);
+    border-radius: 4px;
+    flex-grow: 1;
+    background-color: rgba($color-cloud, 0.8);
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $color-moss;
+      box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+      background-color: white;
+    }
+  }
+
+  .select_button {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  canvas {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
   }
 }
 
@@ -158,6 +186,9 @@ $color-cloud: #f4f1ed;
 }
 
 .form_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid $color-cloud;
   border-radius: 5px;
   margin: 20px;
