@@ -4,7 +4,7 @@
 
 ### サービス名
 
-### KY シート作成アプリ（仮）
+### らまたん KY
 
 http://52.197.7.233/
 
@@ -342,38 +342,6 @@ https://drive.google.com/file/d/1j2Bng_aPMu31Afp3_ogDurU6pZRSrTXw/view?usp=drive
 - has_many :risk_levels
 - has_many :incidence_rates
 - has_many :construction_types
-
-## outputs テーブル
-
-| Column                             | Type    | Options                        |
-| ---------------------------------- | ------- | ------------------------------ |
-| ky_sheet_id                        | integer | null: false, foreign_key: true |
-| location_id                        | integer | null: false, foreign_key: true |
-| construction_content_id            | integer | null: false, foreign_key: true |
-| site_risk_prediction_id            | integer | null: false, foreign_key: true |
-| site_risk_measure_id               | integer | null: false, foreign_key: true |
-| site_risk_level_1_id               | integer | null: false                    |
-| site_risk_level_2_id               | integer | null: false                    |
-| site_incidence_rate_1_id           | integer | null: false                    |
-| site_incidence_rate_2_id           | integer | null: false                    |
-| safety_risk_prediction_id          | integer | null: false, foreign_key: true |
-| safety_risk_measure_id             | integer | null: false, foreign_key: true |
-| safety_risk_level_id               | integer | null: false                    |
-| safety_incidence_rate_id           | integer | null: false                    |
-| quality_risk_prediction_id         | integer | null: false, foreign_key: true |
-| quality_risk_measure_id            | integer | null: false, foreign_key: true |
-| quality_risk_level_id              | integer | null: false                    |
-| quality_incidence_rate_id          | integer | null: false                    |
-| construction_type_id               | integer | null: false                    |
-| priority_measure_content           | text    | null: false                    |
-| priority_measure_risk              | text    | null: false                    |
-| priority_measure                   | text    | null: false                    |
-| priority_measure_risk_level_id     | integer | null: false                    |
-| priority_measure_incidence_rate_id | integer | null: false                    |
-
-### Association
-
-- belongs_to :ky_sheet
 
 # 追加実装予定
 
