@@ -11,7 +11,11 @@
     <div class="site_index">
       <div class="title"><%= ky_sheet.pdf_file.filename %></div>
       <div class="projects">
-        <%= link_to '見る', rails_blob_path(ky_sheet.pdf_file, disposition: "inline") %>
+        <%= link_to '見る',
+          rails_blob_path(ky_sheet.pdf_file, disposition: "inline"),
+          target: :_blank,
+          rel: "noopener noreferrer" 
+        %>
         <%= link_to '削除', ky_sheet_path(ky_sheet),
           data: { turbo_method: :delete,
             project_id: @project.id,
