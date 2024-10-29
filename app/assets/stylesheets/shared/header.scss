@@ -7,8 +7,14 @@ $color-clay: #96786d;
 $color-forest: #4a593d;
 $color-sunset: #cb8e6e;
 $color-cloud: #f4f1ed;
+$white: #fff;
+$border-color: #e7e9ee;
 
 // Mixins
+@mixin transition($property: all, $duration: 0.4s) {
+  transition: $property $duration;
+}
+
 @mixin button-base {
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -22,9 +28,20 @@ $color-cloud: #f4f1ed;
   }
 }
 
+// Global styles
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+// Header styles
 header {
   display: flex;
   justify-content: space-between;
+
   .logo {
     display: flex;
     .logo_image {
@@ -35,11 +52,15 @@ header {
       h1 {
         font-size: 2rem;
       }
-      p {
-        font-size: 1rem;
-        span {
-          font-size: 1.5rem;
-          color: $color-sunset;
+      .origin_of_the_name {
+        display: flex;
+        align-items: end;
+        p {
+          font-size: 1rem;
+          span {
+            font-size: 1.5rem;
+            color: $color-sunset;
+          }
         }
       }
     }
@@ -60,8 +81,7 @@ header {
       margin: 20px;
 
       a {
-        text-decoration: none;
-        color: inherit; // リンクの色を親要素から継承
+        color: inherit;
       }
 
       &:first-child {
@@ -91,5 +111,152 @@ header {
         }
       }
     }
+  }
+
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: $color-forest;
+  }
+}
+
+// Hamburger menu styles
+.hamburger {
+  display: block;
+  height: 60px;
+  margin-left: auto;
+  position: relative;
+  z-index: 10;
+  width: 60px;
+  border: none;
+  background-color: transparent;
+
+  &.-active {
+    .hamburger_line {
+      background-color: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+
+    .hamburger_text::before {
+      content: '閉じる';
+    }
+  }
+
+  &_line {
+    display: block;
+    height: 2px;
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    background-color: $color-earth;
+    @include transition;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      background-color: $color-earth;
+      @include transition;
+    }
+
+    &:before {
+      top: -6px;
+    }
+
+    &:after {
+      top: 6px;
+    }
+  }
+
+  &_text {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+
+    &::before {
+      content: 'メニュー';
+      text-align: center;
+      color: $color-earth;
+      font-size: 10px;
+      font-weight: 900;
+    }
+  }
+}
+
+.header {
+  width: 300px;
+
+  &_nav-area {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 9;
+    height: 100vh;
+    width: 300px;
+    visibility: hidden;
+    padding-top: 60px;
+    background-color: $white;
+    @include transition;
+
+    &.-active {
+      left: 0;
+      visibility: visible;
+    }
+  }
+}
+
+.global-navigation {
+  padding: 40px 25px 120px;
+
+  &_list {
+    > li {
+      padding-bottom: 20px;
+      border-bottom: 2px solid $border-color;
+
+      & + li {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &_link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $color-earth;
+    font-weight: 900;
+    @include transition(color);
+    font-size: 0.875rem;
+  }
+}
+
+.accordion {
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  @include transition;
+
+  &.-active {
+    height: auto;
+    padding-top: 30px;
+    visibility: visible;
   }
 }
