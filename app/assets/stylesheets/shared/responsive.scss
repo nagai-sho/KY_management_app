@@ -1,0 +1,156 @@
+// // Variables and Mixins
+// // Variables
+// $color-earth: #766153;
+// $color-moss: #8b9d77;
+// $color-stone: #8e8e8e;
+// $color-sand: #e6d5c0;
+// $color-clay: #96786d;
+// $color-forest: #4a593d;
+// $color-sunset: #cb8e6e;
+// $color-cloud: #f4f1ed;
+// $white: #fff;
+// $border-color: #e7e9ee;
+
+// @mixin transition($property: all, $duration: 0.4s) {
+//   transition: $property $duration;
+// }
+
+// // デフォルトスタイル
+// header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 1rem;
+
+//   .logo {
+//     display: flex;
+//     align-items: center;
+
+//     .logo_image {
+//       margin-right: 1rem;
+//     }
+
+//     .logo_content {
+//       h1 {
+//         font-size: 1.8rem;
+//       }
+
+//       .origin_of_the_name {
+//         display: flex;
+//         align-items: center;
+
+//         p {
+//           font-size: 0.9rem;
+//           span {
+//             font-size: 1.2rem;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .list {
+//     display: flex;
+//     list-style-type: none;
+//     gap: 1rem;
+
+//     li {
+//       @include button-base;
+
+//       a {
+//         text-decoration: none;
+//         color: inherit;
+//       }
+
+//       &:first-child {
+//         background-color: $color-clay;
+//         color: white;
+//         &:hover {
+//           background-color: darken($color-clay, 8%);
+//         }
+//       }
+
+//       &:nth-child(2) {
+//         background-color: $color-moss;
+//         color: white;
+//         &:hover {
+//           background-color: darken($color-moss, 8%);
+//         }
+//       }
+
+//       &:last-child {
+//         background-color: $color-sunset;
+//         color: white;
+//         &:hover {
+//           background-color: darken($color-sunset, 8%);
+//         }
+//       }
+//     }
+//   }
+
+//   .hamburger {
+//     display: none;
+//   }
+// }
+
+// // タブレット用スタイル
+// @media (max-width: 768px) {
+//   header {
+//     .logo_content {
+//       h1 {
+//         font-size: 1.5rem;
+//       }
+//       .origin_of_the_name p {
+//         font-size: 0.8rem;
+//         span {
+//           font-size: 1.1rem;
+//         }
+//       }
+//     }
+
+//     .list li {
+//       padding: 0.4rem 1.2rem;
+//     }
+//   }
+// }
+
+// // モバイル用スタイル
+// @media (max-width: 500px) {
+//   header {
+//     flex-wrap: wrap;
+
+//     .logo {
+//       width: 100%;
+//       justify-content: space-between;
+//       margin-bottom: 1rem;
+
+//       .logo_content {
+//         .origin_of_the_name {
+//           flex-direction: column;
+//           align-items: flex-start;
+//           p {
+//             font-size: 0.7rem;
+//             span {
+//               font-size: 1rem;
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//     .list {
+//       display: none; // ハンバーガーメニューが開かれたときに表示
+//       flex-direction: column;
+//       width: 100%;
+
+//       li {
+//         margin: 0.5rem 0;
+//       }
+//     }
+
+//     .hamburger {
+//       // display: block;
+//       cursor: pointer;
+//     }
+//   }
+// }
