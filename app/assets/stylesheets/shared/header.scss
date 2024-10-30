@@ -22,6 +22,7 @@ header {
   justify-content: space-between;
   position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
   background-color: rgba($color-cloud, 0.8);
 
@@ -47,21 +48,17 @@ header {
           margin-bottom: 0.2rem;
         }
       }
-      .origin_of_the_name {
-        display: flex;
-        align-items: end;
-        p {
-          font-size: 1rem;
-          @include max(sm) {
-            font-size: 0.45rem;
-          }
+      p {
+        font-size: 1rem;
+        @include max(sm) {
+          font-size: 0.45rem;
+        }
 
-          span {
-            font-size: 1.5rem;
-            color: $color-sunset;
-            @include max(sm) {
-              font-size: 0.7rem;
-            }
+        span {
+          font-size: 1.5rem;
+          color: $color-sunset;
+          @include max(sm) {
+            font-size: 0.7rem;
           }
         }
       }
