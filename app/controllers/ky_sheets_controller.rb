@@ -98,7 +98,6 @@ class KySheetsController < ApplicationController
       # PDFをActiveStorageに添付（保存）する処理
       # ファイルをActiveStorageで管理しつつ、関連するモデルをデータベースに保存せずにファイルだけを扱う
       @ky_sheet.pdf_file.attach(
-      # blob = ActiveStorage::Blob.create_and_upload!(
         io: File.open(pdf_path),
         filename: "#{Time.current.to_date}_#{@project.name}.pdf",
         # filename: "kYシート_#{@project.name}_#{Time.current.to_i}.pdf", # 現在のUNIXタイムスタンプ（秒単位の整数）で一意性のファイルを生成
@@ -108,9 +107,17 @@ class KySheetsController < ApplicationController
       File.delete(html_path) if File.exist?(html_path)
       File.delete(pdf_path) if File.exist?(pdf_path)
 
-      redirect_to project_ky_sheets_path(@project), notice: 'PDFが生成されました!'
+      redirect_to project_ky_sheets_path(@project), notice: 'PDFが正常に生成されました！'
     else
+      flash.now[:alert] = 'PDFの作成に失敗しました。全ての項目を入力してください。'
+      render :new, status: :unprocessable_entity
     end
+    # attr_accessorでの一時保存データの入力不足をif文のfalseでエラーハンドリング出来ない。
+    rescue => e
+      flash.now[:alert] = "PDFの作成に失敗しました。全ての項目を入力してください。"
+      # flash.now[:alert] = "エラーが発生しました: #{e.message}"
+      render :new, status: :unprocessable_entity
+    # 応急処置として、全てのエラーを補足する rescue => e を使用
   end
   
   
