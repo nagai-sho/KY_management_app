@@ -43,6 +43,9 @@ a {
 
   h3 {
     font-size: 2rem;
+    @include max(sm) {
+      font-size: 1rem;
+    }
     color: $color-earth;
     margin-bottom: 2.5rem;
     font-weight: 600;
@@ -75,6 +78,9 @@ a {
   align-items: center;
   margin-bottom: 2.5rem;
   gap: 1.5rem;
+  @include max(sm) {
+    flex-direction: column;
+  }
 
   input {
     padding: 0.8rem 1.2rem;
@@ -98,7 +104,7 @@ a {
       background-color: $color-moss;
       color: white;
       position: relative;
-      overflow: hidden;
+      // overflow: hidden;
 
       &::before {
         content: '';
@@ -134,7 +140,7 @@ a {
       text-decoration: none;
       display: inline-block;
       position: relative;
-      overflow: hidden;
+      // overflow: hidden;
 
       &::after {
         content: '';
@@ -168,6 +174,11 @@ a {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  @include max(sm) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &::before {
     content: '';
@@ -209,6 +220,11 @@ a {
   .projects {
     display: flex;
     gap: 1.2rem;
+    @include max(sm) {
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+    }
 
     a {
       @include button-base;
