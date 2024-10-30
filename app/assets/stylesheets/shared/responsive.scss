@@ -1,3 +1,4 @@
+// // Variables and Mixins
 // // Variables
 // $color-earth: #766153;
 // $color-moss: #8b9d77;
@@ -7,36 +8,123 @@
 // $color-forest: #4a593d;
 // $color-sunset: #cb8e6e;
 // $color-cloud: #f4f1ed;
+// $white: #fff;
+// $border-color: #e7e9ee;
 
-// // Mixins
-// @mixin button-base {
-//   padding: 0.5rem 1.5rem;
-//   border-radius: 4px;
-//   cursor: pointer;
-//   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-//   border: none;
-//   font-size: 0.9rem;
+// @mixin transition($property: all, $duration: 0.4s) {
+//   transition: $property $duration;
+// }
 
-//   &:active {
-//     transform: scale(0.97);
+// // デフォルトスタイル
+// header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 1rem;
+
+//   .logo {
+//     display: flex;
+//     align-items: center;
+
+//     .logo_image {
+//       margin-right: 1rem;
+//     }
+
+//     .logo_content {
+//       h1 {
+//         font-size: 1.8rem;
+//       }
+
+//       .origin_of_the_name {
+//         display: flex;
+//         align-items: center;
+
+//         p {
+//           font-size: 0.9rem;
+//           span {
+//             font-size: 1.2rem;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .list {
+//     display: flex;
+//     list-style-type: none;
+//     gap: 1rem;
+
+//     li {
+//       @include button-base;
+
+//       a {
+//         text-decoration: none;
+//         color: inherit;
+//       }
+
+//       &:first-child {
+//         background-color: $color-clay;
+//         color: white;
+//         &:hover {
+//           background-color: darken($color-clay, 8%);
+//         }
+//       }
+
+//       &:nth-child(2) {
+//         background-color: $color-moss;
+//         color: white;
+//         &:hover {
+//           background-color: darken($color-moss, 8%);
+//         }
+//       }
+
+//       &:last-child {
+//         background-color: $color-sunset;
+//         color: white;
+//         &:hover {
+//           background-color: darken($color-sunset, 8%);
+//         }
+//       }
+//     }
+//   }
+
+//   .hamburger {
+//     display: none;
 //   }
 // }
 
+// // タブレット用スタイル
+// @media (max-width: 768px) {
+//   header {
+//     .logo_content {
+//       h1 {
+//         font-size: 1.5rem;
+//       }
+//       .origin_of_the_name p {
+//         font-size: 0.8rem;
+//         span {
+//           font-size: 1.1rem;
+//         }
+//       }
+//     }
+
+//     .list li {
+//       padding: 0.4rem 1.2rem;
+//     }
+//   }
+// }
+
+// // モバイル用スタイル
 // @media (max-width: 500px) {
 //   header {
-//     display: flex;
-//     justify-content: space-between;
+//     flex-wrap: wrap;
+
 //     .logo {
-//       display: flex;
-//       .logo_image {
-//         margin: 20px;
-//       }
+//       width: 100%;
+//       justify-content: space-between;
+//       margin-bottom: 1rem;
+
 //       .logo_content {
-//         display: flex;
-//         flex-direction: column;
-//         h1 {
-//           font-size: 1.5rem;
-//         }
 //         .origin_of_the_name {
 //           flex-direction: column;
 //           align-items: flex-start;
@@ -51,55 +139,17 @@
 //     }
 
 //     .list {
-//       display: flex;
+//       display: none; // ハンバーガーメニューが開かれたときに表示
 //       flex-direction: column;
-//       text-decoration: none;
+//       width: 100%;
 
 //       li {
-//         gap: 1.2rem;
-//         list-style-type: none;
-
-//         @include button-base;
-//         position: relative;
-//         overflow: hidden;
-//         margin: 20px;
-
-//         a {
-//           text-decoration: none;
-//           color: inherit; // リンクの色を親要素から継承
-//         }
-
-//         &:first-child {
-//           background-color: $color-clay;
-//           color: white;
-
-//           &:hover {
-//             background-color: darken($color-clay, 8%);
-//           }
-//         }
-
-//         &:nth-child(2) {
-//           background-color: $color-moss;
-//           color: white;
-
-//           &:hover {
-//             background-color: darken($color-moss, 8%);
-//           }
-//         }
-
-//         &:last-child {
-//           background-color: $color-sunset;
-//           color: white;
-
-//           &:hover {
-//             background-color: darken($color-sunset, 8%);
-//           }
-//         }
+//         margin: 0.5rem 0;
 //       }
 //     }
 
 //     .hamburger {
-//       display: block;
+//       // display: block;
 //       cursor: pointer;
 //     }
 //   }

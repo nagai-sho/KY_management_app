@@ -1,5 +1,3 @@
-console.log('hamburger.js');
-
 // メニュー展開時に背景を固定
 const backgroundFix = (bool) => {
   // ブラウザによってスクロール可能な要素が異なる場合がある
@@ -42,50 +40,57 @@ const backgroundFix = (bool) => {
   // モーダルやオーバーレイを閉じた後、ページを元のスクロール位置に戻す
 };
 
-// 変数定義
-const CLASS = '-active';
-let flg = false;
+// ハンバーガーメニューの機能を初期化する関数
+function initializeHamburgerMenu() {
+  const hamburger = document.getElementById('js-hamburger');
+  const focusTrap = document.getElementById('js-focus-trap');
+  const menu = document.querySelector('.js-nav-area');
+  const CLASS = '-active';
+  let flg = false;
 
-let hamburger = document.getElementById('js-hamburger');
-let focusTrap = document.getElementById('js-focus-trap');
-let menu = document.querySelector('.js-nav-area');
+  // メニュー開閉制御
+  hamburger.addEventListener('click', (e) => {
+    //ハンバーガーボタンが選択されたら, クラスの有無により要素を追加したり削除する
+    e.currentTarget.classList.toggle(CLASS);
+    menu.classList.toggle(CLASS);
+    if (flg) {
+      // flgの状態がtrueの場合
+      backgroundFix(false); // 背景のスクロールを有効にする
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.focus();
+      flg = false;
+    } else {
+      // flgの状態がfalseの場合
+      backgroundFix(true); // 背景のスクロールを無効に（固定）する
+      hamburger.setAttribute('aria-expanded', 'true');
+      flg = true;
+    }
+  });
 
-// メニュー開閉制御
-hamburger.addEventListener('click', (e) => {
-  //ハンバーガーボタンが選択されたら, クラスの有無により要素を追加したり削除する
-  e.currentTarget.classList.toggle(CLASS);
-  menu.classList.toggle(CLASS);
-  if (flg) {
-    // flgの状態がtrueの場合
-    backgroundFix(false); // 背景のスクロールを有効にする
-    hamburger.setAttribute('aria-expanded', 'false');
+  // window.addEventListener('keydown', ...): ページ全体でキーが押されるのを監視
+  window.addEventListener('keydown', () => {
+    //escキー押下でメニューを閉じられるように
+    if (event.key === 'Escape') {
+      hamburger.classList.remove(CLASS); // ハンバーガーアイコンから特定のクラスを削除
+      menu.classList.remove(CLASS); // メニュー要素から特定のクラスを削除
+
+      backgroundFix(false);
+      hamburger.focus();
+      hamburger.setAttribute('aria-expanded', 'false');
+      flg = false;
+      // 背景のスクロールを有効にする
+    }
+  });
+
+  // フォーカストラップ制御
+  // キーボード操作のユーザーがモーダルやメニュー内に「閉じ込められる」ことを防ぐ。
+  focusTrap.addEventListener('focus', (e) => {
     hamburger.focus();
-    flg = false;
-  } else {
-    // flgの状態がfalseの場合
-    backgroundFix(true); // 背景のスクロールを無効に（固定）する
-    hamburger.setAttribute('aria-expanded', 'true');
-    flg = true;
-  }
-});
+  });
+}
 
-// window.addEventListener('keydown', ...): ページ全体でキーが押されるのを監視
-window.addEventListener('keydown', () => {
-  //escキー押下でメニューを閉じられるように
-  if (event.key === 'Escape') {
-    hamburger.classList.remove(CLASS); // ハンバーガーアイコンから特定のクラスを削除
-    menu.classList.remove(CLASS); // メニュー要素から特定のクラスを削除
-
-    backgroundFix(false);
-    hamburger.focus();
-    hamburger.setAttribute('aria-expanded', 'false');
-    flg = false;
-    // 背景のスクロールを有効にする
-  }
-});
-
-// フォーカストラップ制御
-// キーボード操作のユーザーがモーダルやメニュー内に「閉じ込められる」ことを防ぐ。
-focusTrap.addEventListener('focus', (e) => {
-  hamburger.focus();
+// ページロード時にメニューの状態を復元
+window.addEventListener('DOMContentLoaded', () => {
+  console.log('hamburger.js');
+  initializeHamburgerMenu();
 });
