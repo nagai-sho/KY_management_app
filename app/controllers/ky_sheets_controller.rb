@@ -46,7 +46,7 @@ class KySheetsController < ApplicationController
     @project = Project.find(params[:project_id])
     @site = @project.site
     @ky_sheet = @project.ky_sheets.build(ky_sheet_params)
-
+    
     @ky_sheet.user = current_user
     @site_risk_predictions = @site.site_risk_predictions
     @site_risk_measures = @site.site_risk_measures
@@ -57,60 +57,69 @@ class KySheetsController < ApplicationController
     @locations = @site.locations
     @construction_contents = @site.construction_contents
 
-    @location_1 = Location.find(@ky_sheet.location_id_1)
-    @location_2 = Location.find(@ky_sheet.location_id_2)
-    @location_3 = Location.find(@ky_sheet.location_id_3)
-    @location_4 = Location.find(@ky_sheet.location_id_4)
-    @location_5 = Location.find(@ky_sheet.location_id_5)
-    @construction_content_1 = ConstructionContent.find(@ky_sheet.construction_content_id_1)
-    @construction_content_2 = ConstructionContent.find(@ky_sheet.construction_content_id_2)
-    @construction_content_3 = ConstructionContent.find(@ky_sheet.construction_content_id_3)
-    @construction_content_4 = ConstructionContent.find(@ky_sheet.construction_content_id_4)
-    @safety_risk_prediction_1 = SafetyRiskPrediction.find(@ky_sheet.safety_risk_prediction_id_1)
-    @safety_risk_prediction_2 = SafetyRiskPrediction.find(@ky_sheet.safety_risk_prediction_id_2)
-    @safety_risk_measure_1 = SafetyRiskMeasure.find(@ky_sheet.safety_risk_measure_id_1)
-    @safety_risk_measure_2 = SafetyRiskMeasure.find(@ky_sheet.safety_risk_measure_id_2)
-    @quality_risk_prediction = QualityRiskPrediction.find(@ky_sheet.quality_risk_prediction_id)
-    @quality_risk_measure = QualityRiskMeasure.find(@ky_sheet.quality_risk_measure_id)
-    @site_risk_prediction = SiteRiskPrediction.find(@ky_sheet.site_risk_prediction_id)
-    @site_risk_measure = SiteRiskMeasure.find(@ky_sheet.site_risk_measure_id)
-    @risk_level_1 = RiskLevel.find(@ky_sheet.risk_level_id_1)
-    @risk_level_2 = RiskLevel.find(@ky_sheet.risk_level_id_2)
-    @risk_level_3 = RiskLevel.find(@ky_sheet.risk_level_id_3)
-    @risk_level_4 = RiskLevel.find(@ky_sheet.risk_level_id_4)
-    @risk_level_5 = RiskLevel.find(@ky_sheet.risk_level_id_5)
-    @incidence_rate_1 = IncidenceRate.find(@ky_sheet.incidence_rate_id_1)
-    @incidence_rate_2 = IncidenceRate.find(@ky_sheet.incidence_rate_id_2)
-    @incidence_rate_3 = IncidenceRate.find(@ky_sheet.incidence_rate_id_3)
-    @incidence_rate_4 = IncidenceRate.find(@ky_sheet.incidence_rate_id_4)
-    @incidence_rate_5 = IncidenceRate.find(@ky_sheet.incidence_rate_id_5)
-    
-    if @ky_sheet.save
-
-      html_content = render_to_string(template: 'ky_sheets/show', layout: false)
-      html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
-      File.write(html_path, html_content)
+    if @ky_sheet.valid?
       
-      pdf_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.pdf")
-      pdf_service = PdfGeneratorService.new( html_path.to_s, pdf_path.to_s )
-      pdf_service.generate_pdf
+      @location_1 = Location.find(@ky_sheet.location_id_1)
+      @location_2 = Location.find(@ky_sheet.location_id_2)
+      @location_3 = Location.find(@ky_sheet.location_id_3)
+      @location_4 = Location.find(@ky_sheet.location_id_4)
+      @location_5 = Location.find(@ky_sheet.location_id_5)
+      @construction_content_1 = ConstructionContent.find(@ky_sheet.construction_content_id_1)
+      @construction_content_2 = ConstructionContent.find(@ky_sheet.construction_content_id_2)
+      @construction_content_3 = ConstructionContent.find(@ky_sheet.construction_content_id_3)
+      @construction_content_4 = ConstructionContent.find(@ky_sheet.construction_content_id_4)
+      @safety_risk_prediction_1 = SafetyRiskPrediction.find(@ky_sheet.safety_risk_prediction_id_1)
+      @safety_risk_prediction_2 = SafetyRiskPrediction.find(@ky_sheet.safety_risk_prediction_id_2)
+      @safety_risk_measure_1 = SafetyRiskMeasure.find(@ky_sheet.safety_risk_measure_id_1)
+      @safety_risk_measure_2 = SafetyRiskMeasure.find(@ky_sheet.safety_risk_measure_id_2)
+      @quality_risk_prediction = QualityRiskPrediction.find(@ky_sheet.quality_risk_prediction_id)
+      @quality_risk_measure = QualityRiskMeasure.find(@ky_sheet.quality_risk_measure_id)
+      @site_risk_prediction = SiteRiskPrediction.find(@ky_sheet.site_risk_prediction_id)
+      @site_risk_measure = SiteRiskMeasure.find(@ky_sheet.site_risk_measure_id)
+      @risk_level_1 = RiskLevel.find(@ky_sheet.risk_level_id_1)
+      @risk_level_2 = RiskLevel.find(@ky_sheet.risk_level_id_2)
+      @risk_level_3 = RiskLevel.find(@ky_sheet.risk_level_id_3)
+      @risk_level_4 = RiskLevel.find(@ky_sheet.risk_level_id_4)
+      @risk_level_5 = RiskLevel.find(@ky_sheet.risk_level_id_5)
+      @incidence_rate_1 = IncidenceRate.find(@ky_sheet.incidence_rate_id_1)
+      @incidence_rate_2 = IncidenceRate.find(@ky_sheet.incidence_rate_id_2)
+      @incidence_rate_3 = IncidenceRate.find(@ky_sheet.incidence_rate_id_3)
+      @incidence_rate_4 = IncidenceRate.find(@ky_sheet.incidence_rate_id_4)
+      @incidence_rate_5 = IncidenceRate.find(@ky_sheet.incidence_rate_id_5)
+    
+      if @ky_sheet.save
 
-      # PDFをActiveStorageに添付（保存）する処理
-      # ファイルをActiveStorageで管理しつつ、関連するモデルをデータベースに保存せずにファイルだけを扱う
-      @ky_sheet.pdf_file.attach(
-      # blob = ActiveStorage::Blob.create_and_upload!(
-        io: File.open(pdf_path),
-        filename: "#{Time.current.to_date}_#{@project.name}.pdf",
-        # filename: "kYシート_#{@project.name}_#{Time.current.to_i}.pdf", # 現在のUNIXタイムスタンプ（秒単位の整数）で一意性のファイルを生成
-        content_type: 'application/pdf'
-      )
-      # 一時ファイルを削除
-      File.delete(html_path) if File.exist?(html_path)
-      File.delete(pdf_path) if File.exist?(pdf_path)
+        html_content = render_to_string(template: 'ky_sheets/show', layout: false)
+        html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
+        File.write(html_path, html_content)
+        
+        pdf_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.pdf")
+        pdf_service = PdfGeneratorService.new( html_path.to_s, pdf_path.to_s )
+        pdf_service.generate_pdf
 
-      redirect_to project_ky_sheets_path(@project), notice: 'PDFが生成されました!'
+        # PDFをActiveStorageに添付（保存）する処理
+        # ファイルをActiveStorageで管理しつつ、関連するモデルをデータベースに保存せずにファイルだけを扱う
+        @ky_sheet.pdf_file.attach(
+          io: File.open(pdf_path),
+          filename: "#{Time.current.to_date}_#{@project.name}.pdf",
+          # filename: "kYシート_#{@project.name}_#{Time.current.to_i}.pdf", # 現在のUNIXタイムスタンプ（秒単位の整数）で一意性のファイルを生成
+          content_type: 'application/pdf'
+        )
+        # 一時ファイルを削除
+        File.delete(html_path) if File.exist?(html_path)
+        File.delete(pdf_path) if File.exist?(pdf_path)
+
+        redirect_to project_ky_sheets_path(@project), notice: 'PDFが正常に生成されました！'
+      end
     else
+      flash.now[:alert] = 'PDFの作成に失敗しました。全ての項目を入力してください。'
+      render :new, status: :unprocessable_entity
     end
+    # 万が一、エラーハンドリングが出来ない場合
+    rescue => e
+      flash.now[:alert] = "エラーが発生しました: #{e.message}　全ての項目を入力してください。"
+      render :new, status: :unprocessable_entity
+    # 応急処置として、全てのエラーを補足する rescue => e を使用
   end
   
   
