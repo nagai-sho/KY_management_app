@@ -1,15 +1,3 @@
-// Variables
-$color-earth: #766153;
-$color-moss: #8b9d77;
-$color-stone: #8e8e8e;
-$color-sand: #e6d5c0;
-$color-clay: #96786d;
-$color-forest: #4a593d;
-$color-sunset: #cb8e6e;
-$color-cloud: #f4f1ed;
-$white: #fff;
-$border-color: #e7e9ee;
-
 // Mixins
 @mixin transition($property: all, $duration: 0.4s) {
   transition: $property $duration;
@@ -28,38 +16,52 @@ $border-color: #e7e9ee;
   }
 }
 
-// Global styles
-body {
-  font-family: sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-
 // Header styles
 header {
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba($color-cloud, 0.8);
 
   .logo {
     display: flex;
-    .logo_image {
+    .lama_image {
       margin: 20px;
+      width: 90px;
+      height: 90px;
+      @include max(sm) {
+        margin: 10px;
+        width: 40px;
+        height: 40px;
+      }
     }
     .logo_content {
       color: $color-earth;
       h1 {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
+        @include max(sm) {
+          font-size: 1rem;
+          margin-bottom: 0.2rem;
+        }
       }
       .origin_of_the_name {
         display: flex;
         align-items: end;
         p {
           font-size: 1rem;
+          @include max(sm) {
+            font-size: 0.45rem;
+          }
+
           span {
             font-size: 1.5rem;
             color: $color-sunset;
+            @include max(sm) {
+              font-size: 0.7rem;
+            }
           }
         }
       }
