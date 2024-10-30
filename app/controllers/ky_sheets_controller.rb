@@ -86,9 +86,9 @@ class KySheetsController < ApplicationController
       @incidence_rate_3 = IncidenceRate.find(@ky_sheet.incidence_rate_id_3)
       @incidence_rate_4 = IncidenceRate.find(@ky_sheet.incidence_rate_id_4)
       @incidence_rate_5 = IncidenceRate.find(@ky_sheet.incidence_rate_id_5)
-    
+      
       if @ky_sheet.save
-
+        
         html_content = render_to_string(template: 'ky_sheets/show', layout: false)
         html_path = Rails.root.join('tmp', "ky_sheet_#{@ky_sheet.id}.html")
         File.write(html_path, html_content)
