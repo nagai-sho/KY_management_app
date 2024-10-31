@@ -45,10 +45,18 @@
     margin-top: 20px;
     // display: flex;
     // justify-content: space-around;
+    .assessment {
+      color: rgb(170, 10, 10);
+      font-size: 20px;
+      padding: 0.8rem 1.2rem;
+      border-radius: 4px;
+      background-color: rgba($color-cloud, 0.8);
+    }
   }
 
   h4 {
     margin-top: 30px;
+    text-align: center;
   }
 
   label {
@@ -232,6 +240,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 1rem;
   border: 1px solid $color-cloud;
   border-radius: 5px;
   margin: 5px;
