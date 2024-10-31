@@ -20,6 +20,7 @@ export default class extends Controller {
         penColor: 'rgb(0, 0, 0)',
       });
       this.signaturePads[canvas.id] = signaturePad;
+      this.clearSignaturePad(canvas);
     });
 
     const form = document.getElementById('form');
@@ -38,11 +39,6 @@ export default class extends Controller {
     );
     signatureDataInput.value = dataURL;
   }
-
-  // submit(form) {
-  //   form.target = '_blank';
-  //   form.submit();
-  // }
 
   save_pdf() {
     const saveForm = document.getElementById('save_form');
@@ -66,6 +62,22 @@ export default class extends Controller {
     });
     document.dispatchEvent(event);
   }
+
+  clearSignaturePad(canvas) {
+    const clearCanvas = document.querySelector(
+      `button[data-canvas-id="${canvas.id}"]`
+    );
+    const signaturePad = this.signaturePads[canvas.id];
+    clearCanvas.addEventListener('click', (e) => {
+      // e.preventDefault();
+      signaturePad.clear();
+    });
+  }
+
+  // submit(form) {
+  //   form.target = '_blank';
+  //   form.submit();
+  // }
 }
 
 // canvasに記入

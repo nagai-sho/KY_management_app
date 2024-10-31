@@ -56,7 +56,7 @@ class KySheetsController < ApplicationController
     @quality_risk_measures = @site.quality_risk_measures
     @locations = @site.locations
     @construction_contents = @site.construction_contents
-
+    
     if @ky_sheet.valid?
       
       @location_1 = Location.find(@ky_sheet.location_id_1)
