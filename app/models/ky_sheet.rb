@@ -2,19 +2,21 @@ class KySheet < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :project
-
-  belongs_to_active_hash :risk_level
-  belongs_to_active_hash :incidence_rate
-  belongs_to_active_hash :construction_type
   
-  belongs_to :site_risk_prediction
-  belongs_to :site_risk_measure
-  belongs_to :safety_risk_prediction
-  belongs_to :safety_risk_measure
-  belongs_to :quality_risk_prediction
-  belongs_to :quality_risk_measure
-  belongs_to :location
-  belongs_to :construction_content
+  # ky_sheetsテーブルにカラムが無いため、 optional: true が必要
+  belongs_to_active_hash :risk_level, optional: true
+  belongs_to_active_hash :incidence_rate, optional: true
+  belongs_to_active_hash :construction_type, optional: true
+  
+  belongs_to :site_risk_prediction, optional: true
+  belongs_to :site_risk_measure, optional: true
+  belongs_to :safety_risk_prediction, optional: true
+  belongs_to :safety_risk_measure, optional: true
+  belongs_to :quality_risk_prediction, optional: true
+  belongs_to :quality_risk_measure, optional: true
+  belongs_to :location, optional: true
+  belongs_to :construction_content, optional: true
+  # ky_sheetsテーブルにカラムが無いため、 optional: true が必要
 
   has_one_attached :pdf_file
 
@@ -71,8 +73,6 @@ class KySheet < ApplicationRecord
                 :worker,
                 :manager
 
-
-
   with_options presence: true do
     validates :construction_type_id
     validates :construction_date
@@ -127,9 +127,8 @@ class KySheet < ApplicationRecord
     validates :manager
   end
 
-  validates :risk_level_id, :incidence_rate_id, :construction_type_id,
-            numericality: { other_than: 0, message: "未選択項目を選択してください" }
-
+  # validates :risk_level_id, :incidence_rate_id, :construction_type_id,
+  #           numericality: { other_than: 0, message: "未選択項目を選択してください" }
 
 end
 
