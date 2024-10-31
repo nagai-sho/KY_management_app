@@ -26,175 +26,177 @@
         </div>
       </div>
 
-      <h4 class="sub_title">安全へのKY活動 .1</h4>
-      <div class="form_block">
-        <%= f.label :location_id_1, '主な作業場所' %><br>
-        <%= f.collection_select :location_id_1, @locations, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :construction_content_id_1, '作業内容' %><br>
-        <%= f.collection_select :construction_content_id_1, @construction_contents, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :safety_risk_prediction_id_1, '作業に伴うリスク / 危険Point' %><br>
-        <%= f.collection_select :safety_risk_prediction_id_1, @safety_risk_predictions, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <div class="risk_assessment">リスク評価
-          <div class="risk_rate">
-            <%= f.label :risk_level_id_1, '危険度' %><br>
-            <%= f.collection_select(
-              :risk_level_id_1, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-            %>
-            <%= f.label :incidence_rate_id_1, '発生率' %><br>
-            <%= f.collection_select(
-              :incidence_rate_id_1, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-            %>
-            <label>リスクレベル</label><br>
-            <span class="assessment" id="risk1">---<span>
+      <div data-controller="assessment">
+        <h4 class="sub_title">安全へのKY活動 .1</h4>
+        <div class="form_block">
+          <%= f.label :location_id_1, '主な作業場所' %><br>
+          <%= f.collection_select :location_id_1, @locations, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :construction_content_id_1, '作業内容' %><br>
+          <%= f.collection_select :construction_content_id_1, @construction_contents, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :safety_risk_prediction_id_1, '作業に伴うリスク / 危険Point' %><br>
+          <%= f.collection_select :safety_risk_prediction_id_1, @safety_risk_predictions, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <div class="risk_assessment">リスク評価
+            <div class="risk_rate">
+              <%= f.label :risk_level_id_1, '危険度' %><br>
+              <%= f.collection_select(
+                :risk_level_id_1, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+              %>
+              <%= f.label :incidence_rate_id_1, '発生率' %><br>
+              <%= f.collection_select(
+                :incidence_rate_id_1, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+              %>
+              <label>リスクレベル</label><br>
+              <span class="assessment" id="risk1">---<span>
+            </div>
           </div>
+          <%= f.label :safety_risk_measure_id_1, 'リスク低減対策' %><br>
+          <%= f.collection_select :safety_risk_measure_id_1, @safety_risk_measures, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
         </div>
-        <%= f.label :safety_risk_measure_id_1, 'リスク低減対策' %><br>
-        <%= f.collection_select :safety_risk_measure_id_1, @safety_risk_measures, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-      </div>
 
-      <h4 class="sub_title">安全へのKY活動 .2</h4>
-      <div class="form_block">
-        <%= f.label :location_id_2, '主な作業場所' %><br>
-        <%= f.collection_select :location_id_2, @locations, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :construction_content_id_2, '作業内容' %><br>
-        <%= f.collection_select :construction_content_id_2, @construction_contents, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :safety_risk_prediction_id_2, '作業に伴うリスク / 危険Point' %><br>
-        <%= f.collection_select :safety_risk_prediction_id_2, @safety_risk_predictions, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <div class="risk_assessment">リスク評価
-          <div class="risk_rate">
-            <%= f.label :risk_level_id_2, '危険度' %><br>
-            <%= f.collection_select(
-              :risk_level_id_2, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-            %>
-            <%= f.label :incidence_rate_id_2, '発生率' %><br>
-            <%= f.collection_select(
-              :incidence_rate_id_2, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-            %>
-            <label>リスクレベル</label><br>
-            <span class="assessment" id="risk2">---<span>
+        <h4 class="sub_title">安全へのKY活動 .2</h4>
+        <div class="form_block">
+          <%= f.label :location_id_2, '主な作業場所' %><br>
+          <%= f.collection_select :location_id_2, @locations, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :construction_content_id_2, '作業内容' %><br>
+          <%= f.collection_select :construction_content_id_2, @construction_contents, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :safety_risk_prediction_id_2, '作業に伴うリスク / 危険Point' %><br>
+          <%= f.collection_select :safety_risk_prediction_id_2, @safety_risk_predictions, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <div class="risk_assessment">リスク評価
+            <div class="risk_rate">
+              <%= f.label :risk_level_id_2, '危険度' %><br>
+              <%= f.collection_select(
+                :risk_level_id_2, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+              %>
+              <%= f.label :incidence_rate_id_2, '発生率' %><br>
+              <%= f.collection_select(
+                :incidence_rate_id_2, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+              %>
+              <label>リスクレベル</label><br>
+              <span class="assessment" id="risk2">---<span>
+            </div>
           </div>
+          <%= f.label :safety_risk_measure_id_2, 'リスク低減対策' %><br>
+          <%= f.collection_select :safety_risk_measure_id_2, @safety_risk_measures, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
         </div>
-        <%= f.label :safety_risk_measure_id_2, 'リスク低減対策' %><br>
-        <%= f.collection_select :safety_risk_measure_id_2, @safety_risk_measures, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-      </div>
 
 
-      <h4 class="sub_title">品質へのKY活動</h4>
-      <div class="form_block">
-        <%= f.label :location_id_3, '主な作業場所' %><br>
-        <%= f.collection_select :location_id_3, @locations, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :construction_content_id_3, '作業内容' %><br>
-        <%= f.collection_select :construction_content_id_3, @construction_contents, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :quality_risk_prediction_id, '作業に伴うリスク / 危険Point' %><br>
-        <%= f.collection_select :quality_risk_prediction_id, @quality_risk_predictions, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <div class="risk_assessment">リスク評価
-          <div class="risk_rate">
-            <%= f.label :risk_level_id_3, '危険度' %><br>
-            <%= f.collection_select(
-              :risk_level_id_3, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-            %>
-            <%= f.label :incidence_rate_id_3, '発生率' %><br>
-            <%= f.collection_select(
-              :incidence_rate_id_3, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-            %>
+        <h4 class="sub_title">品質へのKY活動</h4>
+        <div class="form_block">
+          <%= f.label :location_id_3, '主な作業場所' %><br>
+          <%= f.collection_select :location_id_3, @locations, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :construction_content_id_3, '作業内容' %><br>
+          <%= f.collection_select :construction_content_id_3, @construction_contents, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :quality_risk_prediction_id, '作業に伴うリスク / 危険Point' %><br>
+          <%= f.collection_select :quality_risk_prediction_id, @quality_risk_predictions, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <div class="risk_assessment">リスク評価
+            <div class="risk_rate">
+              <%= f.label :risk_level_id_3, '危険度' %><br>
+              <%= f.collection_select(
+                :risk_level_id_3, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+              %>
+              <%= f.label :incidence_rate_id_3, '発生率' %><br>
+              <%= f.collection_select(
+                :incidence_rate_id_3, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+              %>
+              <label>リスクレベル</label><br>
+              <span class="assessment" id="risk3">---<span>
+            </div>
           </div>
-          <label>リスクレベル</label><br>
-          <span class="assessment" id="risk3">---<span>
+          <%= f.label :quality_risk_measure_id, 'リスク低減対策' %><br>
+          <%= f.collection_select :quality_risk_measure_id, @quality_risk_measures, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
         </div>
-        <%= f.label :quality_risk_measure_id, 'リスク低減対策' %><br>
-        <%= f.collection_select :quality_risk_measure_id, @quality_risk_measures, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-      </div>
 
-      <h4 class="sub_title">当該現場で特筆すべきKY活動</h4>
-      <div class="form_block">
-        <%= f.label :location_id_4, '主な作業場所' %><br>
-        <%= f.collection_select :location_id_4, @locations, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :construction_content_id_4, '作業内容' %><br>
-        <%= f.collection_select :construction_content_id_4, @construction_contents, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :site_risk_prediction_id, '作業に伴うリスク / 危険Point' %><br>
-        <%= f.collection_select :site_risk_prediction_id, @site_risk_predictions, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <div class="risk_assessment">リスク評価
-          <div class="risk_rate">
-            <%= f.label :risk_level_id_4, '危険度' %><br>
-            <%= f.collection_select(
-              :risk_level_id_4, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-            %>
-            <%= f.label :incidence_rate_id_4, '発生率' %><br>
-            <%= f.collection_select(
-              :incidence_rate_id_4, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-            %>
-            <label>リスクレベル</label><br>
-            <span class="assessment" id="risk4">---<span>
+        <h4 class="sub_title">当該現場で特筆すべきKY活動</h4>
+        <div class="form_block">
+          <%= f.label :location_id_4, '主な作業場所' %><br>
+          <%= f.collection_select :location_id_4, @locations, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :construction_content_id_4, '作業内容' %><br>
+          <%= f.collection_select :construction_content_id_4, @construction_contents, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :site_risk_prediction_id, '作業に伴うリスク / 危険Point' %><br>
+          <%= f.collection_select :site_risk_prediction_id, @site_risk_predictions, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <div class="risk_assessment">リスク評価
+            <div class="risk_rate">
+              <%= f.label :risk_level_id_4, '危険度' %><br>
+              <%= f.collection_select(
+                :risk_level_id_4, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+              %>
+              <%= f.label :incidence_rate_id_4, '発生率' %><br>
+              <%= f.collection_select(
+                :incidence_rate_id_4, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+              %>
+              <label>リスクレベル</label><br>
+              <span class="assessment" id="risk4">---<span>
+            </div>
           </div>
+          <%= f.label :site_risk_measure_id, 'リスク低減対策' %><br>
+          <%= f.collection_select :site_risk_measure_id, @site_risk_measures, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
         </div>
-        <%= f.label :site_risk_measure_id, 'リスク低減対策' %><br>
-        <%= f.collection_select :site_risk_measure_id, @site_risk_measures, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-      </div>
 
-      <h4 class="sub_title">本日のKY重点対策目標</h4>
-      <div class="form_block">
-        <%= f.label :location_id_5, '主な作業場所' %><br>
-        <%= f.collection_select :location_id_5, @locations, :id, :content,
-          { prompt: "選択してください" }, {class: "form-control" }
-        %>
-        <%= f.label :priority_content, '作業内容' %><br>
-        <%= f.text_area :priority_content,
-          placeholder: '作業内容を記述してください'
-        %>
-        <%= f.label :priority_measure_risk, '作業に伴うリスク / 危険Point' %><br>
-        <%= f.text_area :priority_measure_risk,
-          placeholder: '作業におけるリスクを記述してください'
-        %>
-        <div class="risk_assessment">リスク評価
-          <div class="risk_rate">
-            <%= f.label :risk_level_id_5, '危険度' %><br>
-            <%= f.collection_select(
-              :risk_level_id_5, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
-            %>
-            <%= f.label :incidence_rate_id_5, '発生率' %><br>
-            <%= f.collection_select(
-              :incidence_rate_id_5, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
-            %>
-            <label>リスクレベル</label><br>
-            <span class="assessment" id="risk5">---<span>
+        <h4 class="sub_title">本日のKY重点対策目標</h4>
+        <div class="form_block">
+          <%= f.label :location_id_5, '主な作業場所' %><br>
+          <%= f.collection_select :location_id_5, @locations, :id, :content,
+            { prompt: "選択してください" }, {class: "form-control" }
+          %>
+          <%= f.label :priority_content, '作業内容' %><br>
+          <%= f.text_area :priority_content,
+            placeholder: '作業内容を記述してください'
+          %>
+          <%= f.label :priority_measure_risk, '作業に伴うリスク / 危険Point' %><br>
+          <%= f.text_area :priority_measure_risk,
+            placeholder: '作業におけるリスクを記述してください'
+          %>
+          <div class="risk_assessment">リスク評価
+            <div class="risk_rate">
+              <%= f.label :risk_level_id_5, '危険度' %><br>
+              <%= f.collection_select(
+                :risk_level_id_5, RiskLevel.all, :id, :name, {}, {class:"risk_level-select"})
+              %>
+              <%= f.label :incidence_rate_id_5, '発生率' %><br>
+              <%= f.collection_select(
+                :incidence_rate_id_5, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
+              %>
+              <label>リスクレベル</label><br>
+              <span class="assessment" id="risk5">---<span>
+            </div>
           </div>
+          <%= f.label :priority_measure, 'リスク低減対策' %><br>
+          <%= f.text_area :priority_measure,
+            placeholder: 'リスクにおける対策を記述してください'
+          %>
         </div>
-        <%= f.label :priority_measure, 'リスク低減対策' %><br>
-        <%= f.text_area :priority_measure,
-          placeholder: 'リスクにおける対策を記述してください'
-        %>
       </div>
 
       <h4 class="sub_title">作業前チェック項目</h4>
@@ -246,7 +248,7 @@
       <h4 class="sub_title">参加者サイン</h4>
       <div class="form_block">
         <div class="worker_sign">
-          <canvas class="signature-pad" id="sig6" width="400" height="100"></canvas>
+          <canvas class="signature-pad" id="sig6"></canvas>
         </div>
         <%= f.hidden_field :signature_sig6, id: 'signature_sig6' %>
         <button type="button" class="clear" data-canvas-id="sig6">クリア</button>
