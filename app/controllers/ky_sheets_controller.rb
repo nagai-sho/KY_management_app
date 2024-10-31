@@ -58,7 +58,6 @@ class KySheetsController < ApplicationController
     @construction_contents = @site.construction_contents
     
     if @ky_sheet.valid?
-      
       @location_1 = Location.find(@ky_sheet.location_id_1)
       @location_2 = Location.find(@ky_sheet.location_id_2)
       @location_3 = Location.find(@ky_sheet.location_id_3)

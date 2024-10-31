@@ -69,7 +69,6 @@ export default class extends Controller {
     );
     const signaturePad = this.signaturePads[canvas.id];
     clearCanvas.addEventListener('click', (e) => {
-      // e.preventDefault();
       signaturePad.clear();
     });
   }
