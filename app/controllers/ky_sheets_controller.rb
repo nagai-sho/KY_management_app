@@ -56,7 +56,7 @@ class KySheetsController < ApplicationController
     @quality_risk_measures = @site.quality_risk_measures
     @locations = @site.locations
     @construction_contents = @site.construction_contents
-    
+    # binding.pry
     if @ky_sheet.valid?
       @location_1 = Location.find(@ky_sheet.location_id_1)
       @location_2 = Location.find(@ky_sheet.location_id_2)
@@ -141,6 +141,7 @@ class KySheetsController < ApplicationController
       :priority_measure,
       :risk_level_id_1, :risk_level_id_2, :risk_level_id_3, :risk_level_id_4, :risk_level_id_5,
       :incidence_rate_id_1, :incidence_rate_id_2, :incidence_rate_id_3, :incidence_rate_id_4, :incidence_rate_id_5,
+      :assessment_result1, :assessment_result2, :assessment_result3, :assessment_result4, :assessment_result5,
       :answer_1, :answer_2, :answer_3, :answer_4, :answer_5, :answer_6,
       :signature_sig1, :signature_sig2, :signature_sig3, :signature_sig4, :signature_sig5, :signature_sig6,
       :signature_sig7, :signature_sig8, :signature_sig9, :signature_sig10, :signature_sig11,
