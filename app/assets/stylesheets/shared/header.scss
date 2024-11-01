@@ -3,6 +3,7 @@
   transition: $property $duration;
 }
 
+// Mixins
 @mixin button-base {
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -10,6 +11,10 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   font-size: 0.9rem;
+  @include max(lg) {
+    padding: 0.4rem 1rem;
+    font-size: 0.5rem;
+  }
 
   &:active {
     transform: scale(0.97);
@@ -28,10 +33,16 @@ header {
 
   .logo {
     display: flex;
+    width: 100%;
     .lama_image {
       margin: 20px;
       width: 90px;
       height: 90px;
+      @include max(lg) {
+        margin: 15px;
+        width: 60px;
+        height: 60px;
+      }
       @include max(sm) {
         margin: 10px;
         width: 40px;
@@ -43,6 +54,10 @@ header {
       h1 {
         font-size: 2rem;
         margin-bottom: 0.5rem;
+        @include max(lg) {
+          font-size: 1.5rem;
+          margin-bottom: 0.3rem;
+        }
         @include max(sm) {
           font-size: 1rem;
           margin-bottom: 0.2rem;
@@ -50,6 +65,9 @@ header {
       }
       p {
         font-size: 1rem;
+        @include max(lg) {
+          font-size: 0.65rem;
+        }
         @include max(sm) {
           font-size: 0.45rem;
         }
@@ -57,6 +75,9 @@ header {
         span {
           font-size: 1.5rem;
           color: $color-sunset;
+          @include max(lg) {
+            font-size: 1rem;
+          }
           @include max(sm) {
             font-size: 0.7rem;
           }
@@ -65,48 +86,66 @@ header {
     }
   }
 
+  .list_menu {
+    position: relative;
+  }
+
   .list {
+    position: absolute;
+    top: 0;
+    right: 0;
     display: flex;
+    justify-content: right;
     align-items: center;
     text-decoration: none;
+    text-align: center;
+    width: calc(100vw - 60vw);
+    @include max(sm) {
+      display: none;
+    }
 
-    li {
-      gap: 1.2rem;
-      list-style-type: none;
+    ul {
+      display: flex;
+      margin-right: 20px;
 
-      @include button-base;
-      position: relative;
-      overflow: hidden;
-      margin: 20px;
+      li {
+        gap: 1.2rem;
+        list-style-type: none;
 
-      a {
-        color: inherit;
-      }
+        @include button-base;
+        position: relative;
+        overflow: hidden;
+        margin: 20px 10px 10px 0;
 
-      &:first-child {
-        background-color: $color-clay;
-        color: white;
-
-        &:hover {
-          background-color: darken($color-clay, 8%);
+        a {
+          color: inherit;
         }
-      }
 
-      &:nth-child(2) {
-        background-color: $color-moss;
-        color: white;
+        &:first-child {
+          background-color: $color-clay;
+          color: white;
 
-        &:hover {
-          background-color: darken($color-moss, 8%);
+          &:hover {
+            background-color: darken($color-clay, 8%);
+          }
         }
-      }
 
-      &:last-child {
-        background-color: $color-sunset;
-        color: white;
+        &:nth-child(2) {
+          background-color: $color-moss;
+          color: white;
 
-        &:hover {
-          background-color: darken($color-sunset, 8%);
+          &:hover {
+            background-color: darken($color-moss, 8%);
+          }
+        }
+
+        &:last-child {
+          background-color: $color-sunset;
+          color: white;
+
+          &:hover {
+            background-color: darken($color-sunset, 8%);
+          }
         }
       }
     }
@@ -123,6 +162,9 @@ header {
 
 // Hamburger menu styles
 .hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
   // display: block;
   height: 60px;
   margin-left: auto;
@@ -131,6 +173,10 @@ header {
   width: 60px;
   border: none;
   background-color: transparent;
+
+  @include min(sm) {
+    display: none;
+  }
 
   &.-active {
     .hamburger_line {
