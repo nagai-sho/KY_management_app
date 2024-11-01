@@ -51,9 +51,9 @@
               <%= f.collection_select(
                 :incidence_rate_id_1, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
-              <label>リスクレベル</label><br>
+              <%= f.label :assessment_result1, 'リスクレベル' %><br>
               <span class="assessment" id="risk1">---<span>
-              <%= f.hidden_field :assessment_id1, id: 'assessment_id1' %>
+              <%= f.hidden_field :assessment_result1, id: 'assessment_result1' %>
             </div>
           </div>
           <%= f.label :safety_risk_measure_id_1, 'リスク低減対策' %><br>
@@ -86,9 +86,9 @@
               <%= f.collection_select(
                 :incidence_rate_id_2, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
-              <label>リスクレベル</label><br>
+              <%= f.label :assessment_result2, 'リスクレベル' %><br>
               <span class="assessment" id="risk2">---<span>
-              <%= f.hidden_field :assessment_id2, id: 'assessment_id2' %>
+              <%= f.hidden_field :assessment_result2, id: 'assessment_result2' %>
             </div>
           </div>
           <%= f.label :safety_risk_measure_id_2, 'リスク低減対策' %><br>
@@ -122,9 +122,9 @@
               <%= f.collection_select(
                 :incidence_rate_id_3, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
-              <label>リスクレベル</label><br>
+              <%= f.label :assessment_result3, 'リスクレベル' %><br>
               <span class="assessment" id="risk3">---<span>
-              <%= f.hidden_field :assessment_id3, id: 'assessment_id3' %>
+              <%= f.hidden_field :assessment_result3, id: 'assessment_result3' %>
             </div>
           </div>
           <%= f.label :quality_risk_measure_id, 'リスク低減対策' %><br>
@@ -157,9 +157,9 @@
               <%= f.collection_select(
                 :incidence_rate_id_4, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
-              <label>リスクレベル</label><br>
+              <%= f.label :assessment_result4, 'リスクレベル' %><br>
               <span class="assessment" id="risk4">---<span>
-              <%= f.hidden_field :assessment_id4, id: 'assessment_id4' %>
+              <%= f.hidden_field :assessment_result4, id: 'assessment_result4' %>
             </div>
           </div>
           <%= f.label :site_risk_measure_id, 'リスク低減対策' %><br>
@@ -192,9 +192,9 @@
               <%= f.collection_select(
                 :incidence_rate_id_5, IncidenceRate.all, :id, :name, {}, {class:"incidence_rate-select"})
               %>
-              <label>リスクレベル</label><br>
+              <%= f.label :assessment_result5, 'リスクレベル' %><br>
               <span class="assessment" id="risk5">---<span>
-              <%= f.hidden_field :assessment_id5, id: 'assessment_id5' %>
+              <%= f.hidden_field :assessment_result5, id: 'assessment_result5' %>
             </div>
           </div>
           <%= f.label :priority_measure, 'リスク低減対策' %><br>

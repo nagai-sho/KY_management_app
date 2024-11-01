@@ -44,6 +44,11 @@ class KySheet < ApplicationRecord
                 :incidence_rate_id_3,
                 :incidence_rate_id_4,
                 :incidence_rate_id_5,
+                :assessment_result1,
+                :assessment_result2,
+                :assessment_result3,
+                :assessment_result4,
+                :assessment_result5,
                 :answer_1,
                 :answer_2,
                 :answer_3,
@@ -97,6 +102,11 @@ class KySheet < ApplicationRecord
     validates :incidence_rate_id_3
     validates :incidence_rate_id_4
     validates :incidence_rate_id_5
+    validates :assessment_result1
+    validates :assessment_result2
+    validates :assessment_result3
+    validates :assessment_result4
+    validates :assessment_result5
     validates :answer_1
     validates :answer_2
     validates :answer_3

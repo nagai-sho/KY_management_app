@@ -14,7 +14,7 @@ export default class extends Controller {
       const riskLevelSelect = form.querySelector('.risk_level-select');
       const incidenceRateSelect = form.querySelector('.incidence_rate-select');
       const riskAssessment = form.querySelector('.assessment');
-      const hiddenField = form.querySelector(`#assessment_id${formIndex}`);
+      const hiddenField = form.querySelector(`#assessment_result${formIndex}`);
 
       const updateAssessment = () => {
         this.updateRiskLevel(
@@ -30,6 +30,11 @@ export default class extends Controller {
 
       updateAssessment();
     });
+
+    // const form = document.getElementById('save_form');
+    // form.addEventListener('submit', (e) => {
+    //   this.insertHiddenValue(hiddenField, riskAssessment);
+    // });
   }
 
   updateRiskLevel(riskLevelSelect, incidenceRateSelect, riskAssessment) {
@@ -59,6 +64,6 @@ export default class extends Controller {
   insertHiddenValue(hiddenField, riskAssessment) {
     const assessmentResult = riskAssessment.textContent;
     hiddenField.value = assessmentResult;
-    console.log(hiddenField.value);
+    console.log(`Hidden field ${hiddenField.id}: ${hiddenField.value}`);
   }
 }

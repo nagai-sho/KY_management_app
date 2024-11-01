@@ -25,6 +25,7 @@ export default class extends Controller {
 
     const form = document.getElementById('form');
     form.addEventListener('submit', (e) => {
+      // debugger;
       e.preventDefault();
       canvases.forEach((canvas) => this.insertHiddenValue(canvas));
       form.submit();
@@ -40,28 +41,28 @@ export default class extends Controller {
     signatureDataInput.value = dataURL;
   }
 
-  save_pdf() {
-    const saveForm = document.getElementById('save_form');
-    saveForm.addEventListener('click', (e) => {
-      const form = document.getElementById('form');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        canvases.forEach((canvas) => this.insertHiddenValue(canvas));
-        this.submit(form);
-      });
-    });
-  }
+  // save_pdf() {
+  //   const saveForm = document.getElementById('save_form');
+  //   saveForm.addEventListener('click', (e) => {
+  //     const form = document.getElementById('form');
+  //     form.addEventListener('submit', (e) => {
+  //       e.preventDefault();
+  //       canvases.forEach((canvas) => this.insertHiddenValue(canvas));
+  //       this.submit(form);
+  //     });
+  //   });
+  // }
 
-  addSignatureCompleteEvent() {
-    // 別のjsファイルにて送信処理を実行
-    const signatureData = Array.from(canvases).map(
-      (canvas) => document.getElementById(`signature_${canvas.id}`).value
-    );
-    const event = new CustomEvent('signatureComplete', {
-      detail: { signatureData: signatureData },
-    });
-    document.dispatchEvent(event);
-  }
+  // addSignatureCompleteEvent() {
+  //   // 別のjsファイルにて送信処理を実行
+  //   const signatureData = Array.from(canvases).map(
+  //     (canvas) => document.getElementById(`signature_${canvas.id}`).value
+  //   );
+  //   const event = new CustomEvent('signatureComplete', {
+  //     detail: { signatureData: signatureData },
+  //   });
+  //   document.dispatchEvent(event);
+  // }
 
   clearSignaturePad(canvas) {
     const clearCanvas = document.querySelector(
