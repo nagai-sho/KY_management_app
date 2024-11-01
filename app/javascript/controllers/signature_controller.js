@@ -25,7 +25,6 @@ export default class extends Controller {
 
     const form = document.getElementById('form');
     form.addEventListener('submit', (e) => {
-      // debugger;
       e.preventDefault();
       canvases.forEach((canvas) => this.insertHiddenValue(canvas));
       form.submit();
