@@ -14,31 +14,27 @@ export default class extends Controller {
       const riskLevelSelect = form.querySelector('.risk_level-select');
       const incidenceRateSelect = form.querySelector('.incidence_rate-select');
       const riskAssessment = form.querySelector('.assessment');
+      const hiddenField = form.querySelector(`#assessment_result${formIndex}`);
 
-      riskLevelSelect.addEventListener('change', () => {
-        console.log('change!');
+      const updateAssessment = () => {
         this.updateRiskLevel(
           riskLevelSelect,
           incidenceRateSelect,
           riskAssessment
         );
-      });
+        this.insertHiddenValue(hiddenField, riskAssessment);
+      };
 
-      incidenceRateSelect.addEventListener('change', () => {
-        console.log('change!');
-        this.updateRiskLevel(
-          riskLevelSelect,
-          incidenceRateSelect,
-          riskAssessment
-        );
-      });
+      riskLevelSelect.addEventListener('change', updateAssessment);
+      incidenceRateSelect.addEventListener('change', updateAssessment);
 
-      this.updateRiskLevel(
-        riskLevelSelect,
-        incidenceRateSelect,
-        riskAssessment
-      );
+      updateAssessment();
     });
+
+    // const form = document.getElementById('save_form');
+    // form.addEventListener('submit', (e) => {
+    //   this.insertHiddenValue(hiddenField, riskAssessment);
+    // });
   }
 
   updateRiskLevel(riskLevelSelect, incidenceRateSelect, riskAssessment) {
@@ -63,5 +59,11 @@ export default class extends Controller {
       }
       riskAssessment.textContent = riskText;
     }
+  }
+
+  insertHiddenValue(hiddenField, riskAssessment) {
+    const assessmentResult = riskAssessment.textContent;
+    hiddenField.value = assessmentResult;
+    console.log(`Hidden field ${hiddenField.id}: ${hiddenField.value}`);
   }
 }
