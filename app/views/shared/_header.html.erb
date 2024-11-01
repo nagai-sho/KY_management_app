@@ -9,37 +9,58 @@
     </div>
   </div>
 
-  <%# ハンバーガーメニュー %>
-  <div data-controller="hamburger">
-  <div class="hamburger_menu">
-    <button id="js-hamburger" type="button" class="hamburger" aria-controls="navigation" aria-expanded="false" aria-label="メニューを開く">
-      <%# aria-controls: button要素が制御する別の要素のIDを指定 %>
-      <%# aria-expanded: 制御する別のグループ化要素が、展開されているか折りたたまれているかを示す %>
-      <span class="hamburger_line"></span>
-      <span class="hamburger_text"></span>
-    </button>
-    <div class="header_nav-area js-nav-area" id="navigation">
-      <nav id="js-global-navigation" class="global-navigation">
-        <ul class="global-navigation_list">
-          <li><%= link_to '現場一覧', root_path, class: "global-navigation_link" %></li>
-          <% if user_signed_in? %>
-          <li>
-            <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "global-navigation_link" %>
-          </li>
-          <% else %>
-          <li>
-            <%= link_to 'ログイン', new_user_session_path, class: "global-navigation_link" %>
-          </li>
-          <li>
-            <%= link_to '新規登録', new_user_registration_path, class: "global-navigation_link" %>
-          </li>
-          <% end %>
-        </ul>
-        <div id="js-focus-trap" tabindex="0"></div>
-      </nav>
+  
+  <div class="list_menu">
+    <div class="list">
+      <ul>
+        <li><%= link_to '現場一覧', root_path, class: "global-navigation_link" %></li>
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "global-navigation_link" %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to 'ログイン', new_user_session_path, class: "global-navigation_link" %>
+        </li>
+        <li>
+          <%= link_to '新規登録', new_user_registration_path, class: "global-navigation_link" %>
+        </li>
+        <% end %>
+      </ul>
     </div>
+
+    <%# ハンバーガーメニュー %>
+    <div data-controller="hamburger">
+    <div class="hamburger_menu">
+      <button id="js-hamburger" type="button" class="hamburger" aria-controls="navigation" aria-expanded="false" aria-label="メニューを開く">
+        <%# aria-controls: button要素が制御する別の要素のIDを指定 %>
+        <%# aria-expanded: 制御する別のグループ化要素が、展開されているか折りたたまれているかを示す %>
+        <span class="hamburger_line"></span>
+        <span class="hamburger_text"></span>
+      </button>
+      <div class="header_nav-area js-nav-area" id="navigation">
+        <nav id="js-global-navigation" class="global-navigation">
+          <ul class="global-navigation_list">
+            <li><%= link_to '現場一覧', root_path, class: "global-navigation_link" %></li>
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "global-navigation_link" %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to 'ログイン', new_user_session_path, class: "global-navigation_link" %>
+            </li>
+            <li>
+              <%= link_to '新規登録', new_user_registration_path, class: "global-navigation_link" %>
+            </li>
+            <% end %>
+          </ul>
+          <div id="js-focus-trap" tabindex="0"></div>
+        </nav>
+      </div>
+    </div>
+    </div>
+    <%# ハンバーガーメニュー %>
   </div>
-  </div>
-  <%# ハンバーガーメニュー %>
 
 </header>
