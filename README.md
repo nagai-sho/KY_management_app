@@ -8,6 +8,8 @@
 
 http://52.197.7.233/
 
+[![サイトのスクリーンショット](/images/ラマImageNameHere.png)](http://52.197.7.233/)
+
 サービスの内容紹介
 
 <!-- https://drive.google.com/file/d/1pGLJuOG060WsZI7NIPzQtleECEqa-6Wp/view?usp=drive_link -->
