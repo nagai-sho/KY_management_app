@@ -8,7 +8,7 @@
 
 http://52.197.7.233/
 
-[![サイトのスクリーンショット](/images/ラマImageNameHere.png)](http://52.197.7.233/)
+[![らまたんKY](public/images/ラマImageNameHere.png)](http://52.197.7.233/)
 
 サービスの内容紹介
 
