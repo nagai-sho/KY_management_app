@@ -7,10 +7,9 @@
 ### らまたん KY
 
 [![らまたんKY](public/images/ramatanKYスクリーンショット.png)](http://52.197.7.233/)
+(画像をクリックするとアプリに飛べます)
 
-サービスの内容紹介
-
-<!-- https://drive.google.com/file/d/1pGLJuOG060WsZI7NIPzQtleECEqa-6Wp/view?usp=drive_link -->
+## サービスの内容紹介
 
 ### 建設業界で毎日作成される、KY（危険予知）シート作成アプリ。
 
