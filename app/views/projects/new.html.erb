@@ -1,7 +1,7 @@
+<%= render 'shared/error_messages', model: @project %>
 <div class="main">
   <h3>工事作成ページ</h3>
   <%= form_with model: [@site, @project], local: true do |f| %>
-  <%= render 'shared/error_messages', model: @project %>
   <div class="new_form">
     <%= f.label :name, '工事件名' %>
     <%= f.text_field :name, autofocus: true, placeholder: '※必須' %>

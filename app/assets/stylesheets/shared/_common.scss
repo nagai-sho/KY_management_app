@@ -440,3 +440,12 @@ body {
     }
   }
 }
+
+.error_alert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  li {
+    text-align: left;
+  }
+}
