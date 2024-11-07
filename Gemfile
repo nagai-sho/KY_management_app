@@ -87,6 +87,7 @@ group :production do
 end
 
 gem 'devise'
+gem 'devise-i18n'
 
 gem 'active_hash'
 
@@ -94,3 +95,5 @@ gem 'ferrum'
 
 gem 'mini_magick'
 gem 'image_processing', '~>1.2'
+
+gem 'rails-i18n', '~> 7.0.0'

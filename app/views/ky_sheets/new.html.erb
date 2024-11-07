@@ -1,3 +1,4 @@
+<%= render 'shared/error_messages', model: @ky_sheet %>
 <div class="main">
   <h3>KY活動チェックシート</h3>
   <div class="previous_page">
@@ -11,7 +12,6 @@
                 local: true,
                 data: { turbo: false },
                 html: { id: 'form' } do |f| %>
-  <%= render 'shared/error_messages', model: @ky_sheet %>
   <div data-controller="signature">
     <div class="new_form_ky">
       <h4 class="sub_title">入力フォーム</h4>
