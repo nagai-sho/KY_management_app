@@ -6,7 +6,7 @@
 
 ### らまたん KY
 
-[![らまたんKY](public/images/ramatanKYスクリーンショット.png)](http://52.197.7.233/)
+[![らまたんKY](public/images/ramatanKYスクリーンショット.png)](http://ramatanky.com/)
 (画像をクリックするとアプリに飛べます)
 
 ## サービスの内容紹介
