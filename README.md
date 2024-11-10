@@ -349,7 +349,7 @@ https://drive.google.com/file/d/1j2Bng_aPMu31Afp3_ogDurU6pZRSrTXw/view?usp=drive
 - （優先順位順）
 
 - [ ] HTTPS 化
-- [ ] 独自ドメインの取得
+- [x] 独自ドメインの取得
 - [ ] ユーザー登録時の Email アドレス確認メール送信機能
 - [ ] ユーザーへのエラーを日本語表示に変換
 - [ ] 所属会社以外の内容が見れない機能
