@@ -6,7 +6,7 @@
 
 ### らまたん KY
 
-[![らまたんKY](public/images/ramatanKYスクリーンショット.png)](http://ramatanky.com/)
+[![らまたんKY](public/images/ramatanKYスクリーンショット.png)](https://ramatanky.com/)
 (画像をクリックするとアプリに飛べます)
 
 ## サービスの内容紹介
@@ -348,7 +348,7 @@ https://drive.google.com/file/d/1j2Bng_aPMu31Afp3_ogDurU6pZRSrTXw/view?usp=drive
 
 - （優先順位順）
 
-- [ ] HTTPS 化
+- [x] HTTPS 化
 - [x] 独自ドメインの取得
 - [ ] ユーザー登録時の Email アドレス確認メール送信機能
 - [ ] ユーザーへのエラーを日本語表示に変換
