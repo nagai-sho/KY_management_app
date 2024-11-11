@@ -1,37 +1,3 @@
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2.5rem;
-  background-color: rgba($color-cloud, 0.5);
-
-  h3 {
-    font-size: 2rem;
-    color: $color-earth;
-    margin-bottom: 2.5rem;
-    font-weight: 600;
-    position: relative;
-    display: inline-block;
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(to right, $color-moss, $color-earth);
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-  }
-}
-
-@keyframes slideIn {
-  to {
-    transform: scaleX(1);
-  }
-}
-
 // new.html.erb用
 
 .new_form_ky {
@@ -199,40 +165,11 @@
   }
 }
 
-.create_button {
-  text-align: center;
-  margin-bottom: 5px;
-  input[type='submit'] {
-    @include button-base;
-    background-color: $color-moss;
-    color: white;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
-      transition: 0.5s;
-    }
-
-    &:hover::before {
-      left: 100%;
-    }
-
-    &:hover {
-      background-color: darken($color-moss, 10%);
-    }
-  }
+.top_space {
+  margin-top: 1.5rem;
+}
+.bottom_space {
+  margin-bottom: 1.5rem;
 }
 
 .form_block {
