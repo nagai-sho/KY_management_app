@@ -29,3 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# データベースをローカルはKY_management_app_2、本番環境ではKY_management_appで運用しているため。
+# 修正があれば一度コメントアウトすること
+/config/database.yml

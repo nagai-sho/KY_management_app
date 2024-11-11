@@ -24,8 +24,12 @@ $color-cloud: #f4f1ed;
 
 // Global styles
 body {
+  height: 100vh;
   font-family: sans-serif;
   padding-top: 120px;
+  background-color: $color-cloud;
+  color: $color-earth;
+  line-height: 1.6;
   @include max(sm) {
     padding-top: 60px;
   }
@@ -43,7 +47,7 @@ a {
 .main {
   margin: 0 auto;
   padding: 2.5rem;
-  background-color: rgba($color-cloud, 0.5);
+  background-color: $color-cloud;
 
   h3 {
     font-size: 2rem;
@@ -211,6 +215,7 @@ a {
     font-weight: 500;
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     &::before {
       content: '●';
@@ -317,12 +322,6 @@ a {
 //   }
 // }
 
-body {
-  background-color: $color-cloud;
-  color: $color-earth;
-  line-height: 1.6;
-}
-
 // アニメーション
 @keyframes fadeInUp {
   from {
@@ -407,7 +406,6 @@ body {
 
 .create_button {
   text-align: center;
-  margin-bottom: 30px;
   input[type='submit'] {
     @include button-base;
     background-color: $color-moss;

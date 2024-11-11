@@ -1,9 +1,9 @@
 <div class="main">
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <h3>新規登録</h3>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "devise-form signup-form" }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="new_form">
 
@@ -50,11 +50,12 @@
       <%= f.text_field :position, autofocus: true, autocomplete: "on", class: "form-input", placeholder: '' %>
     </div>
 
+    <div class="create_button top_space">
+      <%= f.submit "新規登録", class: "submit-button" %>
+    </div>
+
   </div>
 
-  <div class="create_button">
-    <%= f.submit "新規登録", class: "submit-button" %>
-  </div>
   <% end %>
 
   <div class="previous_page">
