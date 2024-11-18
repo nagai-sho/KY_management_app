@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  # AWS SESで検証したドメインのメールアドレス
+  default from: "noreply@ramatanky.com"
   layout "mailer"
 end
