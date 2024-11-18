@@ -67,6 +67,20 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.us-east-1.amazonaws.com', # SESのSMTPエンドポイント
+    port: 587,
+    user_name: ENV['AWS_SES_SMTP_USERNAME'], # SESのSMTPユーザー名
+    password: ENV['AWS_SES_SMTP_PASSWORD'], # SESのSMTPパスワード
+    authentication: :login,
+    enable_starttls_auto: true
+  }
+
+  config.action_mailer.default_url_options = { host: 'ramatanky.com' } # Route53で取得したドメイン
+
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
