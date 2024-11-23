@@ -48,8 +48,9 @@ Rails.application.configure do
     port: 587,
     user_name: ENV['AWS_SES_SMTP_USERNAME'], # SESのSMTPユーザー名
     password: ENV['AWS_SES_SMTP_PASSWORD'], # SESのSMTPパスワード
-    authentication: :login,
-    enable_starttls_auto: true
+    domain: 'ramatanky.com',
+    authentication: :plain,
+    enable_starttls: true
   }
 
   config.action_mailer.default_url_options = { host: 'ramatanky.com' } # Route53で取得したドメイン
