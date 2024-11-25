@@ -53,7 +53,7 @@ Rails.application.configure do
     enable_starttls: true
   }
 
-  config.action_mailer.default_url_options = { host: 'ramatanky.com' } # Route53で取得したドメイン
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } # ローカルで確認する場合
 
 
   # Print deprecation notices to the Rails logger.
