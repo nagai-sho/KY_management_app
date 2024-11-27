@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'sites#index'
 
+  resources :introductions, only: :index
+
   resources :sites, shallow: true do
     resources :projects, shallow: true do
       resources :ky_sheets, shallow: true do
