@@ -345,8 +345,14 @@ a {
   }
 }
 
-// new.html.erb用
+// introduces/index.html.erb用
+.introduce {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+// new.html.erb用
 .new_form {
   display: flex;
   flex-direction: column;
