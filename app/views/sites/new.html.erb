@@ -2,20 +2,19 @@
 <div class="main">
   <h3>現場作成ページ</h3>
   <%= form_with model: @site, local: true do |f| %>
-  <div class="new_form">
-    <%= f.label :name, '現場名' %><br>
-    <%= f.text_field :name, autofocus: true, placeholder: '※必須' %>
-    <%= f.label :postal_code, '郵便番号' %><br>
-    <%= f.text_field :postal_code, placeholder: '入力例：000-0000' %>
-    <%= f.label :address, '住所' %><br>
-    <%= f.text_field :address, placeholder: '' %>
-  </div>
-  <div class="create_button bottom_space">
-    <%= f.submit '作成する' %>
-  </div>
+    <div class="new_form">
+      <%= f.label :name, '現場名' %><br>
+      <%= f.text_field :name, autofocus: true, placeholder: '※必須' %>
+      <%= f.label :postal_code, '郵便番号' %><br>
+      <%= f.text_field :postal_code, placeholder: '入力例：000-0000' %>
+      <%= f.label :address, '住所' %><br>
+      <%= f.text_field :address, placeholder: '' %>
+    </div>
+    <div class="create_button bottom_space">
+      <%= f.submit '作成する' %>
+    </div>
   <% end %>
   <div class="previous_page">
-    <%= link_to '戻る', root_path %>
+    <%= link_to '戻る', sites_path %>
   </div>
-
 </div>

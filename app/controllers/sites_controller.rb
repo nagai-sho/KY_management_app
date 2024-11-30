@@ -10,7 +10,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(site_params)
     if @site.save
-      redirect_to root_path, notice: '現場名が正常に作成されました！'
+      redirect_to sites_path, notice: '現場名が正常に作成されました！'
     else
       flash.now[:alert] = '現場名の作成に失敗しました。'
       render :new, status: :unprocessable_entity
@@ -24,13 +24,13 @@ class SitesController < ApplicationController
   def update
     site = Site.find(params[:id])
     site.update(site_params)
-    redirect_to root_path
+    redirect_to sites_path
   end
 
   def destroy
     site = Site.find(params[:id])
     site.destroy
-    redirect_to root_path
+    redirect_to sites_path
   end
   
   def item_list
