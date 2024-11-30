@@ -1,9 +1,21 @@
 <div class="main">
   <h3>らまたんKY使用方法</h3>
-  <div class="site_menu"></div>
-  <div class="site_create">
-    <%= link_to 'アプリに移動する', sites_path %>
-    <%= link_to '新規登録', new_user_registration_path %>
+  <div class="site_menu">
+    <div class="introduce">
+      <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/7MVsc4EwhlM?si=TI-2HhC2rKXmFRRG" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+      </iframe>
+      <div class="create_button bottom_space">
+        <%= link_to 'アプリに移動する', sites_path %><br>
+      </div>
+      <div class="previous_page">
+        <%= link_to '新規登録', new_user_registration_path %><br>
+      </div>
+    </div>
   </div>
-</div>
 </div>
