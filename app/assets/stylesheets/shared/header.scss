@@ -54,6 +54,7 @@ header {
       h1 {
         font-size: 2rem;
         margin-bottom: 0.5rem;
+        color: $color-earth;
         @include max(lg) {
           font-size: 1.5rem;
           margin-bottom: 0.3rem;
