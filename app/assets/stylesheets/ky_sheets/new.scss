@@ -189,15 +189,15 @@
   select {
     width: 100%;
   }
-  .minimum_block {
-    margin: 0 0.5rem;
-  }
   .medium_block {
     display: flex;
     justify-content: center;
     @include max(sm) {
       flex-direction: column;
     }
+  }
+  .minimum_block {
+    margin: 0 0.5rem;
   }
 }
 
