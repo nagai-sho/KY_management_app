@@ -1,319 +1,309 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview PDF</title>
-</head>
-<body>
-
-  <div class="default_format">
-    <div class="title">
-      <h3>KY活動チェックシート</h3>
-    </div>
-
-    <div data-controller="signature">
-      <div class="ky">
-        <div class="top_content">
-          <div class="ky_header">
-            <div class="header_left">
-              <div class="header_name">
-                <div class="site_name">現場名　</div>
-                <%= @ky_sheet.project.site.name %>
-                
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview PDF</title>
+  </head>
+  <body>
+    <div class="default_format">
+      <div class="title">
+        <h3>KY活動チェックシート</h3>
+      </div>
+      <div data-controller="signature">
+        <div class="ky">
+          <div class="top_content">
+            <div class="ky_header">
+              <div class="header_left">
+                <div class="header_name">
+                  <div class="site_name">現場名　</div>
+                  <%= @ky_sheet.project.site.name %>
+                </div>
+                <div class="header_name">
+                  <div class="construction_name">工事件名　</div>
+                  <%= @ky_sheet.project.name %>
+                </div>
               </div>
-              <div class="header_name">
-                <div class="construction_name">工事件名　</div>
-                <%= @ky_sheet.project.name %>
+              <div class="header_center">
+                <div class="header_name">
+                  <div class="company_name">会社名　</div>
+                  <%= current_user.company %>
+                </div>
+                <div class="header_name">
+                  <div class="construction_type">工事種別　</div>
+                  <%= @ky_sheet.construction_type.name %>
+                </div>
               </div>
-            </div>
-            <div class="header_center">
-              <div class="header_name">
-                <div class="company_name">会社名　</div>
-                <%= current_user.company %>
-              </div>
-              <div class="header_name">
-                <div class="construction_type">工事種別　</div>
-                <%= @ky_sheet.construction_type.name %>
-              </div>
-            </div>
-            <div class="header_right">
-              <div class="header_name">
-                <div class="work_day">作業日</div>
-                <div class="calendar">
-                  <%= @ky_sheet.construction_date %>
+              <div class="header_right">
+                <div class="header_name">
+                  <div class="work_day">作業日</div>
+                  <div class="calendar">
+                    <%= @ky_sheet.construction_date %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="column">
-          <div class="column_list">主な作業場所</div>
-          <div class="column_list">作業内容</div>
-          <div class="column_list">作業に伴うリスク / 危険Point</div>
-          <div class="risk_evaluation">
-            <div class="">リスク評価</div>
-            <div class="risk_degree">
-              <div class="rate">危険度</div>
-              <div class="rate">発生率</div>
+          <div class="column">
+            <div class="column_list">主な作業場所</div>
+            <div class="column_list">作業内容</div>
+            <div class="column_list">作業に伴うリスク / 危険Point</div>
+            <div class="risk_evaluation">
+              <div class="">リスク評価</div>
+              <div class="risk_degree">
+                <div class="rate">危険度</div>
+                <div class="rate">発生率</div>
+              </div>
             </div>
+            <div id="", class="column_list">リスクレベル</div>
+            <div class="column_list">リスク低減対策</div>
+            <div class="column_list">管理者確認サイン</div>
           </div>
-          <div id="", class="column_list">リスクレベル</div>
-          <div class="column_list">リスク低減対策</div>
-          <div class="column_list">管理者確認サイン</div>
-        </div>
-
-        <div class="input_area">
-          <div class="safety_measure">
-            <div class="sub_title">安全へのKY活動</div>
-            <div class="risk_content">
-              <div class="location">
-                <%= @location_1.content %>
-              </div>
-              <div class="action_content">
-                <%= @construction_content_1.content %>
-              </div>
-              <div class="risk_prediction">
-                <%= @safety_risk_prediction_1.content %>
-              </div>
-              <div class="risk_rate">
-                <%= @risk_level_1.name %>
-                <%= @incidence_rate_1.name %>
-              </div>
-              <div class="risk_rate">
-                <%= @ky_sheet.assessment_result1 %>
-              </div>
-              <div class="risk_measure">
-                <%= @safety_risk_measure_1.content %>
-              </div>
-              <div class="director_sign">
-                <img src="<%= @ky_sheet.signature_sig1 %>" width="70" height="35">
-              </div>
-            </div>
-            
-            <div class="risk_content">
-              <div class="location">
-                <%= @location_2.content %>
-              </div>
-              <div class="action_content">
-                <%= @construction_content_2.content %>
-              </div>
-              <div class="risk_prediction">
-                <%= @safety_risk_prediction_2.content %>
-              </div>
-              <div class="risk_rate">
-                <%= @risk_level_2.name %>
-                <%= @incidence_rate_2.name %>
-              </div>
-              <div class="risk_rate">
-                <%= @ky_sheet.assessment_result2 %>
-              </div>
-              <div class="risk_measure">
-                <%= @safety_risk_measure_2.content %>
-              </div>
-              <div class="director_sign">
-                <img src="<%= @ky_sheet.signature_sig2 %>" width="70" height="35">
-              </div>
-            </div>
-          </div>
-
-          <div class="quality_measure">
-            <div class="sub_title">品質へのKY活動</div>
-            <div class="risk_content">
-              <div class="location">
-                <%= @location_3.content %>
-              </div>
-              <div class="action_content">
-                <%= @construction_content_3.content %>
-              </div>
-              <div class="risk_prediction">
-                <%= @quality_risk_prediction.content %>
-              </div>
-              <div class="risk_rate">
-                <%= @risk_level_3.name %>
-                <%= @incidence_rate_3.name %>
-              </div>
-              <div class="risk_rate">
-                <%= @ky_sheet.assessment_result3 %>
-              </div>
-              <div class="risk_measure">
-                <%= @quality_risk_measure.content %>
-              </div>
-              <div class="director_sign">
-                <img src="<%= @ky_sheet.signature_sig3 %>" width="70" height="35">
-              </div>
-            </div>
-          </div>
-
-          <div class="the_site_measure">
-            <div class="sub_title">当該現場で特筆すべきKY活動</div>
-            <div class="risk_content">
-              <div class="location">
-                <%= @location_4.content %>
-              </div>
-              <div class="action_content">
-                <%= @construction_content_4.content %>
-              </div>
-              <div class="risk_prediction">
-                <%= @site_risk_prediction.content %>
-              </div>
-              <div class="risk_rate">
-                <%= @risk_level_4.name %>
-                <%= @incidence_rate_4.name %>
-              </div>
-              <div class="risk_rate">
-                <%= @ky_sheet.assessment_result4 %>
-              </div>
-              <div class="risk_measure">
-                <%= @site_risk_measure.content %>
-              </div>
-              <div class="director_sign">
-                <img src="<%= @ky_sheet.signature_sig4 %>" width="70" height="35">
-              </div>
-            </div>
-          </div>
-
-          <div class="priority_measure">
-            <div class="sub_title">本日のKY重点対策目標</div>
-            <div class="risk_content">
-              <div class="location">
-                <%= @location_5.content %>
-              </div>
-              <%= @ky_sheet.priority_content %>
-              <%= @ky_sheet.priority_measure_risk %>
-              <div class="risk_rate">
-                <%= @risk_level_5.name %>
-                <%= @incidence_rate_5.name %>
-              </div>
-              <div class="risk_rate">
-                <%= @ky_sheet.assessment_result5 %>
-              </div>
-              <%= @ky_sheet.priority_measure %>
-              <div class="director_sign">
-                <img src="<%= @ky_sheet.signature_sig5 %>" width="70" height="35">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="check_area">
-          <div class="sub_title">作業前チェック項目</div>
-          <div class="check_content_all">
-            <div class="check_content_reft">
-              <div class="check_content">
-                <div>本日の安全通路及び立ち入り禁止区域について理解している</div>
-                <div>
-                  <input type="radio" id="answer_1_yes" <%= 'checked' if @ky_sheet.answer_1 == 'yes' %> >
-                  <label for="answer_1_yes">はい</label>
-                  <input type="radio" id="answer_1_no" <%= 'checked' if @ky_sheet.answer_1 == 'no' %> >
-                  <label for="answer_1_no">該当なし</label>
+          <div class="input_area">
+            <div class="safety_measure">
+              <div class="sub_title">安全へのKY活動</div>
+              <div class="risk_content">
+                <div class="location">
+                  <%= @location_1.content %>
+                </div>
+                <div class="action_content">
+                  <%= @construction_content_1.content %>
+                </div>
+                <div class="risk_prediction">
+                  <%= @safety_risk_prediction_1.content %>
+                </div>
+                <div class="risk_rate">
+                  <%= @risk_level_1.name %>
+                  <%= @incidence_rate_1.name %>
+                </div>
+                <div class="risk_rate">
+                  <%= @ky_sheet.assessment_result1 %>
+                </div>
+                <div class="risk_measure">
+                  <%= @safety_risk_measure_1.content %>
+                </div>
+                <div class="director_sign">
+                  <img src="<%= @ky_sheet.signature_sig1 %>" width="70" height="35">
                 </div>
               </div>
-              <div class="check_content">
-                <div>作業に必要な資格証、工具の許可証を携帯及び表示している</div>
-                <div>
-                  <input type="radio" id="answer_2_yes" <%= 'checked' if @ky_sheet.answer_2 == 'yes' %> >
-                  <label for="answer_2_yes">はい</label>
-                  <input type="radio" id="answer_2_no" <%= 'checked' if @ky_sheet.answer_2 == 'no' %> >
-                  <label for="answer_2_no">該当なし</label>
+              <div class="risk_content">
+                <div class="location">
+                  <%= @location_2.content %>
                 </div>
-              </div>
-              <div class="check_content">
-                <div>使用する電動工具、仮設材及び作業足場の点検をしている</div>
-                <div>
-                  <input type="radio" id="answer_3_yes" <%= 'checked' if @ky_sheet.answer_3 == 'yes' %> >
-                  <label for="answer_3_yes">はい</label>
-                  <input type="radio" id="answer_3_no" <%= 'checked' if @ky_sheet.answer_3 == 'no' %> >
-                  <label for="answer_3_no">該当なし</label>
+                <div class="action_content">
+                  <%= @construction_content_2.content %>
+                </div>
+                <div class="risk_prediction">
+                  <%= @safety_risk_prediction_2.content %>
+                </div>
+                <div class="risk_rate">
+                  <%= @risk_level_2.name %>
+                  <%= @incidence_rate_2.name %>
+                </div>
+                <div class="risk_rate">
+                  <%= @ky_sheet.assessment_result2 %>
+                </div>
+                <div class="risk_measure">
+                  <%= @safety_risk_measure_2.content %>
+                </div>
+                <div class="director_sign">
+                  <img src="<%= @ky_sheet.signature_sig2 %>" width="70" height="35">
                 </div>
               </div>
             </div>
-            <div class="check_content_right">
-              <div class="check_content">
-                <div>本日の作業に危険作業に該当するものがあるか把握している</div>
-                <div>
-                  <input type="radio" id="answer_4_yes" <%= 'checked' if @ky_sheet.answer_4 == 'yes' %> >
-                  <label for="answer_4_yes">はい</label>
-                  <input type="radio" id="answer_4_no" <%= 'checked' if @ky_sheet.answer_4 == 'no' %> >
-                  <label for="answer_4_no">該当なし</label>
+            <div class="quality_measure">
+              <div class="sub_title">品質へのKY活動</div>
+              <div class="risk_content">
+                <div class="location">
+                  <%= @location_3.content %>
+                </div>
+                <div class="action_content">
+                  <%= @construction_content_3.content %>
+                </div>
+                <div class="risk_prediction">
+                  <%= @quality_risk_prediction.content %>
+                </div>
+                <div class="risk_rate">
+                  <%= @risk_level_3.name %>
+                  <%= @incidence_rate_3.name %>
+                </div>
+                <div class="risk_rate">
+                  <%= @ky_sheet.assessment_result3 %>
+                </div>
+                <div class="risk_measure">
+                  <%= @quality_risk_measure.content %>
+                </div>
+                <div class="director_sign">
+                  <img src="<%= @ky_sheet.signature_sig3 %>" width="70" height="35">
                 </div>
               </div>
-              <div class="check_content">
-                <div>本日の作業計画及び内容を把握している</div>
-                <div>
-                  <input type="radio" id="answer_5_yes" <%= 'checked' if @ky_sheet.answer_5 == 'yes' %> >
-                  <label for="answer_5_yes">はい</label>
-                  <input type="radio" id="answer_5_no" <%= 'checked' if @ky_sheet.answer_5 == 'no' %> >
-                  <label for="answer_5_no">該当なし</label>
+            </div>
+            <div class="the_site_measure">
+              <div class="sub_title">当該現場で特筆すべきKY活動</div>
+              <div class="risk_content">
+                <div class="location">
+                  <%= @location_4.content %>
+                </div>
+                <div class="action_content">
+                  <%= @construction_content_4.content %>
+                </div>
+                <div class="risk_prediction">
+                  <%= @site_risk_prediction.content %>
+                </div>
+                <div class="risk_rate">
+                  <%= @risk_level_4.name %>
+                  <%= @incidence_rate_4.name %>
+                </div>
+                <div class="risk_rate">
+                  <%= @ky_sheet.assessment_result4 %>
+                </div>
+                <div class="risk_measure">
+                  <%= @site_risk_measure.content %>
+                </div>
+                <div class="director_sign">
+                  <img src="<%= @ky_sheet.signature_sig4 %>" width="70" height="35">
                 </div>
               </div>
-              <div class="check_content">
-                <div>体調が平常時と異なる作業員がいないか確認している</div>
-                <div>
-                  <input type="radio" id="answer_6_yes" <%= 'checked' if @ky_sheet.answer_6 == 'yes' %> >
-                  <label for="answer_6_yes">はい</label>
-                  <input type="radio" id="answer_6_no" <%= 'checked' if @ky_sheet.answer_6 == 'no' %> >
-                  <label for="answer_6_no">該当なし</label>
+            </div>
+            <div class="priority_measure">
+              <div class="sub_title">本日のKY重点対策目標</div>
+              <div class="risk_content">
+                <div class="location">
+                  <%= @location_5.content %>
+                </div>
+                <%= @ky_sheet.priority_content %>
+                <%= @ky_sheet.priority_measure_risk %>
+                <div class="risk_rate">
+                  <%= @risk_level_5.name %>
+                  <%= @incidence_rate_5.name %>
+                </div>
+                <div class="risk_rate">
+                  <%= @ky_sheet.assessment_result5 %>
+                </div>
+                <%= @ky_sheet.priority_measure %>
+                <div class="director_sign">
+                  <img src="<%= @ky_sheet.signature_sig5 %>" width="70" height="35">
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="ky_footer">
-          <div class="sign_area">
-            <div class="footer_title">参加者サイン　
-            </div>
-            <div class="sign_box">
-              <img src="<%= @ky_sheet.signature_sig6 %>" width="200" height="100">
+          <div class="check_area">
+            <div class="sub_title">作業前チェック項目</div>
+            <div class="check_content_all">
+              <div class="check_content_reft">
+                <div class="check_content">
+                  <div>本日の安全通路及び立ち入り禁止区域について理解している</div>
+                  <div>
+                    <input type="radio" id="answer_1_yes" <%= 'checked' if @ky_sheet.answer_1 == 'yes' %> >
+                    <label for="answer_1_yes">はい</label>
+                    <input type="radio" id="answer_1_no" <%= 'checked' if @ky_sheet.answer_1 == 'no' %> >
+                    <label for="answer_1_no">該当なし</label>
+                  </div>
+                </div>
+                <div class="check_content">
+                  <div>作業に必要な資格証、工具の許可証を携帯及び表示している</div>
+                  <div>
+                    <input type="radio" id="answer_2_yes" <%= 'checked' if @ky_sheet.answer_2 == 'yes' %> >
+                    <label for="answer_2_yes">はい</label>
+                    <input type="radio" id="answer_2_no" <%= 'checked' if @ky_sheet.answer_2 == 'no' %> >
+                    <label for="answer_2_no">該当なし</label>
+                  </div>
+                </div>
+                <div class="check_content">
+                  <div>使用する電動工具、仮設材及び作業足場の点検をしている</div>
+                  <div>
+                    <input type="radio" id="answer_3_yes" <%= 'checked' if @ky_sheet.answer_3 == 'yes' %> >
+                    <label for="answer_3_yes">はい</label>
+                    <input type="radio" id="answer_3_no" <%= 'checked' if @ky_sheet.answer_3 == 'no' %> >
+                    <label for="answer_3_no">該当なし</label>
+                  </div>
+                </div>
+              </div>
+              <div class="check_content_right">
+                <div class="check_content">
+                  <div>本日の作業に危険作業に該当するものがあるか把握している</div>
+                  <div>
+                    <input type="radio" id="answer_4_yes" <%= 'checked' if @ky_sheet.answer_4 == 'yes' %> >
+                    <label for="answer_4_yes">はい</label>
+                    <input type="radio" id="answer_4_no" <%= 'checked' if @ky_sheet.answer_4 == 'no' %> >
+                    <label for="answer_4_no">該当なし</label>
+                  </div>
+                </div>
+                <div class="check_content">
+                  <div>本日の作業計画及び内容、担当する施工区分を把握している</div>
+                  <div>
+                    <input type="radio" id="answer_5_yes" <%= 'checked' if @ky_sheet.answer_5 == 'yes' %> >
+                    <label for="answer_5_yes">はい</label>
+                    <input type="radio" id="answer_5_no" <%= 'checked' if @ky_sheet.answer_5 == 'no' %> >
+                    <label for="answer_5_no">該当なし</label>
+                  </div>
+                </div>
+                <div class="check_content">
+                  <div>体温及び体調が平常時と異なる作業員がいないか確認している</div>
+                  <div>
+                    <input type="radio" id="answer_6_yes" <%= 'checked' if @ky_sheet.answer_6 == 'yes' %> >
+                    <label for="answer_6_yes">はい</label>
+                    <input type="radio" id="answer_6_no" <%= 'checked' if @ky_sheet.answer_6 == 'no' %> >
+                    <label for="answer_6_no">該当なし</label>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="personnel_area">
-            <div class="footer_title">本日の人員</div>
-            <div class="personnel">
-              <div class="division">
-                <div class="footer_title">作業員</div>
-                <%= @ky_sheet.worker %>人
+          <div class="ky_footer">
+            <div class="sign_area">
+              <div class="footer_title">参加者サイン　
               </div>
-              <div class="sum">+</div>
-              <div class="division">
-                <div class="footer_title">現場管理</div>
-                <%= @ky_sheet.manager %>人
+              <div class="sign_box">
+                <img src="<%= @ky_sheet.signature_sig6 %>" width="200" height="100">
               </div>
             </div>
-          </div>
-          <div class="manager_sign_area">
-            <div class="footer_title">管理者サイン</div>
-            <div class="confirmed_area">
-              <div class="confirmed">
-                <div class="footer_title">元請</div>
-                <div class="sign">
-                  <img src="<%= @ky_sheet.signature_sig7 %>" width="80" height="40">
+            <div class="personnel_area">
+              <div class="footer_title">本日の人員</div>
+              <div class="personnel">
+                <div class="division">
+                  <div class="footer_title">作業員</div>
+                  <%= @ky_sheet.worker %>人
+                </div>
+                <div class="sum">+</div>
+                <div class="division">
+                  <div class="footer_title">現場管理</div>
+                  <%= @ky_sheet.manager %>人
                 </div>
               </div>
-              <div class="confirmed">
-                <div class="footer_title">元請</div>
-                <div class="sign">
-                  <img src="<%= @ky_sheet.signature_sig8 %>" width="80" height="40">
+            </div>
+            <div class="manager_sign_area">
+              <div class="footer_title">管理者サイン</div>
+              <div class="confirmed_area">
+                <div class="confirmed">
+                  <div class="footer_title">元請</div>
+                  <div class="sign">
+                    <img src="<%= @ky_sheet.signature_sig7 %>" width="80" height="40">
+                  </div>
                 </div>
-              </div>
-              <div class="confirmed">
-                <div class="footer_title">上長</div>
-                <div class="sign">
-                  <img src="<%= @ky_sheet.signature_sig9 %>" width="80" height="40">
+                <div class="confirmed">
+                  <div class="footer_title">元請</div>
+                  <div class="sign">
+                    <img src="<%= @ky_sheet.signature_sig8 %>" width="80" height="40">
+                  </div>
                 </div>
-              </div>
-              <div class="confirmed">
-                <div class="footer_title">現場責任者</div>
-                <div class="sign">
-                  <img src="<%= @ky_sheet.signature_sig10 %>" width="80" height="40">
+                <div class="confirmed">
+                  <div class="footer_title">上長</div>
+                  <div class="sign">
+                    <img src="<%= @ky_sheet.signature_sig9 %>" width="80" height="40">
+                  </div>
                 </div>
-              </div>
-              <div class="confirmed">
-                <div class="footer_title">現場担当</div>
-                <div class="sign">
-                  <img src="<%= @ky_sheet.signature_sig11 %>" width="80" height="40">
+                <div class="confirmed">
+                  <div class="footer_title">現場責任者</div>
+                  <div class="sign">
+                    <img src="<%= @ky_sheet.signature_sig10 %>" width="80" height="40">
+                  </div>
+                </div>
+                <div class="confirmed">
+                  <div class="footer_title">現場担当</div>
+                  <div class="sign">
+                    <img src="<%= @ky_sheet.signature_sig11 %>" width="80" height="40">
+                  </div>
                 </div>
               </div>
             </div>
@@ -321,8 +311,5 @@
         </div>
       </div>
     </div>
-  </div>
-
-</body>
+  </body>
 </html>
-
