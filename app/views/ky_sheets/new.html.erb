@@ -330,14 +330,14 @@
                     <%= f.label :answer_4_no, '該当なし' %>
                   </div>
                   <div class="select_button">
-                    <div>本日の作業計画及び内容、担当する施工区分を把握している</div>
+                    <div>本日の作業計画及び内容を把握している</div>
                     <%= f.radio_button :answer_5, 'yes', require: true %>
                     <%= f.label :answer_5_yes, 'はい' %>
                     <%= f.radio_button :answer_5, 'no', require: true %>
                     <%= f.label :answer_5_no, '該当なし' %>
                   </div>
                   <div class="select_button">
-                    <div>体温及び体調が平常時と異なる作業員がいないか確認している</div>
+                    <div>体調が平常時と異なる作業員がいないか確認している</div>
                     <%= f.radio_button :answer_6, 'yes', require: true %>
                     <%= f.label :answer_6_yes, 'はい' %>
                     <%= f.radio_button :answer_6, 'no', require: true %>
@@ -355,6 +355,13 @@
               </div>
               <%= f.hidden_field :signature_sig6, id: 'signature_sig6' %>
               <button type="button" class="clear" data-canvas-id="sig6">クリア</button>
+            </div>
+            <div class="divide_block">
+              <div class="worker_sign">
+                <canvas class="signature-pad" id="sig6_2"></canvas>
+              </div>
+              <%= f.hidden_field :signature_sig6_2, id: 'signature_sig6_2' %>
+              <button type="button" class="clear" data-canvas-id="sig6_2">クリア</button>
             </div>
           </div>
           <h4 class="sub_title">本日の人員</h4>
