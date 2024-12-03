@@ -143,7 +143,7 @@ class KySheetsController < ApplicationController
       :incidence_rate_id_1, :incidence_rate_id_2, :incidence_rate_id_3, :incidence_rate_id_4, :incidence_rate_id_5,
       :assessment_result1, :assessment_result2, :assessment_result3, :assessment_result4, :assessment_result5,
       :answer_1, :answer_2, :answer_3, :answer_4, :answer_5, :answer_6,
-      :signature_sig1, :signature_sig2, :signature_sig3, :signature_sig4, :signature_sig5, :signature_sig6,
+      :signature_sig1, :signature_sig2, :signature_sig3, :signature_sig4, :signature_sig5, :signature_sig6, :signature_sig6_2,
       :signature_sig7, :signature_sig8, :signature_sig9, :signature_sig10, :signature_sig11,
       :worker,
       :manager,

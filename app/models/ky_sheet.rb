@@ -61,6 +61,7 @@ class KySheet < ApplicationRecord
                 :signature_sig4,
                 :signature_sig5,
                 :signature_sig6,
+                :signature_sig6_2,
                 :signature_sig7,
                 :signature_sig8,
                 :signature_sig9,
@@ -119,6 +120,7 @@ class KySheet < ApplicationRecord
     validates :signature_sig4
     validates :signature_sig5
     validates :signature_sig6
+    validates :signature_sig6_2
     validates :signature_sig7
     validates :signature_sig8
     validates :signature_sig9
