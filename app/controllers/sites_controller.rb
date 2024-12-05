@@ -2,7 +2,12 @@ class SitesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @sites = Site.all().order(created_at: :desc)
+    @keyword = params[:keyword]
+    if @keyword.present?
+      @sites = Site.search(@keyword).order(created_at: :desc)
+    else
+      @sites = Site.all().order(created_at: :desc)
+    end
   end
   def new
     @site = Site.new
