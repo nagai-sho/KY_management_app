@@ -4,9 +4,9 @@ class SitesController < ApplicationController
   def index
     @keyword = params[:keyword]
     if @keyword.present?
-      @sites = Site.search(@keyword).order(created_at: :desc)
+      @sites = Site.search(@keyword).order(created_at: :desc).page(params[:page]).per(5)
     else
-      @sites = Site.all().order(created_at: :desc)
+      @sites = Site.all().order(created_at: :desc).page(params[:page]).per(5)
     end
   end
   def new

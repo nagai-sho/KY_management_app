@@ -11,6 +11,7 @@
       <%= link_to '新規作成', new_site_path %>
     </div>
   </div>
+  <%= paginate @sites %>
   <% @sites.each do |site| %>
     <div class="site_index">
       <div class="title">現場名：<%= site.name %></div>
@@ -18,15 +19,16 @@
         <%= link_to '工事一覧', site_projects_path(site) %>
         <%= link_to '編集', edit_site_path(site) %>
         <%= link_to '削除', site_path(site),
-          data: { turbo_method: :delete,
-            turbo_confirm: '
-            現場内の全ての工事データ,
-            作成した全てのKYシートのデータも削除されます。
+            data: { turbo_method: :delete,
+              turbo_confirm: '
+              現場内の全ての工事データ,
+              作成した全てのKYシートのデータも削除されます。
 
-            本当に削除しますか？'
-          }
-        %>
+              本当に削除しますか？'
+            }
+          %>
       </div>
     </div>
   <% end %>
+  <%= paginate @sites %>
 </div>
