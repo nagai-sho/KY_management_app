@@ -82,7 +82,7 @@ a {
 
 .site_menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 2.5rem;
   gap: 1.5rem;
@@ -90,29 +90,33 @@ a {
     flex-direction: column;
   }
 
-  input {
-    padding: 0.8rem 1.2rem;
-    border: 2px solid rgba($color-stone, 0.2);
-    border-radius: 4px;
-    flex-grow: 1;
-    background-color: rgba($color-cloud, 0.8);
-    transition: all 0.3s ease;
+  // input {
+  //   padding: 0.8rem 1.2rem;
+  //   border: 2px solid rgba($color-stone, 0.2);
+  //   border-radius: 4px;
+  //   flex-grow: 1;
+  //   background-color: rgba($color-cloud, 0.8);
+  //   transition: all 0.3s ease;
 
-    &:focus {
-      outline: none;
-      border-color: $color-moss;
-      box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
-      background-color: white;
-    }
-  }
+  //   &:focus {
+  //     outline: none;
+  //     border-color: $color-moss;
+  //     box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+  //     background-color: white;
+  //   }
+  // }
 
-  .site_search {
+  .site_search form {
+    // display: flex;
+    // align-items: center;
+    // margin: 0 0.5rem;
+    width: 100%;
+
     input[type='submit'] {
       @include button-base;
       background-color: $color-moss;
       color: white;
       position: relative;
-      // overflow: hidden;
 
       &::before {
         content: '';
@@ -137,6 +141,31 @@ a {
       &:hover {
         background-color: darken($color-moss, 10%);
       }
+
+      @include max(sm) {
+        padding: 0.8rem 1rem;
+      }
+    }
+
+    input[type='text'] {
+      width: auto;
+      padding: 0.8rem 1.2rem;
+      border: 2px solid rgba($color-stone, 0.2);
+      border-radius: 4px;
+      flex-grow: 1;
+      background-color: rgba($color-cloud, 0.8);
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $color-moss;
+        box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+        background-color: white;
+      }
+
+      @include max(sm) {
+        width: 12rem;
+      }
     }
   }
 
@@ -148,7 +177,6 @@ a {
       text-decoration: none;
       display: inline-block;
       position: relative;
-      // overflow: hidden;
 
       &::after {
         content: '';
@@ -300,28 +328,6 @@ a {
   }
 }
 
-// .create_button {
-//   display: flex;
-//   justify-content: center;
-//   margin-bottom: 40px;
-
-//   a {
-//     @include button-base;
-//     text-decoration: none;
-//     position: relative;
-//     overflow: hidden;
-
-//     &:first-child {
-//       background-color: $color-moss;
-//       color: white;
-
-//       &:hover {
-//         background-color: darken($color-moss, 8%);
-//       }
-//     }
-//   }
-// }
-
 // アニメーション
 @keyframes fadeInUp {
   from {
@@ -454,6 +460,7 @@ a {
   }
 }
 
+// ページネーション用
 .pagination {
   display: flex;
   justify-content: center;
