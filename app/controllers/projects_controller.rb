@@ -3,7 +3,12 @@ class ProjectsController < ApplicationController
   before_action :set_site, only: [:index, :new, :create]
 
   def index
-    @projects = @site.projects().order(created_at: :desc)
+    @keyword = params[:keyword]
+    if @keyword.present?
+      @projects = @site.projects.search(@keyword).order(created_at: :desc).page(params[:page]).per(5)
+    else
+      @projects = @site.projects().order(created_at: :desc).page(params[:page]).per(5)
+    end
   end
 
   def new
