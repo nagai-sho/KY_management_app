@@ -82,7 +82,7 @@ a {
 
 .site_menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 2.5rem;
   gap: 1.5rem;
@@ -90,29 +90,33 @@ a {
     flex-direction: column;
   }
 
-  input {
-    padding: 0.8rem 1.2rem;
-    border: 2px solid rgba($color-stone, 0.2);
-    border-radius: 4px;
-    flex-grow: 1;
-    background-color: rgba($color-cloud, 0.8);
-    transition: all 0.3s ease;
+  // input {
+  //   padding: 0.8rem 1.2rem;
+  //   border: 2px solid rgba($color-stone, 0.2);
+  //   border-radius: 4px;
+  //   flex-grow: 1;
+  //   background-color: rgba($color-cloud, 0.8);
+  //   transition: all 0.3s ease;
 
-    &:focus {
-      outline: none;
-      border-color: $color-moss;
-      box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
-      background-color: white;
-    }
-  }
+  //   &:focus {
+  //     outline: none;
+  //     border-color: $color-moss;
+  //     box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+  //     background-color: white;
+  //   }
+  // }
 
-  .site_search {
+  .site_search form {
+    // display: flex;
+    // align-items: center;
+    // margin: 0 0.5rem;
+    width: 100%;
+
     input[type='submit'] {
       @include button-base;
       background-color: $color-moss;
       color: white;
       position: relative;
-      // overflow: hidden;
 
       &::before {
         content: '';
@@ -137,6 +141,31 @@ a {
       &:hover {
         background-color: darken($color-moss, 10%);
       }
+
+      @include max(sm) {
+        padding: 0.8rem 1rem;
+      }
+    }
+
+    input[type='text'] {
+      width: auto;
+      padding: 0.8rem 1.2rem;
+      border: 2px solid rgba($color-stone, 0.2);
+      border-radius: 4px;
+      flex-grow: 1;
+      background-color: rgba($color-cloud, 0.8);
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $color-moss;
+        box-shadow: 0 0 0 3px rgba($color-moss, 0.1);
+        background-color: white;
+      }
+
+      @include max(sm) {
+        width: 12rem;
+      }
     }
   }
 
@@ -148,7 +177,6 @@ a {
       text-decoration: none;
       display: inline-block;
       position: relative;
-      // overflow: hidden;
 
       &::after {
         content: '';
@@ -300,28 +328,6 @@ a {
   }
 }
 
-// .create_button {
-//   display: flex;
-//   justify-content: center;
-//   margin-bottom: 40px;
-
-//   a {
-//     @include button-base;
-//     text-decoration: none;
-//     position: relative;
-//     overflow: hidden;
-
-//     &:first-child {
-//       background-color: $color-moss;
-//       color: white;
-
-//       &:hover {
-//         background-color: darken($color-moss, 8%);
-//       }
-//     }
-//   }
-// }
-
 // アニメーション
 @keyframes fadeInUp {
   from {
@@ -451,5 +457,69 @@ a {
   align-items: center;
   li {
     text-align: left;
+  }
+}
+
+// ページネーション用
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+
+  a {
+    // background-color: $color-forest;
+    color: $color-earth;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    // overflow: hidden;
+    padding: 0.5rem 1rem; /* 上下0.5rem、左右1remのパディング */
+    border-radius: 4px; /* 角を4px丸める */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 全てのプロパティに0.4秒の遷移効果 */
+    border: none; /* ボーダーなし */
+    font-size: 0.9rem; /* フォントサイズを0.9remに設定 */
+
+    &:active {
+      transform: scale(0.97); /* アクティブ時に少し縮小 */
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: rgba(white, 0.5);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background-color: darken($color-forest, 10%);
+      opacity: 0.7;
+      color: white;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  .current {
+    padding: 0.5rem 1rem; /* 上下0.5rem、左右1remのパディング */
+    border-radius: 4px; /* 角を4px丸める */
+    background-color: darken($color-forest, 10%);
+    opacity: 0.7;
+    color: $color-cloud;
+    border-color: $color-clay;
+    font-size: 0.9rem; /* フォントサイズを0.9remに設定 */
+  }
+
+  .disabled {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: not-allowed;
   }
 }

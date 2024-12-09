@@ -19,6 +19,11 @@ class Site < ApplicationRecord
 
   before_validation :normalize_postal_code
 
+  def self.search(keyword)
+    # where('name address LIKE ?', "%#{keyword}%")
+    where('name LIKE :keyword OR address LIKE :keyword', keyword: "%#{keyword}%")
+  end
+
   private
   def normalize_postal_code
     if postal_code.present?
