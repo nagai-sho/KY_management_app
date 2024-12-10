@@ -147,8 +147,10 @@ a {
       }
     }
 
-    input[type='text'] {
+    input[type='text'],
+    .item_input {
       width: auto;
+      margin-right: 0.2rem;
       padding: 0.8rem 1.2rem;
       border: 2px solid rgba($color-stone, 0.2);
       border-radius: 4px;
@@ -166,6 +168,11 @@ a {
       @include max(sm) {
         width: 12rem;
       }
+    }
+
+    .item_create {
+      display: flex;
+      align-items: center;
     }
   }
 

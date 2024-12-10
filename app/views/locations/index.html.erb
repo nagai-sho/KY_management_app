@@ -1,28 +1,25 @@
 <div class="main">
   <h3>作業場所一覧</h3>
   <div class="site_menu">
-    <%= form_with model: [@site, @location], local: false do |f| %>
-      <div>
+    <div class="site_search">
+      <%= form_with model: [@site, @location], local: false do |f| %>
         <%= f.label :content, '作業場所を入力する' %><br>
         <%= f.text_field :content, autofocus: true, class: "item_input" %>
-      </div>
-      <div class="site_search">
         <%= f.submit '作成する' %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="previous_page">
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
-
   <% @locations.each do |location| %>
-  <div class="site_index">
-    <div class="title"><%= location.content %></div>
-    <div class="projects">
-      <%= link_to '削除', location_path(location),
+    <div class="site_index">
+      <div class="title"><%= location.content %></div>
+      <div class="projects">
+        <%= link_to '削除', location_path(location),
         data: { turbo_method: :delete }
-      %>
+        %>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
