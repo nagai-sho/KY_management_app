@@ -1,15 +1,15 @@
 <div class="main">
   <h3>安全面へのリスク低減対策</h3>
   <div class="site_menu">
-    <%= form_with model: [@site, @safety_risk_measure], local: false do |f| %>
-      <div>
+    <div class="site_search">
+      <%= form_with model: [@site, @safety_risk_measure], local: false do |f| %>
         <%= f.label :content, 'リスク低減対策を入力する' %><br>
-        <%= f.text_area :content, autofocus: true, class: "item_input" %>
-      </div>
-      <div class="site_search">
-        <%= f.submit '作成する', class: 'text_submit' %>
-      </div>
-    <% end %>
+        <div class="item_create">
+          <%= f.text_area :content, autofocus: true, class: "item_input" %>
+          <%= f.submit '作成する', class: 'text_submit' %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div class="previous_page">
     <%= link_to '戻る', item_list_site_path(@site) %>
