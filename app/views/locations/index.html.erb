@@ -12,6 +12,7 @@
   <div class="previous_page">
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
+  <%= paginate @locations %>
   <% @locations.each do |location| %>
     <div class="site_index">
       <div class="title"><%= location.content %></div>
@@ -22,4 +23,5 @@
       </div>
     </div>
   <% end %>
+  <%= paginate @locations %>
 </div>
