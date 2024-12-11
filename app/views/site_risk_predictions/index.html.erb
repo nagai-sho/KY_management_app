@@ -14,6 +14,7 @@
   <div class="previous_page">
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
+  <%= paginate @site_risk_predictions %>
   <% @site_risk_predictions.each do |site_risk_prediction| %>
     <div class="site_index">
       <div class="title"><%= site_risk_prediction.content %></div>
@@ -24,4 +25,5 @@
       </div>
     </div>
   <% end %>
+  <%= paginate @site_risk_predictions %>
 </div>

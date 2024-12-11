@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_site, only: [:index, :create]
   def index
-    @locations = @site.locations
+    @locations = @site.locations().page(params[:page]).per(5)
     @location = Location.new
   end
   

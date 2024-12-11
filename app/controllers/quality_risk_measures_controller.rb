@@ -1,7 +1,7 @@
 class QualityRiskMeasuresController < ApplicationController
   before_action :set_site, only: [:index, :create]
   def index
-    @quality_risk_measures = @site.quality_risk_measures
+    @quality_risk_measures = @site.quality_risk_measures().page(params[:page]).per(5)
     @quality_risk_measure = QualityRiskMeasure.new
   end
   
