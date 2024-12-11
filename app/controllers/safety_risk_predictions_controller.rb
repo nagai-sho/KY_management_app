@@ -1,7 +1,7 @@
 class SafetyRiskPredictionsController < ApplicationController
   before_action :set_site, only: [:index, :create]
   def index
-    @safety_risk_predictions = @site.safety_risk_predictions
+    @safety_risk_predictions = @site.safety_risk_predictions().page(params[:page]).per(5)
     @safety_risk_prediction = SafetyRiskPrediction.new
   end
   

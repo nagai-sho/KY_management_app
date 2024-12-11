@@ -14,15 +14,16 @@
   <div class="previous_page">
     <%= link_to '戻る', item_list_site_path(@site) %>
   </div>
-
+  <%= paginate @safety_risk_measures %>
   <% @safety_risk_measures.each do |safety_risk_measure| %>
-  <div class="site_index">
-    <div class="title"><%= safety_risk_measure.content %></div>
-    <div class="projects">
-      <%= link_to '削除', safety_risk_measure_path(safety_risk_measure),
+    <div class="site_index">
+      <div class="title"><%= safety_risk_measure.content %></div>
+      <div class="projects">
+        <%= link_to '削除', safety_risk_measure_path(safety_risk_measure),
         data: { turbo_method: :delete }
       %>
+      </div>
     </div>
-  </div>
   <% end %>
+  <%= paginate @safety_risk_measures %>
 </div>
