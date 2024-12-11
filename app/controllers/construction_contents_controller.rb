@@ -1,7 +1,7 @@
 class ConstructionContentsController < ApplicationController
   before_action :set_site, only: [:index, :create]
   def index
-    @construction_contents = @site.construction_contents
+    @construction_contents = @site.construction_contents().page(params[:page]).per(5)
     @construction_content = ConstructionContent.new
   end
   
