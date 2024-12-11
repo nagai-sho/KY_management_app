@@ -1,7 +1,7 @@
 class QualityRiskPredictionsController < ApplicationController
   before_action :set_site, only: [:index, :create]
   def index
-    @quality_risk_predictions = @site.quality_risk_predictions
+    @quality_risk_predictions = @site.quality_risk_predictions().page(params[:page]).per(5)
     @quality_risk_prediction = QualityRiskPrediction.new
   end
   
