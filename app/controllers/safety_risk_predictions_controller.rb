@@ -10,7 +10,7 @@ class SafetyRiskPredictionsController < ApplicationController
     if @safety_risk_prediction.save
       redirect_to site_safety_risk_predictions_path(@site), notice: '作業場所の作成に成功しました！'
     else
-      @safety_risk_predictions = @site.safety_risk_predictions.reject { |safety_risk_prediction| safety_risk_prediction.new_record? }
+      @safety_risk_predictions = @site.safety_risk_predictions().page(params[:page]).per(5)
       flash.now[:alert] = '作業場所の作成に失敗しました。'
       render :index, status: :unprocessable_entity
     end

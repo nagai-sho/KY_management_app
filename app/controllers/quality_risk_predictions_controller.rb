@@ -10,7 +10,7 @@ class QualityRiskPredictionsController < ApplicationController
     if @quality_risk_prediction.save
       redirect_to site_quality_risk_predictions_path(@site), notice: '作業場所の作成に成功しました！'
     else
-      @quality_risk_predictions = @site.quality_risk_predictions.reject { |quality_risk_prediction| quality_risk_prediction.new_record? }
+      @quality_risk_predictions = @site.quality_risk_predictions().page(params[:page]).per(5)
       flash.now[:alert] = '作業場所の作成に失敗しました。'
       render :index, status: :unprocessable_entity
     end
