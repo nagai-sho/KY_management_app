@@ -10,7 +10,7 @@ class QualityRiskMeasuresController < ApplicationController
     if @quality_risk_measure.save
       redirect_to site_quality_risk_measures_path(@site), notice: '作業場所の作成に成功しました！'
     else
-      @quality_risk_measures = @site.quality_risk_measures.reject { |quality_risk_measure| quality_risk_measure.new_record? }
+      @quality_risk_measures = @site.quality_risk_measures().page(params[:page]).per(5)
       flash.now[:alert] = '作業場所の作成に失敗しました。'
       render :index, status: :unprocessable_entity
     end
