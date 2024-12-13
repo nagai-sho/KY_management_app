@@ -10,7 +10,7 @@ class ConstructionContentsController < ApplicationController
     if @construction_content.save
       redirect_to site_construction_contents_path(@site), notice: '作業場所の作成に成功しました！'
     else
-      @construction_contents = @site.construction_contents.reject { |construction_content| construction_content.new_record? }
+      @construction_contents = @site.construction_contents().page(params[:page]).per(5)
       flash.now[:alert] = '作業場所の作成に失敗しました。'
       render :index, status: :unprocessable_entity
     end
