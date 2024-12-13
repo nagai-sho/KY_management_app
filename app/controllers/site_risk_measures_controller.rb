@@ -10,7 +10,7 @@ class SiteRiskMeasuresController < ApplicationController
     if @site_risk_measure.save
       redirect_to site_site_risk_measures_path(@site), notice: '作業場所の作成に成功しました！'
     else
-      @site_risk_measures = @site.site_risk_measures.reject { |site_risk_measure| site_risk_measure.new_record? }
+      @site_risk_measures = @site.site_risk_measures().page(params[:page]).per(5)
       flash.now[:alert] = '作業場所の作成に失敗しました。'
       render :index, status: :unprocessable_entity
     end

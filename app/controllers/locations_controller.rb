@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
     if @location.save
       redirect_to site_locations_path(@site), notice: '作業場所の作成に成功しました！'
     else
-      @locations = @site.locations.reject { |location| location.new_record? }
+      @locations = @site.locations().page(params[:page]).per(5)
       flash.now[:alert] = '作業場所の作成に失敗しました。'
       render :index, status: :unprocessable_entity
     end
