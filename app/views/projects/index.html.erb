@@ -14,33 +14,35 @@
   <div class="format">
     <%= link_to '項目を作成する', item_list_site_path(@site) %>
   </div>
-  <%= paginate @projects %>
-  <% @projects.each do |project| %>
-    <div class="site_index">
-      <div class="title">
-        <div class="project_name">工事名：<%= project.name %></div>
-        <div class="project_detail"><%= project.client %></div>
-        <div class="project_detail">
-          <%= "#{project.construction_start} 〜 #{project.construction_completion}" %>
+  <div data-controller="search-reload">
+    <%= paginate @projects %>
+    <% @projects.each do |project| %>
+      <div class="site_index">
+        <div class="title">
+          <div class="project_name">工事名：<%= project.name %></div>
+          <div class="project_detail"><%= project.client %></div>
+          <div class="project_detail">
+            <%= "#{project.construction_start} 〜 #{project.construction_completion}" %>
+          </div>
+          <div class="project_detail"><%= project.construction_content %></div>
         </div>
-        <div class="project_detail"><%= project.construction_content %></div>
-      </div>
-      <div class="projects">
-        <%= link_to 'KYシート作成', new_project_ky_sheet_path(project) %>
-        <%= link_to '実施済みKYシート一覧', project_ky_sheets_path(project) %>
-        <%= link_to '編集', edit_project_path(project) %>
-        <%= link_to '削除', project_path(project),
-          data: { turbo_method: :delete,
-            turbo_confirm: '
-            作成した全てのKYシートのデータも削除されます。
+        <div class="projects">
+          <%= link_to 'KYシート作成', new_project_ky_sheet_path(project) %>
+          <%= link_to '実施済みKYシート一覧', project_ky_sheets_path(project) %>
+          <%= link_to '編集', edit_project_path(project) %>
+          <%= link_to '削除', project_path(project),
+            data: { turbo_method: :delete,
+              turbo_confirm: '
+              作成した全てのKYシートのデータも削除されます。
 
-            本当に削除しますか？'
-          }
-        %>
+              本当に削除しますか？'
+            }
+          %>
+        </div>
+        <div class="form">
+        </div>
       </div>
-      <div class="form">
-      </div>
-    </div>
-  <% end %>
-  <%= paginate @projects %>
+    <% end %>
+    <%= paginate @projects %>
+  </div>
 </div>
