@@ -1,24 +1,25 @@
-<div class="main">
-  <h3>現場一覧</h3>
-  <div class="site_menu">
-    <div class="site_search">
-      <%= form_with local: true, method: :get do |f| %>
-        <%= f.text_field :keyword %>
-        <%= f.submit '検索する' %>
-      <% end %>
+<div data-controller="search-reload">
+  <div class="main">
+    <h3>現場一覧</h3>
+    <div class="site_menu">
+      <div class="site_search">
+        <%= form_with local: true, method: :get do |f| %>
+          <%= f.text_field :keyword %>
+          <%= f.submit '検索する' %>
+        <% end %>
+      </div>
+      <div class="site_create">
+        <%= link_to '新規作成', new_site_path %>
+      </div>
     </div>
-    <div class="site_create">
-      <%= link_to '新規作成', new_site_path %>
-    </div>
-  </div>
-  <%= paginate @sites %>
-  <% @sites.each do |site| %>
-    <div class="site_index">
-      <div class="title">現場名：<%= site.name %></div>
-      <div class="projects">
-        <%= link_to '工事一覧', site_projects_path(site) %>
-        <%= link_to '編集', edit_site_path(site) %>
-        <%= link_to '削除', site_path(site),
+    <%= paginate @sites %>
+    <% @sites.each do |site| %>
+      <div class="site_index">
+        <div class="title">現場名：<%= site.name %></div>
+        <div class="projects">
+          <%= link_to '工事一覧', site_projects_path(site) %>
+          <%= link_to '編集', edit_site_path(site) %>
+          <%= link_to '削除', site_path(site),
             data: { turbo_method: :delete,
               turbo_confirm: '
               現場内の全ての工事データ,
@@ -27,8 +28,9 @@
               本当に削除しますか？'
             }
           %>
+        </div>
       </div>
-    </div>
-  <% end %>
-  <%= paginate @sites %>
+    <% end %>
+    <%= paginate @sites %>
+  </div>
 </div>
