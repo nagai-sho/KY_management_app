@@ -458,14 +458,14 @@ a {
   }
 }
 
-// .error_alert {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   li {
-//     text-align: left;
-//   }
-// }
+.error_alert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  li {
+    text-align: left;
+  }
+}
 
 // ページネーション用
 .pagination {
