@@ -90,3 +90,12 @@
 // .password-reset-form {
 //   // パスワードリセットフォーム固有のスタイル
 // }
+.main {
+  .new_form {
+    .create_button {
+      .confirmation_email {
+        margin: 2rem 0;
+      }
+    }
+  }
+}
