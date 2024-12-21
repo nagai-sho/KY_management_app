@@ -4,8 +4,8 @@
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="new_form">
       <div class="form-field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+        <%= f.label :email, 'メールアドレス' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
       </div>
       <div class="create_button">
         <%= f.submit "確認メールを再送する", class:"confirmation_email" %>
