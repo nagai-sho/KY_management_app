@@ -1,165 +1,236 @@
 .default_format {
-  width: 1500px;
-  height: 800px;
+  width: 1560px;
+  height: 1060px;
 }
 
 .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  .return {
-    font-size: 20px;
-  }
+  padding: 0 1rem;
 }
+
 .ky {
   border: 1px solid;
   display: flex;
   flex-direction: column;
   padding: 10px;
 
+  .top_content {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.8rem;
+  }
+
   .ky_header {
     display: flex;
-    justify-content: space-around;
-    .header_left {
-      .header_name {
-        display: flex;
-      }
-    }
-    .header_center {
-      .header_name {
-        display: flex;
-      }
-    }
-    .header_right {
+    flex-direction: column;
+
+    .header_name {
       display: flex;
-      .header_name {
-        display: flex;
-      }
     }
   }
+}
 
-  .column {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 2px solid;
-    .risk_evaluation {
-      display: flex;
-      flex-direction: column;
-      .risk_degree {
-        display: flex;
-        .rate {
-          margin: 0 5px;
-        }
-      }
-    }
-  }
+.column {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
 
-  .input_area {
-    // border: 2px solid;
+  .column_sm,
+  .column_md,
+  .column_lg {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    height: 3rem;
     text-align: center;
-    .risk_content {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      text-align: center;
-      border: 2px solid;
-      width: calc(100vw - 20px);
-      height: 50px;
-      margin-bottom: 2px;
-      .location {
-        padding: 0 10px;
-      }
-      .action_content {
-        padding: 0 10px;
-      }
-      .risk_prediction {
-        padding: 0 10px;
-      }
-      .risk_measure {
-        padding: 0 10px;
-      }
-      .risk_rate {
-        padding: 0 10px;
-      }
+    border: 1px solid;
+    border-radius: 10px;
+  }
+
+  .column_sm {
+    width: 6rem;
+  }
+
+  .column_md {
+    width: 15rem;
+  }
+
+  .column_lg {
+    width: 20rem;
+  }
+}
+
+.risk_degree {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 10px;
+
+  .rate {
+    width: 100px;
+  }
+}
+
+.sub_title {
+  text-align: center;
+  border-bottom: 2px solid;
+  padding-top: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.input_area {
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+}
+
+.risk_content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid;
+  width: 100%;
+  height: 65px;
+  margin-bottom: 2px;
+
+  .location {
+    width: 6rem;
+    padding: 0 10px;
+  }
+
+  .action_content {
+    width: 15rem;
+    padding: 0 10px;
+  }
+
+  .rate_width {
+    display: flex;
+    width: 20rem;
+    margin-right: 2rem;
+
+    .risk_rate {
+      width: 100px;
+      padding: 0 10px;
+    }
+
+    .risk_assessment {
+      width: 120px;
+      padding: 0 10px;
     }
   }
 
-  .check_area {
+  .risk_prediction,
+  .risk_measure {
+    width: 20rem;
+    padding: 0 10px;
+  }
+}
+
+.check_area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .check_content_all {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    .check_content_all {
+    justify-content: space-between;
+    padding: 0.5rem 0;
+
+    .check_content_reft,
+    .check_content_right {
+      padding: 0 10px;
+      display: inline-block;
+    }
+
+    .check_content_reft {
+      margin-right: 2rem;
+    }
+
+    .check_content_right {
+      margin-left: 2rem;
+    }
+
+    .check_content {
       display: flex;
       justify-content: space-between;
-      .check_content_reft {
-        padding: 0 10px;
-        display: inline-block;
-        .check_content {
-          display: flex;
-          justify-content: space-between;
-          form {
-            padding-left: 50px;
-          }
-        }
+
+      .sentence {
+        margin-right: 1.5rem;
       }
-      .check_content_right {
-        padding: 0 10px;
-        display: inline-block;
-        .check_content {
-          display: flex;
-          justify-content: space-between;
-          form {
-            padding-left: 50px;
-          }
+
+      form {
+        padding-left: 50px;
+      }
+    }
+  }
+}
+
+.ky_footer {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid;
+
+  .sign_area {
+    width: calc(100vw - 20px - 500px);
+    display: flex;
+    flex-direction: column;
+
+    .sign_box {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 2rem;
+    }
+  }
+
+  .personnel_area {
+    text-align: center;
+    width: calc(100vw - 20px - 700px);
+    border-left: 2px solid;
+    border-right: 2px solid;
+
+    .personnel {
+      height: 100px;
+      display: flex;
+      justify-content: space-around;
+
+      .division {
+        padding-top: 0.5rem;
+      }
+
+      .sum {
+        padding-top: 3.3rem;
+      }
+
+      .people_number {
+        padding-top: 1.5rem;
+      }
+    }
+  }
+
+  .manager_sign_area {
+    text-align: center;
+    width: calc(100vw - 20px - 700px);
+
+    .confirmed_area {
+      display: flex;
+      justify-content: space-around;
+
+      .confirmed {
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem 0.5rem;
+
+        .sign {
+          margin-top: 0.5rem;
         }
       }
     }
   }
 
-  .ky_footer {
-    text-align: center;
-    display: flex;
-    border: 2px solid;
-    .sign_area {
-      width: calc(100vw - 20px - 500px);
-      display: flex;
-      flex-direction: column;
-      border: 2px solid;
-      .footer_title {
-        border: 2px solid;
-      }
-    }
-    .personnel_area {
-      text-align: center;
-      border: 2px solid;
-      width: calc(100vw - 20px - 800px);
-      .personnel {
-        height: 105px;
-        border: 2px solid;
-        display: flex;
-        justify-content: space-around;
-      }
-    }
-    .manager_sign_area {
-      text-align: center;
-      border: 2px solid;
-      width: calc(100vw - 20px - 800px);
-      .confirmed_area {
-        display: flex;
-        border: 2px solid;
-        .confirmed {
-          height: 100px;
-          border: 2px solid;
-          display: flex;
-          flex-direction: column;
-        }
-      }
-    }
+  .footer_title {
+    border-bottom: 1.5px solid;
   }
 }
