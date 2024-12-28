@@ -77,6 +77,7 @@ Rails.application.configure do
     domain: 'ramatanky.com',
     authentication: :plain,
     enable_starttls: true
+    
   }
 
   config.action_mailer.default_url_options = { host: 'ramatanky.com' } # Route53で取得したドメイン
