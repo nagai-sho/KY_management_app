@@ -38,6 +38,14 @@ header {
       margin: 20px;
       width: 90px;
       height: 90px;
+
+      &:hover {
+        border-radius: 5px;
+        border: 0.1rem solid $color-sand;
+      }
+      &:active {
+        transform: scale(0.98);
+      }
       @include max(lg) {
         margin: 15px;
         width: 60px;
@@ -62,6 +70,15 @@ header {
         @include max(sm) {
           font-size: 1rem;
           margin-bottom: 0.2rem;
+        }
+        & {
+          transition: 0.3s ease;
+        }
+        &:hover {
+          color: #53443a;
+        }
+        &:active {
+          transform: scale(0.99);
         }
       }
       p {
